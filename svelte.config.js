@@ -2,6 +2,11 @@ import adapter from '@sveltejs/adapter-static';
 // eslint-disable-next-line import/no-unresolved
 import { vitePreprocess } from '@sveltejs/kit/vite';
 
+let basedir = '';
+if (process.env.DEPLOY_ENV === 'RELEASE') {
+  basedir = '/2022';
+}
+
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
   // Consult https://kit.svelte.dev/docs/integrations#preprocessors
@@ -12,6 +17,10 @@ const config = {
     adapter: adapter(),
     alias: {
       src: 'src',
+    },
+    paths: {
+      assets: basedir,
+      base: basedir,
     },
   },
 };

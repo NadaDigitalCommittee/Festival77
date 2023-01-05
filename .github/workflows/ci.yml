@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+env:
+  YARN_CACHE_FOLDER: .cache/yarn
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses actions/checkout@master
+
+      - name: Setup node env
+        uses actions/setup-node@v3
+        with:
+          node-version: 18
+          check-latest: true
+
+      - name: Cache node_modules
+        uses: actions/cache@v3
+        id: yarn-cache
+        with:
+          path: ${YARN_CACHE_FOLDER}
+          key: ${{ runner.os }}-yarn-v2
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Run linter
+        run yarn lint
