@@ -6,7 +6,6 @@ on:
       - release
 
 env:
-  YARN_CACHE_FOLDER: .cache/yarn
   DEPLOY_ENV: RELEASE
 
 jobs:
@@ -28,7 +27,7 @@ jobs:
         uses: actions/cache@v3
         id: yarn-cache
         with:
-          path: ${YARN_CACHE_FOLDER}
+          path: ~/.cache/yarn
           key: ${{ runner.os }}-yarn-v2
 
       - name: Install dependencies
