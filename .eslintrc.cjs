@@ -19,7 +19,6 @@ module.exports = {
     'svelte3',
     '@typescript-eslint'
   ],
-  // ignorePatterns: ['*.cjs', '*.d.ts'],
   overrides: [
     { files: ['*.svelte'], processor: 'svelte3/svelte3' }
   ],
@@ -27,11 +26,12 @@ module.exports = {
     'svelte3/typescript': () => require('typescript'),
     'import/resolver': {
       'eslint-import-resolver-custom-alias': {
-        'alias': {
-          'src': './src',
-        },
-        'extensions': ['.ts', '.js', '.svelte'],
+        alias: {
+          '$app': 'node_modules/@sveltejs/kit/src/runtime/app',
+          '$env': 'node_modules/@sveltejs/kit/src/runtime/env',
+        }
       },
+      typescript: {},
     },
   },
   rules: {
