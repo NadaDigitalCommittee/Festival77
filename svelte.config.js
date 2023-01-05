@@ -19,7 +19,6 @@ const config = {
       src: 'src',
     },
     paths: {
-      assets: basedir,
       base: basedir,
     },
   },
