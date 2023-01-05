@@ -17,10 +17,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses actions/checkout@master
+        uses: actions/checkout@master
 
       - name: Setup node env
-        uses actions/setup-node@v3
+        uses: actions/setup-node@v3
         with:
           node-version: 18
           check-latest: true
