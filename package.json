@@ -19,7 +19,7 @@
     "@sveltejs/adapter-static": "^1.0.1",
     "@sveltejs/kit": "^1.0.10",
     "destyle.css": "^4.0.0",
-    "svelte": "^3.54.0"
+    "svelte": "^3.55.1"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.48.1",
