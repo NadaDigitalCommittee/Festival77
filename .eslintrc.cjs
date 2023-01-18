@@ -27,6 +27,7 @@ module.exports = {
     'import/resolver': {
       'eslint-import-resolver-custom-alias': {
         alias: {
+          '$lib': 'src/lib',
           '$app': 'node_modules/@sveltejs/kit/src/runtime/app',
           '$env': 'node_modules/@sveltejs/kit/src/runtime/env',
         }
