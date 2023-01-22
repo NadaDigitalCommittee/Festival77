@@ -38,7 +38,7 @@
       padding: 5px 1rem 0 2rem;
       gap: 1rem;
     `, `
-      padding: 5px 0.5rem 0;
+      padding: 0 0.5rem;
       gap: 0.25rem;
     `)}
     width: 100%;
