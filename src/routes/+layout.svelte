@@ -1,5 +1,5 @@
 <div class={containerStyle}>
-  <img class={backgroundStyle} alt="background" src="{base}/img/pc-background.png">
+  <div class={backgroundStyle} />
   <header class={headerStyle}>
     <Header/>
   </header>
@@ -14,6 +14,7 @@
 <script lang="ts">
   import 'destyle.css/destyle.min.css';
   import '$lib/styles/global.css';
+  import { responsive } from '$lib/styles/utils';
   import { base } from '$app/paths';
   import { css } from '@emotion/css';
   import Header from '$lib/header/Header.svelte';
@@ -21,7 +22,12 @@
 
   const backgroundStyle = css`
     position: sticky;
-    object-fit: cover;
+    ${responsive(`
+      background-image: url("${base}/img/pc-background.png");
+    `, `
+      background-image: url("${base}/img/mobile-background.png");
+    `)}
+    background-size: cover;
     overflow: visible;
     z-index: -1;
     top: 3rem;
@@ -54,6 +60,5 @@
 
   const footerStyle = css`
     width: 100%;
-    height: 18rem;
   `;
 </script>

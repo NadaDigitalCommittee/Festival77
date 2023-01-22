@@ -9,7 +9,7 @@
   const linkStyle = css`
     font-family: "Noto Sans JP", sans-serif;
     font-weight: 700;
-    font-size: 1.5rem;
+    font-size: 1rem;
     padding: 10px 10px 15px;
     position: relative;
     white-space: nowrap;
@@ -20,7 +20,7 @@
       top: calc(1ch + 20px);
       left: 50%;
       width: 0;
-      height: 3px;
+      height: 2px;
       background-color: #000000;
       transition: width 0.25s ease, left 0.25s ease;
     }

@@ -1,31 +1,46 @@
 <div class={containerStyle}>
   <a href="{base}/" class={topStyle}>
-    <div class={logoStyle}><Logo style="standard" size="8rem" /></div>
-    <Type size="2.5rem" weight="450">77th NADA School Festival</Type>
+    <div class={logoStyle}><Logo style="logo-standard" size="5.5rem" /></div>
+    <Type size={['1.75rem', '1.25rem']} weight="450">77th NADA School Festival</Type>
   </a>
   <div class={padStyle} />
-  <Link to="/">ホーム</Link>
-  <Link to="/circles">サークル</Link>
-  <Link to="/stages">ステージ</Link>
-  <Link to="/goods">グッズ</Link>
-  <Link to="/downloads">ダウンロード</Link>
+  {#each links as link}
+    <div class={linkStyle}><Link to={link.url}>{link.name}</Link></div>
+  {/each}
   <Search/>
+  <div class={hamburgerStyle}><Hamburger/></div>
 </div>
 
 <script lang="ts">
   import { css } from '@emotion/css';
   import { base } from '$app/paths';
+  import { responsive, pcOnly, mobileOnly } from '$lib/styles/utils';
   import Logo from '$lib/utils/Logo.svelte';
   import Type from '$lib/utils/Type.svelte';
   import Link from './Link.svelte';
   import Search from './Search.svelte';
+  import Hamburger from './Hamburger.svelte';
+
+  const links = [
+    { name: 'ホーム', url: '/' },
+    { name: 'サークル', url: '/circles' },
+    { name: 'ステージ', url: '/stages' },
+    { name: 'グッズ', url: '/goods' },
+    { name: 'ダウンロード', url: '/downloads' },
+  ];
 
   const containerStyle = css`
     display: flex;
     align-items: center;
     background-color: #FFFFFF;
-    padding: 5px 2rem 0;
-    gap: 2rem;
+    padding: 5px 1rem 0;
+    ${responsive(`
+      padding: 5px 1rem 0 2rem;
+      gap: 1rem;
+    `, `
+      padding: 5px 0.5rem 0;
+      gap: 0.25rem;
+    `)}
     width: 100%;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   `;
@@ -34,14 +49,20 @@
     flex-grow: 1;
   `;
 
-  const topStyle = css`
+  const linkStyle = css(pcOnly(''));
+
+  const topStyle = css(responsive(`
     padding: 10px;
     display: flex;
     align-items: center;
-    gap: 2.5rem;
-  `;
+    gap: 1.25rem;
+  `, `
+    padding: 20px 10px;
+  `));
 
-  const logoStyle = css`
+  const logoStyle = css(pcOnly(`
     margin-top: -5px;
-  `;
+  `));
+
+  const hamburgerStyle = css(mobileOnly(''));
 </script>

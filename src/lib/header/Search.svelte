@@ -5,8 +5,7 @@
   import { css } from '@emotion/css';
 
   const searchStyle = css`
-    width: calc(2.5rem + 20px);
-    padding: 10px;
-    margin-right: 2rem;
+    width: calc(1.75rem + 16px);
+    padding: 8px;
   `;
 </script>

@@ -40,5 +40,6 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     'import/prefer-default-export': 'off',
     'import/no-mutable-exports': 'off',
+    'import/extensions': ['error', 'always', { pattern: { js: 'never', ts: 'never' } }],
   },
 };

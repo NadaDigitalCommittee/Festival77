@@ -1,13 +1,14 @@
-<img class={imgStyle} alt="{style} logo" src="{base}/img/logos/logo-{style}.svg" />
+<img class={imgStyle} alt="{style} logo" src="{base}/img/logos/{style}.svg" />
 
 <script lang="ts">
   import { base } from '$app/paths';
+  import { propResponsive, type PropResponsive } from '$lib/styles/utils';
   import { css } from '@emotion/css';
 
   export let style = 'standard';
-  export let size = '120px';
+  export let size: PropResponsive = '120px';
 
   const imgStyle = css`
-    width: ${size};
+    ${propResponsive('width', size)}
   `;
 </script>
