@@ -7,17 +7,18 @@
   export let to: string;
 
   const linkStyle = css`
-    font-family: "Noto Sans JP", sans-serif;
-    font-weight: 700;
+    font-family: toppan-bunkyu-midashi-go-std, sans-serif;
+    /* font-family: "Noto Sans JP", sans-serif; */
+    font-weight: 900;
     font-size: 1rem;
-    padding: 10px 10px 15px;
+    padding: 10px 10px 20px;
     position: relative;
     white-space: nowrap;
 
     &::after {
       content: "";
       position: absolute;
-      top: calc(1ch + 20px);
+      top: calc(1ch + 25px);
       left: 50%;
       width: 0;
       height: 2px;

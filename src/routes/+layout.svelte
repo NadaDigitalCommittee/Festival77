@@ -14,7 +14,6 @@
 <script lang="ts">
   import 'destyle.css/destyle.min.css';
   import '$lib/styles/global.css';
-  import { responsive } from '$lib/styles/utils';
   import { base } from '$app/paths';
   import { css } from '@emotion/css';
   import Header from '$lib/header/Header.svelte';
@@ -22,11 +21,13 @@
 
   const backgroundStyle = css`
     position: sticky;
-    ${responsive(`
+    @media screen and (min-width: 801px) {
       background-image: url("${base}/img/pc-background.png");
-    `, `
+    }
+    @media screen and (max-width: 800px) {
       background-image: url("${base}/img/mobile-background.png");
-    `)}
+    }
+    background-position: center;
     background-size: cover;
     overflow: visible;
     z-index: -1;

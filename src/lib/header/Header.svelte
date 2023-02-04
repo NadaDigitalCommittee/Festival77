@@ -1,7 +1,7 @@
 <div class={containerStyle}>
   <a href="{base}/" class={topStyle}>
-    <div class={logoStyle}><Logo style="logo-standard" size="5.5rem" /></div>
-    <Type size={['1.75rem', '1.25rem']} weight="450">77th NADA School Festival</Type>
+    <div class={logoStyle}><Logo style="logo-standard" size="4.5rem" /></div>
+    <Type size={['1.6rem', '1.25rem']} weight="450">77th NADA School Festival</Type>
   </a>
   <div class={padStyle} />
   {#each links as link}
@@ -33,12 +33,11 @@
     display: flex;
     align-items: center;
     background-color: #FFFFFF;
-    padding: 5px 1rem 0;
     ${responsive(`
-      padding: 5px 1rem 0 2rem;
+      padding: 10px 3rem 0 1.5rem;
       gap: 1rem;
     `, `
-      padding: 0 0.5rem;
+      padding: 10px 0.5rem 0;
       gap: 0.25rem;
     `)}
     width: 100%;
@@ -55,7 +54,7 @@
     padding: 10px;
     display: flex;
     align-items: center;
-    gap: 1.25rem;
+    gap: 1.5rem;
   `, `
     padding: 20px 10px;
   `));
