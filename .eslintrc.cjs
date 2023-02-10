@@ -27,15 +27,21 @@ module.exports = {
     'import/resolver': {
       'eslint-import-resolver-custom-alias': {
         alias: {
+          '$lib': 'src/lib',
           '$app': 'node_modules/@sveltejs/kit/src/runtime/app',
           '$env': 'node_modules/@sveltejs/kit/src/runtime/env',
-        }
+        },
+        extensions: ['.js', '.ts', '.svelte'],
       },
-      typescript: {},
+      typescript: { extensions: ['.js', '.ts', '.svelte'] },
     },
   },
   rules: {
     'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    'import/prefer-default-export': 'off',
+    'import/no-mutable-exports': 'off',
+    'import/order': 'off',
+    'import/extensions': ['error', 'ignorePackages', { js: 'never', ts: 'never' }],
   },
 };
