@@ -6,6 +6,7 @@
 
 <script lang="ts">
   import { css } from '@emotion/css';
+  import { colors } from '$lib/styles/utils';
 
   const buttonStyle = css`
     display: flex;
@@ -19,7 +20,7 @@
       display: block;
       height: 3px;
       width: 100%;
-      background-color: #000000;
+      background-color: ${colors.black};
     }
   `;
 </script>
