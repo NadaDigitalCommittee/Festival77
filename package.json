@@ -15,7 +15,7 @@
     "lint": "svelte-kit sync && eslint ."
   },
   "dependencies": {
-    "@emotion/css": "^11.10.5",
+    "@emotion/css": "^11.10.6",
     "@sveltejs/adapter-static": "^2.0.1",
     "@sveltejs/kit": "^1.6.0",
     "destyle.css": "^4.0.0",
