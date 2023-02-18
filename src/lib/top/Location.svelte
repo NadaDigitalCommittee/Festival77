@@ -12,12 +12,12 @@
 
   const containerStyle = css`
     display: flex;
-    gap: 10px;
+    gap: 7px;
 
     &:hover {
       p::after {
-        width: 80%;
-        left: 10%;
+        width: calc(100% - 2em);
+        left: 1em;
       }
     }
   `;
@@ -25,7 +25,7 @@
   const textStyle = css`
     font-family: toppan-bunkyu-midashi-go-std, sans-serif;
     font-weight: 900;
-    font-size: 1rem;
+    font-size: 0.8rem;
     color: ${colors.gray};
     padding: 10px 0;
     position: relative;
@@ -34,7 +34,7 @@
     &::after {
       content: "";
       position: absolute;
-      top: calc(1ch + 25px);
+      top: calc(1ch + 20px);
       left: 0;
       width: 100%;
       height: 2px;

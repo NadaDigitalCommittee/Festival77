@@ -6,12 +6,12 @@
 
   export let color = colors.black;
   export let subcolor = colors.orange;
-  export let size: responsiveSize = '2.25rem';
+  export let size: responsiveSize = '1.875rem';
   export let weight = '700';
 
   const titleStyle = css`
     position: relative;
-    font-family: futura-pt, toppan-bunkyu-midashi-go-std, sans-serif;
+    font-family: futura-pt-bold, toppan-bunkyu-midashi-go-std, sans-serif;
     color: ${color};
     ${propResponsive('font-size', size)}
     font-weight: ${weight};
@@ -26,9 +26,9 @@
       content: "";
       background-color: ${color};
       position: absolute;
-      width: 4.5rem;
+      width: calc(1em * 2);
       height: 3px;
-      top: 115%;
+      top: calc(1ch + 20px);
       left: 0;
     }
   `;

@@ -10,7 +10,7 @@
 
   const titleStyle = css`
     position: relative;
-    font-family: futura-pt, sans-serif;
+    font-family: futura-pt-bold, sans-serif;
     color: ${color};
     ${propResponsive('font-size', size)}
     font-weight: ${weight};
