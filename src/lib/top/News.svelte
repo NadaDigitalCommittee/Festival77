@@ -1,14 +1,21 @@
 <div class={containerStyle}>
-  <div class={titleStyle}><Title>NEWS</Title></div>
+  <div class={titleStyle}><Title size={['4rem', '3rem']}>NEWS</Title></div>
   <ul class={listStyle}>
+    <li class={dummyItemStyle}/>
     {#each news as item }
-      <li class={itemStyle}>
+      <li class={pcItemStyle}>
         <div class={dateStyle}>{format(item.date, 'yyyy.MM.dd')}</div>
         <p class={contentStyle}>{item.content}</p>
         <a href={item.url} class={buttonStyle}>
           <span/>
           <span/>
           <span/>
+        </a>
+      </li>
+      <li class={mobileOnlyStyle}>
+        <a href={item.url} class={mobileItemStyle}>
+          <div class={dateStyle}>{format(item.date, 'MM.dd')}</div>
+          <p class={contentStyle}>{item.content}</p>
         </a>
       </li>
     {/each}
@@ -18,7 +25,9 @@
 <script lang="ts">
   import { css } from '@emotion/css';
   import Title from '$lib/utils/Title.svelte';
-  import { colors } from '$lib/styles/utils';
+  import {
+    colors, mobileOnly, pcOnly, responsive,
+  } from '$lib/styles/utils';
   import { format } from 'date-fns';
 
   const news = [
@@ -34,28 +43,43 @@
     width: 100%;
   `;
 
-  const titleStyle = css`
+  const titleStyle = css(responsive(`
     margin: 70px;
-  `;
+  `, `
+    margin: 45px;
+  `));
 
   const listStyle = css`
-    background-color: ${colors.lightgray};
-    opacity: 85%;
+    ${responsive(`
+      opacity: 85%;
+    `, '')}
     width: 100%;
-
-    li:first-child {
-      border-top: 2px solid ${colors.navy};
-    }
 
     li {
       border-bottom: 2px solid ${colors.navy};
     }
   `;
 
-  const itemStyle = css`
+  const dummyItemStyle = css`
+    background-color: ${colors.navy};
+    height: 2px;
+    width: 100%;
+  `;
+
+  const pcItemStyle = css(pcOnly(`
     display: flex;
+    background-color: ${colors.lightgray};
     align-items: center;
     padding: 26px 80px;
+    width: 100%;
+  `));
+
+  const mobileOnlyStyle = css(mobileOnly(''));
+
+  const mobileItemStyle = css`
+    display: flex;
+    align-items: center;
+    padding: 15px;
     width: 100%;
   `;
 

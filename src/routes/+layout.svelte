@@ -46,7 +46,7 @@
     display: flex;
     position: relative;
     flex-direction: column;
-    width: max-content;
+    width: min-content;
     min-height: 100%;
     min-width: 100%;
   `;

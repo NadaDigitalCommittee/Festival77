@@ -1,5 +1,5 @@
 <div class={containerStyle}>
-  <div class={titleStyle}><Title>INFORMATION</Title></div>
+  <div class={titleStyle}><Title size={['4rem', '3rem']}>INFORMATION</Title></div>
   <div class={twoColumnsStyle}>
     <div class={abstractStyle}>
       <Subtitle>開催要項</Subtitle>
@@ -32,19 +32,21 @@
       </table>
     </div>
   </div>
-  <Subtitle size="2.25rem">SNS</Subtitle>
-  <p class={checkStyle}>最新情報をチェック！</p>
-  <div class={socialsStyle}>
-    {#each socials as social}
-      <Logo style="social/black/{social}" hover="social/color/{social}" size="2.5rem"></Logo>
-    {/each}
+  <div class={snsStyle}>
+    <Subtitle size="2.25rem">SNS</Subtitle>
+    <p class={checkStyle}>最新情報をチェック！</p>
+    <div class={socialsStyle}>
+      {#each socials as social}
+        <Logo style="social/black/{social}" hover="social/color/{social}" size={['2.5rem', '2rem']}></Logo>
+      {/each}
+    </div>
   </div>
 </div>
 
 <script lang="ts">
   import { css } from '@emotion/css';
   import { base } from '$app/paths';
-  import { colors } from '$lib/styles/utils';
+  import { colors, responsive } from '$lib/styles/utils';
   import Date from './Date.svelte';
   import Location from './Location.svelte';
   import Title from '$lib/utils/Title.svelte';
@@ -61,24 +63,34 @@
 
   const titleStyle = css`
     margin-bottom: 25px;
+    align-self: center;
   `;
 
   const containerStyle = css`
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding: 100px 160px;
-    background-color: ${colors.white};
-    opacity: 85%;
-    box-shadow: 0px 4px 4px 5px rgba(0, 0, 0, 0.25);
-    border-radius: 120px;
+    ${responsive(`
+      align-items: center;
+      padding: 100px 160px;
+      background-color: ${colors.white};
+      opacity: 85%;
+      box-shadow: 0px 4px 4px 5px rgba(0, 0, 0, 0.25);
+      border-radius: 120px;
+      width: 100%;
+    `, `
+      padding: 0 15%;
+      gap: 75px;
+    `)}
   `;
 
   const twoColumnsStyle = css`
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
+    ${responsive(`
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+    `, `
+      display: contents;
+    `)}
     margin-top: 50px;
     margin-bottom: 40px;
   `;
@@ -92,12 +104,20 @@
   const dateStyle = css`
     display: flex;
     gap: 15px;
+    ${responsive('', `
+      width: 100%;
+      margin: 0 30%;
+      align-self: center;
+      justify-content: space-evenly;
+    `)}
   `;
 
   const timeStyle = css`
     display: flex;
     gap: 12px;
-    margin-left: 15px;
+    ${responsive(`
+      margin-left: 15px;
+    `, '')}
 
     p {
       font-family: futura-pt, sans-serif;
@@ -122,6 +142,9 @@
 
   const accessTableStyle = css`
     position: relative;
+    ${responsive('', `
+      width: max-content;
+    `)}
     height: max-content;
     font-family: toppan-bunkyu-midashi-go-std, sans-serif;
     font-weight: 900;
@@ -151,18 +174,33 @@
     }
   `;
 
+  const snsStyle = css(responsive(`
+    display: contents;
+  `, `
+  `));
+
   const checkStyle = css`
     font-family: toppan-bunkyu-midashi-go-std, sans-serif;
     font-weight: 900;
     font-size: 1rem;
-    margin: 35px auto 30px 40px;
-    align-self: start;
+    ${responsive(`
+      margin: 35px auto 30px 40px;
+      align-self: start;
+    `, `
+      margin: 20px 0;
+    `)}
   `;
 
   const socialsStyle = css`
     display: flex;
     height: max-content;
     align-items: center;
-    gap: 4rem;
+    ${responsive(`
+      gap: 4rem;
+    `, `
+      width: 100%;
+      gap: 1.5rem;
+      justify-content: space-evenly;
+    `)}
   `;
 </script>
