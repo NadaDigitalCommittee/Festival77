@@ -39,9 +39,11 @@ module.exports = {
   rules: {
     'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    'no-multiple-empty-lines': ['error', { max: 1, maxBOF: 2, maxEOF: 0 }],
     'import/prefer-default-export': 'off',
     'import/no-mutable-exports': 'off',
     'import/order': 'off',
+    'import/first': 'off',
     'import/extensions': ['error', 'ignorePackages', { js: 'never', ts: 'never' }],
   },
 };

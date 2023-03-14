@@ -8,9 +8,9 @@ export const responsive = (pc: string, mobile: string) => `
   }
 `;
 
-export type PropResponsive = string | [string, string];
+export type responsiveSize = string | [string, string];
 
-export const propResponsive = (prop: string, value: PropResponsive) => {
+export const propResponsive = (prop: string, value: responsiveSize) => {
   if (typeof value === 'string') {
     return `${prop}: ${value};`;
   }
@@ -18,5 +18,22 @@ export const propResponsive = (prop: string, value: PropResponsive) => {
   return responsive(`${prop}: ${value[0]};`, `${prop}: ${value[1]};`);
 };
 
+export const responsiveMap = (size: responsiveSize, f: (_: string) => string): responsiveSize => {
+  if (typeof size === 'string') {
+    return f(size);
+  }
+
+  return [f(size[0]), f(size[1])];
+};
+
 export const pcOnly = (style: string) => responsive(style, 'display: none;');
 export const mobileOnly = (style: string) => responsive('display: none;', style);
+export const colors = {
+  white: '#FFFFFF',
+  black: '#000000',
+  darkgray: '#555555',
+  gray: '#686868',
+  lightgray: '#F6F6F6',
+  navy: '#0D3A4F',
+  orange: '#FF7A00',
+};

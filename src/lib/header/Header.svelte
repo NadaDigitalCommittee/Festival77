@@ -14,7 +14,9 @@
 <script lang="ts">
   import { css } from '@emotion/css';
   import { base } from '$app/paths';
-  import { responsive, pcOnly, mobileOnly } from '$lib/styles/utils';
+  import {
+    colors, responsive, pcOnly, mobileOnly,
+  } from '$lib/styles/utils';
   import Logo from '$lib/utils/Logo.svelte';
   import Type from '$lib/utils/Type.svelte';
   import Link from './Link.svelte';
@@ -32,7 +34,7 @@
   const containerStyle = css`
     display: flex;
     align-items: center;
-    background-color: #FFFFFF;
+    background-color: ${colors.white};
     ${responsive(`
       padding: 10px 3rem 0 1.5rem;
       gap: 1rem;

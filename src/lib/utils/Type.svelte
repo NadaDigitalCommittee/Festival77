@@ -2,9 +2,9 @@
 
 <script lang="ts">
   import { css } from '@emotion/css';
-  import { propResponsive, type PropResponsive } from '$lib/styles/utils';
+  import { colors, propResponsive, type PropResponsive } from '$lib/styles/utils';
 
-  export let color = '#000000';
+  export let color = colors.black;
   export let size: PropResponsive = '1rem';
   export let weight = '400';
 
