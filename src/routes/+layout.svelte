@@ -46,9 +46,8 @@
     display: flex;
     position: relative;
     flex-direction: column;
-    width: min-content;
     min-height: 100%;
-    min-width: 100%;
+    min-width: max(100%, 360px);
   `;
 
   const headerStyle = css`
