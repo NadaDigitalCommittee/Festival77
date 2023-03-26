@@ -20,8 +20,6 @@
   import Header from '$lib/header/Header.svelte';
   import Footer from '$lib/footer/Footer.svelte';
 
-  window.console.log($page.url.pathname);
-
   const backgroundStyle = css`
     position: sticky;
     @media screen and (min-width: 801px) {
