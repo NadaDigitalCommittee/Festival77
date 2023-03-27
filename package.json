@@ -18,7 +18,9 @@
     "@emotion/css": "^11.10.6",
     "@sveltejs/adapter-static": "^2.0.1",
     "@sveltejs/kit": "^1.13.0",
+    "date-fns": "^2.29.3",
     "destyle.css": "^4.0.0",
+    "polished": "^4.2.2",
     "svelte": "^3.57.0"
   },
   "devDependencies": {

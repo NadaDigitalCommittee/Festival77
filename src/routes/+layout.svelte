@@ -11,9 +11,10 @@
   </footer>
 </div>
 
-<script lang="ts">
+<script lang="ts">  // この行が空行判定になるとエラーが出るからコメント書いとく。
   import 'destyle.css/destyle.min.css';
   import '$lib/styles/global.css';
+  import { page } from '$app/stores';
   import { base } from '$app/paths';
   import { css } from '@emotion/css';
   import Header from '$lib/header/Header.svelte';
@@ -27,6 +28,7 @@
     @media screen and (max-width: 800px) {
       background-image: url("${base}/img/mobile-background.png");
     }
+    ${$page.url.pathname === '/' ? 'filter: blur(5px);' : ''}
     background-position: center;
     background-size: cover;
     overflow: visible;
@@ -42,9 +44,8 @@
     display: flex;
     position: relative;
     flex-direction: column;
-    width: max-content;
     min-height: 100%;
-    min-width: 100%;
+    min-width: max(100%, 360px);
   `;
 
   const headerStyle = css`
@@ -53,10 +54,12 @@
     height: 100%;
     width: max-content;
     top: 0;
+    z-index: 90;
   `;
 
   const mainStyle = css`
     flex-grow: 1;
+    width: 100%;
   `;
 
   const footerStyle = css`

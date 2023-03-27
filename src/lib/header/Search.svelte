@@ -4,7 +4,7 @@
 
 <script lang="ts">
   import { base } from '$app/paths';
-  import { responsive } from '$lib/styles/utils';
+  import { colors, responsive } from '$lib/styles/utils';
   import { css } from '@emotion/css';
 
   const containerStyle = css`
@@ -17,7 +17,7 @@
       left: 50%;
       width: 0;
       height: 2px;
-      background-color: #000000;
+      background-color: ${colors.black};
       transition: width 0.25s ease, left 0.25s ease;
     }
 
