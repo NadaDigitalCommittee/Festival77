@@ -8,11 +8,11 @@
           <p class={englishStyle}>{link.name}</p>
         </a>
       {/each}
-      <div class={socialStyle}>
-        {#each socials as social}
-          <a href={social.url}><Logo style="social/white/{social.name}" size="1.75rem" /></a>
-        {/each}
-      </div>
+    </div>
+    <div class={socialStyle}>
+      {#each socials as social}
+        <a href={social.url}><Logo style="social/white/{social.name}" size="1.75rem" /></a>
+      {/each}
     </div>
   {/if}
 </div>
@@ -39,6 +39,10 @@
 
   const containerStyle = css`
     position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: min(750px, 100%);
     overflow-y: scroll;
     scrollbar-width: none;
     &::-webkit-scrollbar {
@@ -78,7 +82,6 @@
   const listStyle = css`
     display: flex;
     overflow: hidden;
-    margin-top: 80px;
     gap: 40px;
     width: 100%;
     flex-direction: column;
@@ -103,7 +106,7 @@
     font-family: "Noto Sans JP", sans-serif;
     font-weight: 900;
     font-size: 1.25rem;
-    line-height: 1.8ch;
+    margin-bottom: 8px;
   `;
 
   const englishStyle = css`
@@ -117,8 +120,7 @@
     align-items: center;
     justify-content: space-around;
     width: min(80%, 500px);
-    margin-top: 80px;
-    margin-bottom: 20px;
+    margin: 20px calc(50% - min(40%, 250px)) 50px;
   `;
 
   const backgroundStyle = css`
