@@ -29,7 +29,7 @@
   `;
 
   const contentStyle = css`
-    font-family: toppan-bunkyu-midashi-go-std, sans-serif;
+    font-family: "Noto Sans JP", sans-serif;
     font-size: 0.9375rem;
     font-weight: 900;
     line-height: 200%;

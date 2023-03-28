@@ -1,4 +1,4 @@
-<a class={linkStyle} href="{base}{to}"><slot/></a>
+<a class={`${linkStyle} ${active ? activeStyle : inactiveStyle}`} href="{base}{to}"><slot/></a>
 
 <script lang="ts">
   import { css } from '@emotion/css';
@@ -6,15 +6,20 @@
   import { colors } from '$lib/styles/utils';
 
   export let to: string;
+  export let active = true;
 
   const linkStyle = css`
-    font-family: toppan-bunkyu-midashi-go-std, sans-serif;
+    font-family: "Noto Sans JP", sans-serif;
     font-weight: 900;
     font-size: 1rem;
-    color: ${colors.black};
-    padding: 10px 10px 20px;
-    position: relative;
     white-space: nowrap;
+    padding: 10px 10px 20px;
+
+  `;
+
+  const activeStyle = css`
+    color: ${colors.black};
+    position: relative;
 
     &::after {
       content: "";
@@ -33,5 +38,9 @@
         left: 18%;
       }
     }
+  `;
+
+  const inactiveStyle = css`
+    color: ${colors.dimmedblack};
   `;
 </script>

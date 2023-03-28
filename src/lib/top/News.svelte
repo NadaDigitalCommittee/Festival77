@@ -94,7 +94,7 @@
   `;
 
   const contentStyle = css`
-    font-family: toppan-bunkyu-midashi-go-std, sans-serif;
+    font-family: "Noto Sans JP", sans-serif;
     font-size: 1rem;
     font-weight: 900;
     color: ${colors.navy};

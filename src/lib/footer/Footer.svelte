@@ -13,7 +13,7 @@
     </div>
     <div class={socialStyle}>
       {#each socials as social}
-        <Logo style="social/white/{social}" size={['2rem', '1.75rem']} />
+        <a href={social.url}><Logo style="social/white/{social.name}" size={['2rem', '1.75rem']} /></a>
       {/each}
     </div>
     <Type color={colors.white} size="0.9rem" weight="500">Web Team 2023</Type>
@@ -25,14 +25,7 @@
   import Logo from '$lib/utils/Logo.svelte';
   import Type from '$lib/utils/Type.svelte';
   import { colors, pcOnly, responsive } from '$lib/styles/utils';
-
-  const socials = [
-    'twitter',
-    'instagram',
-    'facebook',
-    'youtube',
-    'line',
-  ];
+  import { socials } from '$lib/utils/data';
 
   const containerStyle = css`
     display: flex;

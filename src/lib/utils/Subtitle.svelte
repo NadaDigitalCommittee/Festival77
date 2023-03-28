@@ -7,11 +7,11 @@
   export let color = colors.black;
   export let subcolor = colors.orange;
   export let size: responsiveSize = '1.875rem';
-  export let weight = '700';
+  export let weight = '900';
 
   const titleStyle = css`
     position: relative;
-    font-family: futura-pt-bold, toppan-bunkyu-midashi-go-std, sans-serif;
+    font-family: futura-pt-bold, "Noto Sans JP", sans-serif;
     color: ${color};
     ${propResponsive('font-size', size)}
     font-weight: ${weight};
