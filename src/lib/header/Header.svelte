@@ -57,5 +57,4 @@
   `));
 
   const hamburgerStyle = css(mobileOnly(''));
-
 </script>
