@@ -39,19 +39,13 @@
 
   const containerStyle = css`
     position: fixed;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: min(750px, 100%);
-    overflow-y: scroll;
-    scrollbar-width: none;
-    &::-webkit-scrollbar {
-      display: none;
-    }
-    -ms-overflow-style: none;
     top: 0;
     left: 0;
     width: 100%;
+    height: min(750px, 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     padding: 10px 0.5rem 0;
     z-index: 95;
   `;
