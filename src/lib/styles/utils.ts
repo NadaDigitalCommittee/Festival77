@@ -31,6 +31,8 @@ export const mobileOnly = (style: string) => responsive('display: none;', style)
 export const colors = {
   white: '#FFFFFF',
   black: '#000000',
+  dimmedwhite: '#939393',
+  dimmedblack: '#939393',
   darkgray: '#555555',
   gray: '#686868',
   lightgray: '#F6F6F6',

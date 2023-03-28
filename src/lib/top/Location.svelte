@@ -23,7 +23,7 @@
   `;
 
   const textStyle = css`
-    font-family: toppan-bunkyu-midashi-go-std, sans-serif;
+    font-family: "Noto Sans JP", sans-serif;
     font-weight: 900;
     font-size: 0.8rem;
     color: ${colors.gray};

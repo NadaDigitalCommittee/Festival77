@@ -5,9 +5,8 @@
   </a>
   <div class={padStyle} />
   {#each links as link}
-    <div class={linkStyle}><Link to={link.url}>{link.name}</Link></div>
+    <div class={linkStyle}><Link to={link.url} active={link.active}>{link.ja}</Link></div>
   {/each}
-  <Search/>
   <div class={hamburgerStyle}><Hamburger/></div>
 </div>
 
@@ -20,16 +19,8 @@
   import Logo from '$lib/utils/Logo.svelte';
   import Type from '$lib/utils/Type.svelte';
   import Link from './Link.svelte';
-  import Search from './Search.svelte';
   import Hamburger from './Hamburger.svelte';
-
-  const links = [
-    { name: 'ホーム', url: '/' },
-    { name: 'サークル', url: '/circles' },
-    { name: 'ステージ', url: '/stages' },
-    { name: 'グッズ', url: '/goods' },
-    { name: 'ダウンロード', url: '/downloads' },
-  ];
+  import { links } from '$lib/utils/data';
 
   const containerStyle = css`
     display: flex;
@@ -40,7 +31,6 @@
       gap: 1rem;
     `, `
       padding: 10px 0.5rem 0;
-      gap: 0.25rem;
     `)}
     width: 100%;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -58,6 +48,7 @@
     align-items: center;
     gap: 1.5rem;
   `, `
+    visibility: hidden;
     padding: 20px 10px;
   `));
 

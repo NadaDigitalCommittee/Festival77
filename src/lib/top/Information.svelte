@@ -37,7 +37,13 @@
     <p class={checkStyle}>最新情報をチェック！</p>
     <div class={socialsStyle}>
       {#each socials as social}
-        <Logo style="social/black/{social}" hover="social/color/{social}" size={['2.5rem', '2rem']}></Logo>
+        <a href={social.url}>
+          <Logo
+            style="social/black/{social.name}"
+            hover="social/color/{social.name}"
+            size={['2.5rem', '2rem']}
+          />
+        </a>
       {/each}
     </div>
   </div>
@@ -52,14 +58,7 @@
   import Title from '$lib/utils/Title.svelte';
   import Logo from '$lib/utils/Logo.svelte';
   import Subtitle from '$lib/utils/Subtitle.svelte';
-
-  const socials = [
-    'twitter',
-    'instagram',
-    'facebook',
-    'youtube',
-    'line',
-  ];
+  import { socials } from '$lib/utils/data';
 
   const titleStyle = css`
     margin-bottom: 25px;
@@ -133,7 +132,7 @@
   `;
 
   const placeStyle = css`
-    font-family: toppan-bunkyu-midashi-go-std, sans-serif;
+    font-family: "Noto Sans JP", sans-serif;
     font-weight: 900;
     font-size: 1.25rem;
     margin-top: 30px;
@@ -146,7 +145,7 @@
       width: max-content;
     `)}
     height: max-content;
-    font-family: toppan-bunkyu-midashi-go-std, sans-serif;
+    font-family: "Noto Sans JP", sans-serif;
     font-weight: 900;
     font-size: 1rem;
     color: ${colors.gray};
@@ -180,7 +179,7 @@
   `));
 
   const checkStyle = css`
-    font-family: toppan-bunkyu-midashi-go-std, sans-serif;
+    font-family: "Noto Sans JP", sans-serif;
     font-weight: 900;
     font-size: 1rem;
     ${responsive(`
