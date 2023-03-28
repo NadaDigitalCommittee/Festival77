@@ -1,18 +1,21 @@
 <div class={containerStyle}>
   <a class={titleLinkStyle} href="{base}/"><p class={`${titleStyle} ${titleToggle[opened ? 1 : 0]}`}>77th NADA School Festival</p></a>
   {#if opened}
-    <div transition:fade="{{ duration: 300 }}" class={listStyle}>
-      {#each links as link}
-        <a class={`${linkStyle} ${linkToggle[link.active ? 1 : 0]}`} href={link.url}>
-          <p class={japaneseStyle}>{link.ja}</p>
-          <p class={englishStyle}>{link.name}</p>
-        </a>
-      {/each}
-    </div>
-    <div class={socialStyle}>
-      {#each socials as social}
-        <a href={social.url}><Logo style="social/white/{social.name}" size="1.75rem" /></a>
-      {/each}
+    <div transition:fade={{ duration: 300 }} class={menuStyle}>
+      <div></div>
+      <div class={listStyle}>
+        {#each links as link}
+          <a class={`${linkStyle} ${linkToggle[link.active ? 1 : 0]}`} href={link.url}>
+            <p class={japaneseStyle}>{link.ja}</p>
+            <p class={englishStyle}>{link.name}</p>
+          </a>
+        {/each}
+      </div>
+      <div class={socialStyle}>
+        {#each socials as social}
+          <a href={social.url}><Logo style="social/white/{social.name}" size="1.75rem" /></a>
+        {/each}
+      </div>
     </div>
   {/if}
 </div>
@@ -42,12 +45,16 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: min(750px, 100%);
+    padding: 10px 0.5rem 0;
+    z-index: 95;
+  `;
+
+  const menuStyle = css`
+    width: 100%;
+    height: min(680px, calc(100vh - 100px));
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 10px 0.5rem 0;
-    z-index: 95;
   `;
 
   const titleStyle = css`
@@ -114,7 +121,7 @@
     align-items: center;
     justify-content: space-around;
     width: min(80%, 500px);
-    margin: 20px calc(50% - min(40%, 250px)) 50px;
+    margin: 20px calc(50% - min(40%, 250px)) 30px;
   `;
 
   const backgroundStyle = css`
