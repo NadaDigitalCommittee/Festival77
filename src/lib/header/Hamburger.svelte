@@ -5,7 +5,7 @@
       <div></div>
       <div class={listStyle}>
         {#each links as link}
-          <a class={`${linkStyle} ${linkToggle[link.active ? 1 : 0]}`} href={link.url}>
+          <a class={`${linkStyle} ${linkToggle[link.active ? 1 : 0]}`} href={link.url} on:click={handleClick}>
             <p class={japaneseStyle}>{link.ja}</p>
             <p class={englishStyle}>{link.name}</p>
           </a>
