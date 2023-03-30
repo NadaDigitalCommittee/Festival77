@@ -16,7 +16,7 @@ const params = {
   host: 'preview.contentful.com',
 };
 
-if (DEPLOY_ENV === 'release') {
+if (DEPLOY_ENV === 'RELEASE') {
   params.accessToken = CONTENTFUL_DELIVERY_TOKEN;
   params.host = 'cdn.contentful.com';
 }
