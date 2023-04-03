@@ -17,7 +17,7 @@ export const links = [
     name: 'stages', ja: 'ステージ', url: '/stages', active: false,
   },
   {
-    name: 'goods', ja: 'グッズ', url: '/goods', active: false,
+    name: 'goods', ja: 'グッズ', url: '/goods', active: true,
   },
   {
     name: 'download', ja: 'ダウンロード', url: '/download', active: false,
