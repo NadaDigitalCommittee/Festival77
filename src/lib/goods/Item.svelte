@@ -26,13 +26,13 @@
 
   const itemStyle = css`
     background-color: ${colors.white};
-    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25);
     overflow: hidden;
 
     ${responsive(`
       position: relative;
       width: 15rem;
       height: 18.75rem;
+      box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25);
       border-radius: 40px;
 
       &::after {
@@ -48,6 +48,7 @@
       display: flex;
       width: 100%;
       height: 5.625rem;
+      box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.25);
       border-radius: 30px;
     `)}
 
