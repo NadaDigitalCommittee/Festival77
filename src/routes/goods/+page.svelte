@@ -1,3 +1,4 @@
+<MakeHead name="グッズ" description="第77回灘校文化祭「Splash!」にて販売される灘校グッズの一覧です。" />
 <div class={containerStyle}>
   <Title size={['4rem', '3rem']}>GOODS</Title>
   <div class={listStyle}>
@@ -15,6 +16,7 @@
   import type { PageData } from './$types';
   import { css } from '@emotion/css';
   import Title from '$lib/utils/Title.svelte';
+  import MakeHead from '$lib/utils/MakeHead.svelte';
   import Item, { type GoodsItem } from '$lib/goods/Item.svelte';
   import { colors, responsive } from '$lib/styles/utils';
 
