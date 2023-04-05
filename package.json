@@ -17,7 +17,7 @@
   "dependencies": {
     "@emotion/css": "^11.10.6",
     "@sveltejs/adapter-static": "^2.0.1",
-    "@sveltejs/kit": "^1.15.0",
+    "@sveltejs/kit": "^1.15.1",
     "contentful": "^9.3.5",
     "date-fns": "^2.29.3",
     "destyle.css": "^4.0.0",
