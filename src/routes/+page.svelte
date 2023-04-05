@@ -1,3 +1,4 @@
+<MakeHead description="2023年5月2日・5月3日に開催される第77回灘校文化祭「Splash!」の公式ウェブサイトです。" />
 <div class={containerStyle}>
   <News/>
   <Concept/>
@@ -11,6 +12,7 @@
   import Concept from '$lib/top/Concept.svelte';
   import Information from '$lib/top/Information.svelte';
   import Youtube from '$lib/utils/Youtube.svelte';
+  import MakeHead from '$lib/utils/MakeHead.svelte';
   import { responsive } from '$lib/styles/utils';
 
   const containerStyle = css`
