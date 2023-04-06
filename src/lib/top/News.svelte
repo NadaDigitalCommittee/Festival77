@@ -40,7 +40,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    ${responsive(`
+      width: 100%;
+    `, `
+      width: calc(100% - 30px);
+      margin-left: 15px;
+    `)}
   `;
 
   const titleStyle = css(responsive(`
@@ -57,19 +62,20 @@
       ${responsive(`
         border-bottom: 2px solid ${colors.darkgray};
       `, `
-        border-bottom: 2px solid ${colors.gray2};
+        border-bottom: 1px solid ${colors.gray2};
       `)}
     }
   `;
 
   const dummyItemStyle = css`
+    width: 100%;
     ${responsive(`
+      height: 2px;
       background-color: ${colors.darkgray};
     `, `
+      height: 1px;
       background-color: ${colors.gray2};
     `)}
-    height: 2px;
-    width: 100%;
   `;
 
   const pcItemStyle = css(pcOnly(`
