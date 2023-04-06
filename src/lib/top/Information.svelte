@@ -72,7 +72,6 @@
       align-items: center;
       padding: 100px 160px;
       background-color: ${colors.white};
-      opacity: 85%;
       box-shadow: 0px 4px 4px 5px rgba(0, 0, 0, 0.25);
       border-radius: 120px;
       width: 100%;

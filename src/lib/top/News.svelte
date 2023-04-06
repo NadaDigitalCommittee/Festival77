@@ -50,25 +50,30 @@
   `));
 
   const listStyle = css`
-    ${responsive(`
-      opacity: 85%;
-    `, '')}
     width: 100%;
 
     li {
       border-bottom: 2px solid ${colors.navy};
+      ${responsive(`
+        border-bottom: 2px solid ${colors.darkgray};
+      `, `
+        border-bottom: 2px solid ${colors.gray2};
+      `)}
     }
   `;
 
   const dummyItemStyle = css`
-    background-color: ${colors.navy};
+    ${responsive(`
+      background-color: ${colors.darkgray};
+    `, `
+      background-color: ${colors.gray2};
+    `)}
     height: 2px;
     width: 100%;
   `;
 
   const pcItemStyle = css(pcOnly(`
     display: flex;
-    background-color: ${colors.lightgray};
     align-items: center;
     padding: 26px 80px;
     width: 100%;
@@ -88,7 +93,11 @@
     font-weight: 600;
     font-size: 0.9375rem;
     color: ${colors.white};
-    background-color: ${colors.navy};
+    ${responsive(`
+      background-color: ${colors.darkgray};
+    `, `
+      background-color: ${colors.gray2};
+    `)}
     padding: 6px 18px;
     border-radius: 30px;
   `;
@@ -97,7 +106,7 @@
     font-family: "Noto Sans JP", sans-serif;
     font-size: 1rem;
     font-weight: 900;
-    color: ${colors.navy};
+    color: ${colors.black};
     margin-left: 40px;
     margin-right: auto;
   `;
@@ -106,13 +115,13 @@
     position: relative;
     width: 60px;
     height: 60px;
-    border: 2px solid ${colors.navy};
+    border: 2px solid ${colors.darkgray};
     border-radius: 30px;
     transition: background-color 0.4s ease;
 
     span {
       position: absolute;
-      background-color: ${colors.navy};
+      background-color: ${colors.darkgray};
       transform-origin: right bottom;
       transition: background-color 0.4s ease;
     }
@@ -143,7 +152,7 @@
     }
 
     &:hover {
-      background-color: ${colors.navy};
+      background-color: ${colors.darkgray};
 
       span {
         background-color: ${colors.white};
