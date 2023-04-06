@@ -35,6 +35,7 @@ export const colors = {
   dimmedblack: '#939393',
   darkgray: '#555555',
   gray: '#686868',
+  gray2: '#808080',
   lightgray: '#F6F6F6',
   navy: '#0D3A4F',
   orange: '#FF7A00',

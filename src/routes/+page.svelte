@@ -2,7 +2,9 @@
 <div class={containerStyle}>
   <News/>
   <Concept/>
-  <Youtube width={['60rem', '100%']} id="1dKc96P4zuU"/>
+  <div class={youtubeStyle}>
+    <Youtube width="100%" id="1dKc96P4zuU"/>
+  </div>
   <Information/>
 </div>
 
@@ -26,5 +28,15 @@
       gap: 60px;
     `)}
     margin: 0 auto 100px;
+  `;
+
+  const youtubeStyle = css`
+    ${responsive(`
+      background-color: rgba(96, 113, 125, 0.85);
+      padding: 60px;
+    `, `
+      background-color: #F0F0F0;
+      padding: 30px;
+    `)}
   `;
 </script>
