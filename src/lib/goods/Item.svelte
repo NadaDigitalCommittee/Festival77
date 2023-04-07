@@ -63,14 +63,14 @@
   `;
 
   const imageStyle = css`
+    background-color: ${colors.lightgray};
+
     ${responsive(`
       width: 100%;
       height: 11.25rem;
-      background-color: #a0c0d3;
     `, `
       width: 7.5rem;
       height: 100%;
-      background-color: #e9f1f7;
     `)}
   `;
 
