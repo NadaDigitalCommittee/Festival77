@@ -1,4 +1,7 @@
 <div bind:this={container} style="visibility: hidden;" class={containerStyle}>
+  <div style="--window-height: {height}px" class={backgroundStyle}>
+    <div class={fillStyle}/>
+  </div>
   <header class={headerStyle}>
     <Header/>
   </header>
@@ -8,10 +11,9 @@
   <footer class={footerStyle}>
     <Footer/>
   </footer>
-  <div class={backgroundStyle}>
-    <div class={fillStyle}/>
-  </div>
 </div>
+
+<svelte:window bind:innerHeight={height}/>
 
 <script lang="ts">
   import 'destyle.css/destyle.min.css';
@@ -22,6 +24,7 @@
   import Header from '$lib/header/Header.svelte';
   import Footer from '$lib/footer/Footer.svelte';
 
+  let height: number;
   let container: HTMLElement;
 
   onMount(() => {
@@ -41,12 +44,13 @@
     overflow: visible;
     z-index: -1;
     /* top: 3rem; */
-    bottom: 0;
+    top: 0;
+    /* bottom: 0; */
     width: 100%;
     /* height: calc(100vh - 3rem); */
-    height: 100vh;
+    height: var(--window-height);
     /* margin-bottom: calc(-100vh + 3rem); */
-    margin-top: -100vh;
+    margin-bottom: calc(var(--window-height) * -1);
   `;
 
   const fillStyle = css`
