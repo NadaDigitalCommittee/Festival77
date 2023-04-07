@@ -1,5 +1,9 @@
 <div class={itemStyle}>
-  <div class={dummyStyle}/>
+  <div class={imageStyle}>
+    {#if item.image}
+      <AssetImage image={item.image}/>
+    {/if}
+  </div>
   <div class={innerStyle}>
     <p class={nameStyle}>{item.name}</p>
     {#if item.description}
@@ -10,17 +14,21 @@
 </div>
 
 <script context="module" lang="ts">
+  import type { ImageSource } from '$lib/utils/AssetImage.svelte';
+
   export type GoodsItem = {
     name: string;
     description?: string;
     price: number;
     plannedByStudents: boolean;
+    image?: ImageSource;
   };
 </script>
 
 <script lang="ts">  // ESLintのためのコメント
   import { css } from '@emotion/css';
   import { colors, responsive } from '$lib/styles/utils';
+  import AssetImage from '$lib/utils/AssetImage.svelte';
 
   export let item: GoodsItem;
 
@@ -54,17 +62,15 @@
 
   `;
 
-  const dummyStyle = css`
-    width: 100%;
-    height: 11.25rem;
-    background-color: ${colors.lightgray};
-
+  const imageStyle = css`
     ${responsive(`
       width: 100%;
       height: 11.25rem;
+      background-color: #a0c0d3;
     `, `
       width: 7.5rem;
       height: 100%;
+      background-color: #e9f1f7;
     `)}
   `;
 

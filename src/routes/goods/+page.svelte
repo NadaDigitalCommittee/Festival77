@@ -78,5 +78,5 @@
 
   export let data: PageData;
 
-  const items = data.items.map((item) => item.fields as GoodsItem);
+  const items = data.items as GoodsItem[];
 </script>

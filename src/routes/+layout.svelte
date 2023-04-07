@@ -1,4 +1,4 @@
-<div id="main-content" style="display: none;" class={containerStyle}>
+<div bind:this={container} style="visibility: hidden;" class={containerStyle}>
   <div class={backgroundStyle} />
   <header class={headerStyle}>
     <Header/>
@@ -21,8 +21,10 @@
   import Header from '$lib/header/Header.svelte';
   import Footer from '$lib/footer/Footer.svelte';
 
-  onMount(async () => {
-    document.getElementById('main-content')?.setAttribute('style', '');
+  let container: HTMLElement;
+
+  onMount(() => {
+    container.setAttribute('style', '');
   });
 
   const backgroundStyle = css`
