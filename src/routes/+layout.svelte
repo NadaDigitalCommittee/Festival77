@@ -1,4 +1,4 @@
-<div class={containerStyle}>
+<div bind:this={container} style="visibility: hidden;" class={containerStyle}>
   <div class={backgroundStyle}>
     <div class={fillStyle}/>
   </div>
@@ -18,8 +18,15 @@
   import '$lib/styles/global.css';
   import { base } from '$app/paths';
   import { css } from '@emotion/css';
+  import { onMount } from 'svelte';
   import Header from '$lib/header/Header.svelte';
   import Footer from '$lib/footer/Footer.svelte';
+
+  let container: HTMLElement;
+
+  onMount(() => {
+    container.setAttribute('style', '');
+  });
 
   const backgroundStyle = css`
     position: sticky;
@@ -48,6 +55,7 @@
 
   const containerStyle = css`
     display: flex;
+    visibility: visible;
     position: relative;
     flex-direction: column;
     min-height: 100%;
