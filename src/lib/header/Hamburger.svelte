@@ -45,7 +45,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    padding: 5px 0 0.5rem;
+    padding: 5px 0.5rem 0;
     z-index: 95;
   `;
 
