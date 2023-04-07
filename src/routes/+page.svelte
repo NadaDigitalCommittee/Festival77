@@ -1,6 +1,6 @@
 <MakeHead description="2023年5月2日・5月3日に開催される第77回灘校文化祭「Splash!」の公式ウェブサイトです。" />
-<div class={pcAnimationStyle}><PcAnimation/></div>
-<div class={mobileAnimationStyle}><MobileAnimation/></div>
+<div style="--window-height: {height}px" class={pcAnimationStyle}><PcAnimation/></div>
+<div style="--window-height: {height}px" class={mobileAnimationStyle}><MobileAnimation/></div>
 <div class={containerStyle}>
   <News/>
   <Concept/>
@@ -9,6 +9,8 @@
   </div>
   <Information/>
 </div>
+
+<svelte:window bind:innerHeight={height} />
 
 <script lang="ts">
   import { css } from '@emotion/css';
@@ -21,14 +23,17 @@
   import MakeHead from '$lib/utils/MakeHead.svelte';
   import { mobileOnly, pcOnly, responsive } from '$lib/styles/utils';
 
+  let height: number;
+
   const pcAnimationStyle = css(pcOnly(`
     width: 100%;
-    height: 100vh;
+    height: calc(100vh - 6rem);
+    height: calc(var(--window-height) - 6rem);
   `));
 
   const mobileAnimationStyle = css(mobileOnly(`
     width: 100%;
-    height: 100vh;
+    height: calc(100vh - 4.5rem);
   `));
 
   const containerStyle = css`
