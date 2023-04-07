@@ -1,5 +1,9 @@
 <div bind:this={container} style="visibility: hidden;" class={containerStyle}>
-  <div class={backgroundStyle} />
+  <div class={backgroundStyle}>
+    {#if $page.url.pathname === '/'}
+      <div class={fillStyle}/>
+    {/if}
+  </div>
   <header class={headerStyle}>
     <Header/>
   </header>
@@ -35,7 +39,6 @@
     @media screen and (max-width: 800px) {
       background-image: url("${base}/img/mobile-background.png");
     }
-    ${$page.url.pathname === '/' ? 'filter: blur(5px);' : ''}
     background-position: center;
     background-size: cover;
     overflow: visible;
@@ -45,6 +48,12 @@
     width: 100%;
     height: calc(100vh - 3rem);
     margin-bottom: calc(-100vh + 3rem);
+  `;
+
+  const fillStyle = css`
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
   `;
 
   const containerStyle = css`

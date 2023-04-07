@@ -15,7 +15,6 @@
     flex-direction: column;
     align-items: center;
     background-color: ${colors.white};
-    opacity: 85%;
     box-shadow: 0px 4px 4px 5px rgba(0, 0, 0, 0.25);
     ${responsive(`
       padding: 60px;
