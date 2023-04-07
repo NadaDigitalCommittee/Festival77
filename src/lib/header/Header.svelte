@@ -30,7 +30,7 @@
       padding: 10px 3rem 0 1.5rem;
       gap: 1rem;
     `, `
-      padding: 10px 0.5rem 0;
+      padding: 5px 0.5rem 0;
     `)}
     width: 100%;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
