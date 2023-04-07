@@ -1,4 +1,6 @@
 <MakeHead description="2023年5月2日・5月3日に開催される第77回灘校文化祭「Splash!」の公式ウェブサイトです。" />
+<div class={pcAnimationStyle}><PcAnimation/></div>
+<div class={mobileAnimationStyle}><MobileAnimation/></div>
 <div class={containerStyle}>
   <News/>
   <Concept/>
@@ -13,9 +15,21 @@
   import News from '$lib/top/News.svelte';
   import Concept from '$lib/top/Concept.svelte';
   import Information from '$lib/top/Information.svelte';
+  import PcAnimation from '$lib/top/PcAnimation.svelte';
+  import MobileAnimation from '$lib/top/MobileAnimation.svelte';
   import Youtube from '$lib/utils/Youtube.svelte';
   import MakeHead from '$lib/utils/MakeHead.svelte';
-  import { responsive } from '$lib/styles/utils';
+  import { mobileOnly, pcOnly, responsive } from '$lib/styles/utils';
+
+  const pcAnimationStyle = css(pcOnly(`
+    width: 100%;
+    height: 100vh;
+  `));
+
+  const mobileAnimationStyle = css(mobileOnly(`
+    width: 100%;
+    height: 100vh;
+  `));
 
   const containerStyle = css`
     display: flex;
