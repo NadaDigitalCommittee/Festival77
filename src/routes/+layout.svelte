@@ -1,8 +1,6 @@
 <div class={containerStyle}>
   <div class={backgroundStyle}>
-    {#if $page.url.pathname === '/'}
-      <div class={fillStyle}/>
-    {/if}
+    <div class={fillStyle}/>
   </div>
   <header class={headerStyle}>
     <Header/>
@@ -15,10 +13,9 @@
   </footer>
 </div>
 
-<script lang="ts">  // この行が空行判定になるとエラーが出るからコメント書いとく。
+<script lang="ts">
   import 'destyle.css/destyle.min.css';
   import '$lib/styles/global.css';
-  import { page } from '$app/stores';
   import { base } from '$app/paths';
   import { css } from '@emotion/css';
   import Header from '$lib/header/Header.svelte';

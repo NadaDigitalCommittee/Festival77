@@ -45,7 +45,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    padding: 10px 0.5rem 0;
+    padding: 5px 0.5rem 0;
     z-index: 95;
   `;
 
@@ -145,7 +145,7 @@
   const buttonStyle = css`
     position: fixed;
     z-index: 99;
-    top: 1rem;
+    top: calc(0.45rem + 5px);
     right: 1rem;
     display: flex;
     flex-direction: column;
