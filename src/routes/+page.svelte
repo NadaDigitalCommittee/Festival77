@@ -1,6 +1,6 @@
 <MakeHead description="2023年5月2日・5月3日に開催される第77回灘校文化祭「Splash!」の公式ウェブサイトです。" />
 <div class={containerStyle}>
-  <News/>
+  <News list={data.items}/>
   <Concept/>
   <div class={youtubeStyle}>
     <Youtube width="100%" id="1dKc96P4zuU"/>
@@ -16,6 +16,9 @@
   import Youtube from '$lib/utils/Youtube.svelte';
   import MakeHead from '$lib/utils/MakeHead.svelte';
   import { responsive } from '$lib/styles/utils';
+  import type { PageServerData } from './$types';
+
+  export let data: PageServerData;
 
   const containerStyle = css`
     display: flex;
@@ -23,7 +26,7 @@
     justify-content: center;
     ${responsive(`
       width: 60rem;
-      gap: 120px;
+      gap: 80px;
     `, `
       gap: 60px;
     `)}
