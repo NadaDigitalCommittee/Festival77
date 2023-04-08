@@ -2,24 +2,32 @@
   <div class={titleStyle}><Title size={['4rem', '3rem']}>NEWS</Title></div>
   <ul class={listStyle}>
     <li class={dummyItemStyle}/>
-    {#each news as item }
+    {#each list as item }
       <li class={pcItemStyle}>
         <div class={dateStyle}>{format(item.date, 'yyyy.MM.dd')}</div>
-        <p class={contentStyle}>{item.content}</p>
-        <a href={item.url} class={buttonStyle}>
+        <p class={contentStyle}>{item.title}</p>
+        <a href="{base}/news/{item.id}" class={buttonStyle}>
           <span/>
           <span/>
           <span/>
         </a>
       </li>
       <li class={mobileOnlyStyle}>
-        <a href={item.url} class={mobileItemStyle}>
+        <a href="{base}/news/{item.id}" class={mobileItemStyle}>
           <div class={dateStyle}>{format(item.date, 'MM.dd')}</div>
-          <p class={contentStyle}>{item.content}</p>
+          <p class={contentStyle}>{item.title}</p>
         </a>
       </li>
     {/each}
   </ul>
+  <a href="{base}/news" class={moreButtonStyle}>
+    <p class={moreStyle}>MORE</p>
+    <div class={moreArrowStyle}>
+      <span/>
+      <span/>
+      <span/>
+    </div>
+  </a>
 </div>
 
 <script lang="ts">
@@ -29,12 +37,10 @@
     colors, mobileOnly, pcOnly, responsive,
   } from '$lib/styles/utils';
   import { format } from 'date-fns';
+  import { base } from '$app/paths';
+  import type { NewsItem } from '$lib/news/types';
 
-  const news = [
-    { date: new Date('2023-04-09'), content: 'ホームページを公開しました', url: 'https://fest.nada-sc.jp/2023/' },
-    { date: new Date('2023-04-09'), content: 'ホームページを公開しました', url: 'https://fest.nada-sc.jp/2023/' },
-    { date: new Date('2023-04-09'), content: 'ホームページを公開しました', url: 'https://fest.nada-sc.jp/2023/' },
-  ];
+  export let list: NewsItem[];
 
   const containerStyle = css`
     display: flex;
@@ -113,7 +119,7 @@
     font-size: 1rem;
     font-weight: 900;
     color: ${colors.black};
-    margin-left: 40px;
+    margin-left: 35px;
     margin-right: auto;
   `;
 
@@ -164,5 +170,124 @@
         background-color: ${colors.white};
       }
     }
+  `;
+
+  const moreButtonStyle = css`
+    display: flex;
+    align-self: flex-end;
+    border-radius: 9999px;
+    transition: border-color 0.4s ease, background-color 0.4s ease;
+
+    ${responsive(`
+      margin-top: 30px;
+      margin-right: 80px;
+      border: 3px solid ${colors.black};
+      padding: 15px 40px;
+      gap: 25px;
+    `, `
+      margin-top: 15px;
+      margin-right: 15px;
+      border: 2px solid ${colors.black};
+      padding: 10px 20px;
+      gap: 15px;
+    `)}
+
+    &:hover {
+      background-color: ${colors.darkgray};
+      border-color: ${colors.darkgray};
+
+      p {
+        color: ${colors.white};
+      }
+
+      div {
+        span {
+          background-color: ${colors.white};
+        }
+      }
+    }
+  `;
+
+  const moreStyle = css`
+    font-family: futura-pt, sans-serif;
+    font-weight: 600;
+    color: ${colors.black};
+    transition: color 0.4s ease;
+
+    ${responsive(`
+      font-size: 1.5rem;
+    `, `
+      font-size: 1rem;
+    `)}
+  `;
+
+  const moreArrowStyle = css`
+    position: relative;
+
+    span {
+      position: absolute;
+      background-color: ${colors.black};
+      transform-origin: right bottom;
+      transition: background-color 0.4s ease;
+    }
+
+    ${responsive(`
+      width: 30px;
+      height: 30px;
+
+      span:nth-child(1) {
+        right: 1px;
+        bottom: 12px;
+        width: 28px;
+        height: 3px;
+      }
+
+      span:nth-child(2) {
+        right: 0px;
+        bottom: 14px;
+        width: 3px;
+        height: 12.5px;
+        transform-orifin: 1px bottom;
+        transform: rotate(-45deg);
+      }
+
+      span:nth-child(3) {
+        right: -1.5px;
+        bottom: 12px;
+        width: 2.8px;
+        height: 2px;
+        transform-orifin: right bottom;
+        transform: skewX(45deg);
+      }
+    `, `
+      width: 20px;
+      height: 20px;
+
+      span:nth-child(1) {
+        right: 1px;
+        bottom: 8px;
+        width: 16px;
+        height: 2px;
+      }
+
+      span:nth-child(2) {
+        right: 0px;
+        bottom: 10px;
+        width: 2px;
+        height: 8px;
+        transform-orifin: 1px bottom;
+        transform: rotate(-45deg);
+      }
+
+      span:nth-child(3) {
+        right: -1.5px;
+        bottom: 8px;
+        width: 2.8px;
+        height: 2px;
+        transform-orifin: right bottom;
+        transform: skewX(45deg);
+      }
+    `)}
+
   `;
 </script>
