@@ -23,8 +23,9 @@
 </div>
 
 <script lang = "ts">
-    import {base} from '$app/paths';
+    import { base } from '$app/paths';
     import { css } from '@emotion/css';
+    
     const containerStyle = css`
     width:100vw;
     height:calc(100vh - 6rem);
