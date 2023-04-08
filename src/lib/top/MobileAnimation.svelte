@@ -16,7 +16,6 @@
 
 <script lang = "ts">
     import { base } from '$app/paths';
-    import { responsive } from '$lib/styles/utils';
     import { css } from '@emotion/css';
     
     const containerStyle = css`
