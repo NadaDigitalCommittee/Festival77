@@ -2,7 +2,7 @@
 <div style="--window-height: {height}px" class={pcAnimationStyle}><PcAnimation/></div>
 <div style="--window-height: {height}px" class={mobileAnimationStyle}><MobileAnimation/></div>
 <div class={containerStyle}>
-  <News/>
+  <News list={data.items}/>
   <Concept/>
   <div class={youtubeStyle}>
     <Youtube width="100%" id="1dKc96P4zuU"/>
@@ -22,6 +22,9 @@
   import Youtube from '$lib/utils/Youtube.svelte';
   import MakeHead from '$lib/utils/MakeHead.svelte';
   import { mobileOnly, pcOnly, responsive } from '$lib/styles/utils';
+  import type { PageServerData } from './$types';
+
+  export let data: PageServerData;
 
   let height: number;
 
@@ -42,7 +45,7 @@
     justify-content: center;
     ${responsive(`
       width: 60rem;
-      gap: 120px;
+      gap: 80px;
     `, `
       gap: 60px;
     `)}

@@ -1,4 +1,4 @@
-<div bind:this={container} style="visibility: hidden;" class={containerStyle}>
+<div bind:this={container} style="display: none" class={containerStyle}>
   <div style="--window-height: {height}px" class={backgroundStyle}>
     <div class={fillStyle}/>
   </div>
