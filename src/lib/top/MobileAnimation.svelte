@@ -12,11 +12,12 @@
         <p class={MMDD}>05.03 <span class={Youbi}>wed</span></p>
     </div>
     <img src="{base}/img/assets/scroll-down.svg" class={Scroll} alt="">
+    <img src="{base}/img/assets/sc-d2.svg" class={Scroll2} alt="">
 </div>
 
 <script lang = "ts">
     import { base } from '$app/paths';
-    import { css } from '@emotion/css';
+    import { css,keyframes } from '@emotion/css';
     
     const containerStyle = css`
     width:100vw;
@@ -82,7 +83,30 @@
     padding-left: 25%;
     height:1.5vh;
     `;
+    const rt = keyframes`
+    0% {
+        transform: rotate(0deg);
+    }
+    25%{
+        transform: rotate(90deg);
+    }
+    50%{
+        transform: rotate(180deg);
+    }
+    75%{
+        transform: rotate(270deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }`;
     const Scroll = css`
+    position:absolute;
+    top:65vh;
+    left: calc(80vw - min(12.5vh,12.5vw));
+    width: min(25vh,25vw);
+    animation: ${rt} 8s linear infinite;
+    `;
+    const Scroll2 = css`
     position:absolute;
     top:65vh;
     left: calc(80vw - min(12.5vh,12.5vw));
