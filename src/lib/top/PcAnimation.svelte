@@ -1,10 +1,10 @@
 <div class={containerStyle}>
     <div class={Waves}>
-        <div class={Wave1}/>
-        <div class={Wave2}/>
-        <div class={Wave3}/>
-        <div class={Wave4}/>
-        <div class={Wave5}/>
+        <img src="{base}/img/assets/waves/1.svg" alt="" class={Wave1} />
+        <img src="{base}/img/assets/waves/2.svg" alt="" class={Wave2} />
+        <img src="{base}/img/assets/waves/3.svg" alt="" class={Wave3} />
+        <img src="{base}/img/assets/waves/4.svg" alt="" class={Wave4} />
+        <img src="{base}/img/assets/waves/5.svg" alt="" class={Wave5} />
         <!--後でやる-->
     </div>
     <div class={Titles}>
@@ -32,7 +32,7 @@
     background-color: #FFFFFF;`;
     const Titles = css`
     position:absolute;
-    top:33vh;
+    top:28vh;
     left:15vw;
     `;
     const Title1 = css`
@@ -58,7 +58,7 @@
     `;
     const Logo = css`
     position: absolute;
-    top: calc( 33vh - 5vw );
+    top: calc( 28vh - 5vw );
     right:15vw;
     width:20vw;
 
@@ -68,42 +68,32 @@
     `;
     const Wave1 = css`
     position:absolute;
-    background-image:url("${base}/img/assets/waves/1.svg");
-    background-repeat: repeat-x;
-    top:25vh;
-    height:75vh;
+    top:26vh;
+    height:82vh;
     width:100vw;
     `;
     const Wave2 = css`
     position:absolute;
-    background-image:url("${base}/img/assets/waves/2.svg");
-    background-repeat: repeat-x;
-    top:30vh;
+    top:31vh;
     height:75vh;
     width:100vw;
     `;
     const Wave3 = css`
     position:absolute;
-    background-image:url("${base}/img/assets/waves/3.svg");
-    background-repeat: repeat-x;
-    top:35vh;
-    height:75vh;
+    top:36vh;
+    height: 68vh;
     width:100vw;
     `;
     const Wave4 = css`
     position:absolute;
-    background-image:url("${base}/img/assets/waves/4.svg");
-    background-repeat: repeat-x;
-    top:40vh;
-    height:75vh;
+    top:41vh;
+    height: 61vh;
     width:100vw;
     `;
     const Wave5 = css`
     position:absolute;
-    background-image:url("${base}/img/assets/waves/5.svg");
-    background-repeat: repeat-x;
-    top:45vh;
-    height:75vh;
+    top:46vh;
+    height:54vh;
     width:100vw;
     `;
     const Days = css`
@@ -111,7 +101,7 @@
     position:absolute;
     color: #FFFFFF;
     font-weight:600;
-    top:60vh;
+    top:65vh;
     left:20vw;
     `;
     const YYYY = css`
@@ -127,7 +117,7 @@
     `;
     const Scroll = css`
     position:absolute;
-    top:65vh;
+    top:70vh;
     right:20vw;
     `;
 </script>
