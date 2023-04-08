@@ -25,8 +25,6 @@
 <script lang = "ts">
     import {base} from '$app/paths';
     import { css } from '@emotion/css';
-    import { colors, responsive,propResponsive} from '$lib/styles/utils';
-    import Title from '$lib/utils/Title.svelte';
     const containerStyle = css`
     width:100vw;
     height:calc(100vh - 6rem);
