@@ -89,7 +89,6 @@
   const descriptionStyle = css`
     font-family: "Noto Sans JP", sans-serif;
     font-weight: 400;
-    line-height: 1.5em;
     margin-bottom: 100px;
 
     ${responsive(`
@@ -111,6 +110,7 @@
       padding-bottom: 0.5em;
       padding-left: 0.1em;
       font-size: 2em;
+      line-height: 1.2em;
       border-bottom: 2px solid ${colors.gray};
     }
 
@@ -122,6 +122,7 @@
       padding-bottom: 0.4em;
       padding-left: 0.1em;
       font-size: 1.5em;
+      line-height: 1.2em;
       border-bottom: 2px solid ${colors.gray};
     }
 
@@ -131,6 +132,7 @@
       padding-left: 0.1em;
       font-weight: bolder;
       font-size: 1.25em;
+      line-height: 1.2em;
     }
 
     h4 {
@@ -139,6 +141,7 @@
       padding-left: 0.1em;
       font-weight: bolder;
       font-size: 1em;
+      line-height: 1.2em;
     }
 
     h5 {
@@ -147,6 +150,7 @@
       padding-left: 0.1em;
       font-weight: bolder;
       font-size: 0.875em;
+      line-height: 1.2em;
     }
 
     h6 {
@@ -155,9 +159,11 @@
       padding-left: 0.1em;
       font-weight: bolder;
       font-size: 0.8em;
+      line-height: 1.2em;
     }
 
     p {
+      line-height: 1.5em;
       margin-bottom: 10px;
     }
 
