@@ -2,7 +2,11 @@
   <p class={titleStyle}>{item.title}</p>
   <div class={dateStyle}>{format(item.date, 'yyyy.MM.dd')}</div>
 </div>
-<div class={descriptionStyle}>{item.description}</div>
+<div class={descriptionStyle}>
+  <div class={markdownStyle}>
+    <SvelteMarkdown source={item.description} />
+  </div>
+</div>
 
 <script lang="ts">
   import { css } from '@emotion/css';
@@ -12,6 +16,7 @@
   import { format } from 'date-fns';
   import type { NewsItem } from '$lib/news/types';
   import type { PageServerData } from './$types';
+  import SvelteMarkdown from 'svelte-markdown';
 
   export let data: PageServerData;
   const item = data as NewsItem;
@@ -84,7 +89,7 @@
   const descriptionStyle = css`
     font-family: "Noto Sans JP", sans-serif;
     font-weight: 400;
-    line-height: 1.5ch;
+    line-height: 1.5em;
     margin-bottom: 100px;
 
     ${responsive(`
@@ -96,5 +101,106 @@
       margin-left: 32px;
       font-size: 0.9rem;
     `)}
+  `;
+
+  const markdownStyle = css`
+    h1 {
+      margin-top: 1em;
+      margin-bottom: 0.67em;
+      font-weight: bolder;
+      padding-bottom: 0.5em;
+      padding-left: 0.1em;
+      font-size: 2em;
+      border-bottom: 2px solid ${colors.gray};
+    }
+
+    h2 {
+      margin-top: 1em;
+      margin-right: 16px;
+      margin-bottom: 0.67em;
+      font-weight: bolder;
+      padding-bottom: 0.4em;
+      padding-left: 0.1em;
+      font-size: 1.5em;
+      border-bottom: 2px solid ${colors.gray};
+    }
+
+    h3 {
+      margin-top: 1em;
+      margin-bottom: 0.67em;
+      padding-left: 0.1em;
+      font-weight: bolder;
+      font-size: 1.25em;
+    }
+
+    h4 {
+      margin-top: 1em;
+      margin-bottom: 0.67em;
+      padding-left: 0.1em;
+      font-weight: bolder;
+      font-size: 1em;
+    }
+
+    h5 {
+      margin-top: 1em;
+      margin-bottom: 0.67em;
+      padding-left: 0.1em;
+      font-weight: bolder;
+      font-size: 0.875em;
+    }
+
+    h6 {
+      margin-top: 1em;
+      margin-bottom: 0.67em;
+      padding-left: 0.1em;
+      font-weight: bolder;
+      font-size: 0.8em;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    blockquote {
+      padding-left: 1em;
+      margin-left: 5px;
+      border-left: 3px solid ${colors.gray2};
+      color: ${colors.gray};
+    }
+
+    ul {
+      list-style-type: disc;
+      margin-left: 1.4em;
+      margin-bottom: 10px;
+    }
+
+    ol {
+      list-style-type: decimal;
+      margin-left: 1.2em;
+      margin-bottom: 10px;
+    }
+
+    hr {
+      border-top: 2px solid ${colors.gray};
+      margin: 15px;
+    }
+
+    a {
+      color: #1558D6;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      &:visited {
+        color: #551A8B;
+      }
+    }
+
+    img {
+      display: block;
+      width: 240px;
+      margin: 20px calc(50% - 120px);
+    }
   `;
 </script>
