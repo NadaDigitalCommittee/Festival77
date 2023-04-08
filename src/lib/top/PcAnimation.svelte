@@ -25,7 +25,7 @@
 
 <script lang = "ts">
     import { base } from '$app/paths';
-    import { css,keyframes } from '@emotion/css';
+    import { css, keyframes } from '@emotion/css';
     
     const containerStyle = css`
     width:100vw;
