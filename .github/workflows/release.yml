@@ -63,7 +63,11 @@ jobs:
           if [ -e ./2023/ ]; then
             rm -r ./2023/
           fi
-          mv ../src/build/ ./2023/
+          mkdir ../old
+          mv ./2022 ./_redirects ../old
+          ls ./ | grep -v -E '^.git' | xargs rm -r
+          mv ../src/build/ ./
+          mv ../old/* ./
           git add -A
           if ! git diff --cached --quiet; then
             git commit -m "Deploy NadaDigitalCommittee/Festival77@$GITHUB_SHA"
