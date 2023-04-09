@@ -29,8 +29,10 @@
     ${responsive(`
       padding: 10px 3rem 0 1.5rem;
       gap: 1rem;
+      height: 6rem;
     `, `
       padding: 5px 0.5rem 0;
+      height: 4.5rem;
     `)}
     width: 100%;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);

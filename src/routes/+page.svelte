@@ -1,4 +1,6 @@
 <MakeHead description="2023年5月2日・5月3日に開催される第77回灘校文化祭「Splash!」の公式ウェブサイトです。" />
+<div style="--window-height: {height}px" class={pcAnimationStyle}><PcAnimation/></div>
+<div style="--window-height: {height}px" class={mobileAnimationStyle}><MobileAnimation/></div>
 <div class={containerStyle}>
   <News list={data.items}/>
   <Concept/>
@@ -8,17 +10,33 @@
   <Information/>
 </div>
 
+<svelte:window bind:innerHeight={height} />
+
 <script lang="ts">
   import { css } from '@emotion/css';
   import News from '$lib/top/News.svelte';
   import Concept from '$lib/top/Concept.svelte';
   import Information from '$lib/top/Information.svelte';
+  import PcAnimation from '$lib/top/PcAnimation.svelte';
+  import MobileAnimation from '$lib/top/MobileAnimation.svelte';
   import Youtube from '$lib/utils/Youtube.svelte';
   import MakeHead from '$lib/utils/MakeHead.svelte';
-  import { responsive } from '$lib/styles/utils';
+  import { mobileOnly, pcOnly, responsive } from '$lib/styles/utils';
   import type { PageServerData } from './$types';
 
   export let data: PageServerData;
+
+  let height: number;
+
+  const pcAnimationStyle = css(pcOnly(`
+    width: 100%;
+    height: 110vh ;
+  `));
+
+  const mobileAnimationStyle = css(mobileOnly(`
+    width: 100%;
+    height: 110vh;
+  `));
 
   const containerStyle = css`
     display: flex;
