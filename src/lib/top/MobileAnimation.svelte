@@ -1,5 +1,5 @@
 <div class={containerStyle}>
-    <img src="{base}/img/assets/waves/Frame1.svg" alt="" class={Wave1}/>
+    <img src="{base}/img/assets/waves/wv_ph.svg" alt="" class={Wave1}/>
     <div class={Titles}>
         <p class = {Title1}><span class={Spaces}>第<span class = {Sevens}>77</span></span>回灘校文化祭</p>
         <p class= {Title2}>77th NADA School Festival</p>
@@ -55,7 +55,7 @@
     `;
     const Wave1 = css`
     position:absolute;
-    top: 65vh;
+    top: 62vh;
     left: 0%;
     width: 100%;
     `;
@@ -64,7 +64,7 @@
     position:absolute;
     color: #FFFFFF;
     font-weight:700;
-    top: 80vh;
+    top: 70vh;
     left:10%;
     `;
     const YYYY = css`
@@ -98,14 +98,14 @@
     }`;
     const Scroll = css`
     position:absolute;
-    top: 80vh;
+    top: 77vh;
     right: 12.5%;
     height:6rem;
     animation: ${rt} 8s linear infinite;
     `;
     const Scroll2 = css`
     position:absolute;
-    top: 80vh;
+    top: 77vh;
     right: 12.5%;
     height:6rem;
     `;
