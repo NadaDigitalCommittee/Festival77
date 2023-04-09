@@ -1,3 +1,4 @@
+<MakeHead name="ニュース" description="第77回灘校文化祭「Splash!」に関するニュースの一覧です。"/>
 <div class={containerStyle}>
   <div class={titleStyle}><Title size={['4rem', '3rem']}>NEWS</Title></div>
   <ul class={listStyle}>
@@ -21,6 +22,7 @@
 <script lang="ts">
   import { css } from '@emotion/css';
   import Title from '$lib/utils/Title.svelte';
+  import MakeHead from '$lib/utils/MakeHead.svelte';
   import {
     colors, responsive,
   } from '$lib/styles/utils';
