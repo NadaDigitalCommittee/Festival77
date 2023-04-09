@@ -49,9 +49,9 @@
     `;
     const Logo = css`
     position: relative;
-    top:5vh;
-    left: calc(50% - 20vh);
-    height:40vh;
+    top:1vh;
+    left: calc(50% - 22vh);
+    height:44vh;
     `;
     const Wave1 = css`
     position:absolute;
