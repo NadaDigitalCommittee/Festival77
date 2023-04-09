@@ -38,14 +38,14 @@
     `;
     const Title1 = css`
     position: relative;
-    font-family: 'Source Han Sans';
+    font-family: futura-pt, heavy;
     color: #FB5607;
     font-weight: 700;
     font-size:45px;
     `;
     const Title2 = css`
     position: relative;
-    font-family: 'Source Han Sans';
+    font-family: futura-pt, heavy;
     color: #FB5607;
     font-weight: 700;
     font-size:24px;`;
