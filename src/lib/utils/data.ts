@@ -1,6 +1,6 @@
 export const socials = [
-  { name: 'twitter', url: '' },
-  { name: 'instagram', url: '' },
+  { name: 'twitter', url: 'https://twitter.com/Nada_festival' },
+  { name: 'instagram', url: 'https://instagram.com/nada_schoolfestival/' },
   { name: 'facebook', url: '' },
   { name: 'youtube', url: '' },
   { name: 'line', url: '' },
