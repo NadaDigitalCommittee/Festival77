@@ -26,6 +26,7 @@
 <script lang="ts">
     import { base } from '$app/paths';
     import { css, keyframes } from '@emotion/css';
+    
     let height: number;
     const scrollDown = () => {
       window.scroll({
