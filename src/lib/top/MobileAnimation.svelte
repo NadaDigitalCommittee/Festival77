@@ -22,10 +22,10 @@
     
     let height: number;
     const scrollDown = () => {
-        window.scroll({
-            top: height*1.125,
-            behavior: 'smooth',
-        });
+      window.scroll({
+        top: height * 1.125,
+        behavior: 'smooth',
+      });
     };
     const containerStyle = css`
     width:100%;

@@ -28,10 +28,10 @@
     import { css, keyframes } from '@emotion/css';
     let height: number;
     const scrollDown = () => {
-        window.scroll({
-            top: height*1.2,
-            behavior: 'smooth',
-        });
+      window.scroll({
+        top: height * 1.2,
+        behavior: 'smooth',
+      });
     };
     const containerStyle = css`
     width:100%;
