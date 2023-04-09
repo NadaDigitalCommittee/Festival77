@@ -15,9 +15,9 @@
     
     <div class={Days}>
         <p class={YYYY}>2023</p>
-        <p class={MMDD}>05.02 <span class={Youbi}>tue</span></p>
+        <p class={MMDD}>05.02 <span class={Youbi}>Tue</span></p>
         <img src="{base}/img/assets/yajirusi.svg" class={Yajirusi} alt="">
-        <p class={MMDD}>05.03 <span class={Youbi}>wed</span></p>
+        <p class={MMDD}>05.03 <span class={Youbi}>Wed</span></p>
     </div>
     <img src="{base}/img/assets/scroll-down.svg" class={Scroll} alt="">
     <img src="{base}/img/assets/sc-d2.svg" class={Scroll2} alt="">
@@ -38,35 +38,35 @@
     `;
     const Title1 = css`
     position: relative;
-    font-family: futura-pt-bold, sans-serif;
+    font-family: futura-pt, sans-serif;
     color: #FB5607;
-    font-weight: 600;
-    white-space: nowrap;
-    font-size:2.5rem;
+    font-weight: 700;
+    font-size:45px;
     `;
     const Title2 = css`
     position: relative;
     font-family: futura-pt-bold, bold;
     color: #FB5607;
-    font-weight: 900;
-    white-space: nowrap;
-    font-size:1.5rem;`;
+    font-weight: 700;
+    font-size:24px;`;
     const Sevens = css`
-    font-size:3rem;
+    font-size:55px;
     `;
     const Spaces = css`
     letter-spacing: 0.3rem;
     `;
     const Logo = css`
     position: absolute;
-    top: 20vh;
+    top: 14vh;
     right:15%;
-    width:20%;
+    width:25%;
 
     `;
     const Waves = css`
     position:absolute;
     width:100%;
+    height:50vh;
+    top:25vh;
     `;
     const Wave1 = css`
     position:absolute;
@@ -102,9 +102,9 @@
     font-family: futura-pt, heavy;
     position:absolute;
     color: #FFFFFF;
-    font-weight:600;
+    font-weight:700;
     top:65vh;
-    left:20%;
+    left:17.5%;
     `;
     const YYYY = css`
     font-size:2.5rem;
@@ -135,13 +135,13 @@
     }`;
     const Scroll = css`
     position:absolute;
-    top:70vh;
+    top:75vh;
     right:20%;
     animation: ${rt} 8s linear infinite;
     `;
     const Scroll2 = css`
     position:absolute;
-    top:70vh;
+    top:75vh;
     right:20%;
     `;
 </script>

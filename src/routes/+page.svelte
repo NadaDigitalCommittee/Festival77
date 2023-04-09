@@ -30,8 +30,7 @@
 
   const pcAnimationStyle = css(pcOnly(`
     width: 100%;
-    height: calc(100vh );
-    height: calc(var(--window-height));
+    height: 110vh ;
   `));
 
   const mobileAnimationStyle = css(mobileOnly(`
