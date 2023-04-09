@@ -38,23 +38,21 @@
     `;
     const Title1 = css`
     position: relative;
-    font-family: 'Source Han Sans JP';
+    font-family: futura-pt-bold,'Source Han Sans JP';
     font-style: normal;
-    font-weight: 900;
+    font-weight: 700;
     color: #FB5607;
-    font-weight: 900;
     font-size:45px;
     `;
     const Title2 = css`
     position: relative;
-    font-family: 'Source Han Sans JP';
+    font-family: futura-pt-bold,'Source Han Sans JP';
     font-style: normal;
-    font-weight: 900;
+    font-weight: 700;
     color: #FB5607;
-    font-weight: 900;
     font-size:22.5px;`;
     const Sevens = css`
-    font-size:50px;
+    font-size:54px;
     `;
     const Spaces = css`
     letter-spacing: 0.3rem;
