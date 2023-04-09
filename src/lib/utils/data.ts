@@ -1,9 +1,9 @@
 export const socials = [
-  { name: 'twitter', url: '' },
-  { name: 'instagram', url: '' },
-  { name: 'facebook', url: '' },
-  { name: 'youtube', url: '' },
-  { name: 'line', url: '' },
+  { name: 'twitter', url: 'https://twitter.com/Nada_festival' },
+  { name: 'instagram', url: 'https://www.instagram.com/nada_schoolfestival/' },
+  { name: 'facebook', url: 'https://www.facebook.com/NadaSchoolFestival' },
+  { name: 'youtube', url: 'https://www.youtube.com/@nada_schoolfestival' },
+  { name: 'line', url: 'https://lin.ee/6agXgOH' },
 ];
 
 export const links = [

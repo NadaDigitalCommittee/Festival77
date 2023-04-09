@@ -9,7 +9,7 @@
       </div>
       <div class={timeStyle}>
         <img src="{base}/img/assets/time.svg" alt="時間">
-        <p>9:00-15:30</p>
+        <p>9:00-15:00</p>
       </div>
     </div>
     <div class={accessStyle}>
