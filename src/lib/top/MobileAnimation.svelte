@@ -7,9 +7,9 @@
     <img src="{base}/img/logos/logo-standard.svg" alt="ロゴ" class={Logo}>     
     <div class={Days}>
         <p class={YYYY}>2023</p>
-        <p class={MMDD}>05.02 <span class={Youbi}>tue</span></p>
+        <p class={MMDD}>05.02 <span class={Youbi}>Tue</span></p>
         <img src="{base}/img/assets/yajirusi.svg" class={Yajirusi} alt="">
-        <p class={MMDD}>05.03 <span class={Youbi}>wed</span></p>
+        <p class={MMDD}>05.03 <span class={Youbi}>Wed</span></p>
     </div>
     <img src="{base}/img/assets/scroll-down.svg" class={Scroll} alt="">
     <img src="{base}/img/assets/sc-d2.svg" class={Scroll2} alt="">
@@ -49,13 +49,13 @@
     `;
     const Logo = css`
     position: relative;
-    top:1vh;
+    top:5vh;
     left: calc(50% - 22vh);
     height:44vh;
     `;
     const Wave1 = css`
     position:absolute;
-    top: 56vh;
+    top: 65vh;
     left: 0%;
     width: 100%;
     `;
@@ -64,17 +64,17 @@
     position:absolute;
     color: #FFFFFF;
     font-weight:700;
-    top:66vh;
+    top: 80vh;
     left:10%;
     `;
     const YYYY = css`
-    font-size:1.5rem;
+    font-size:24px;
     `;
     const MMDD = css`
-    font-size:3rem;
+    font-size:48px;
     `;
     const Youbi = css`
-    font-size:1.5rem;
+    font-size:18px;
     `;
     const Yajirusi = css`
     padding-left: 25%;
@@ -98,14 +98,14 @@
     }`;
     const Scroll = css`
     position:absolute;
-    top: 66vh;
+    top: 80vh;
     right: 12.5%;
     height:6rem;
     animation: ${rt} 8s linear infinite;
     `;
     const Scroll2 = css`
     position:absolute;
-    top: 66vh;
+    top: 80vh;
     right: 12.5%;
     height:6rem;
     `;
