@@ -58,6 +58,7 @@
     position:absolute;
     top: 62vh;
     left: 0%;
+    height: 58vh;
     width: 100%;
     `;
     const Days = css`
