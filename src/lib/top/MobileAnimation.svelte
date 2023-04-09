@@ -26,7 +26,7 @@
     const Titles = css`
     position:relative;
     top:5%;
-    margin-left:calc( 50% - 9rem );
+    margin-left:calc( 50% - 8rem );
     `;
     const Title1 = css`
     position: relative;
@@ -50,14 +50,13 @@
     const Logo = css`
     position: relative;
     top:5vh;
-    left: calc(50% - 18vh);
-    height:36vh;
+    left: calc(50% - 20vh);
+    height:40vh;
     `;
     const Wave1 = css`
     position:absolute;
     top: 56vh;
     left: 0%;
-    height: 70vh;
     width: 100%;
     `;
     const Days = css`
@@ -69,13 +68,13 @@
     left:10%;
     `;
     const YYYY = css`
-    font-size:1.2rem;
+    font-size:1.5rem;
     `;
     const MMDD = css`
-    font-size:2.4rem;
+    font-size:3rem;
     `;
     const Youbi = css`
-    font-size:1.2rem;
+    font-size:1.5rem;
     `;
     const Yajirusi = css`
     padding-left: 25%;
