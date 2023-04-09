@@ -50,12 +50,12 @@
     const Logo = css`
     position: relative;
     top:5vh;
-    left: calc(50% - 20vh);
-    height:40vh;
+    left: calc(50% - 18vh);
+    height:36vh;
     `;
     const Wave1 = css`
     position:absolute;
-    top: 60vh;
+    top: 56vh;
     left: 0%;
     height: 70vh;
     width: 100%;
@@ -65,7 +65,7 @@
     position:absolute;
     color: #FFFFFF;
     font-weight:700;
-    top:70vh;
+    top:66vh;
     left:10%;
     `;
     const YYYY = css`
@@ -99,14 +99,14 @@
     }`;
     const Scroll = css`
     position:absolute;
-    top: 70vh;
+    top: 66vh;
     right: 12.5%;
     height:6rem;
     animation: ${rt} 8s linear infinite;
     `;
     const Scroll2 = css`
     position:absolute;
-    top: 70vh;
+    top: 66vh;
     right: 12.5%;
     height:6rem;
     `;
