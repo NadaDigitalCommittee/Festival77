@@ -21,7 +21,7 @@
     
     const containerStyle = css`
     width:100%;
-    height:90% ;
+    height:80% ;
     background-color: #FFFFFF;`;
     const Titles = css`
     position:relative;
@@ -49,15 +49,15 @@
     `;
     const Logo = css`
     position: relative;
-    top:5%;
+    top:7.5%;
     left: calc(50% - 6rem);
     width:12rem;
     `;
     const Wave1 = css`
     position:absolute;
-    top: 60vh;
+    top: 50vh;
     left: 0%;
-    height: 50vh;
+    height: 60vh;
     width: 100%;
     `;
     const Days = css`
@@ -65,7 +65,7 @@
     position:absolute;
     color: #FFFFFF;
     font-weight:900;
-    top:70vh;
+    top:60vh;
     left:10%;
     `;
     const YYYY = css`
@@ -99,14 +99,14 @@
     }`;
     const Scroll = css`
     position:absolute;
-    top: 70vh;
+    top: 60vh;
     right: 12.5%;
     height:6rem;
     animation: ${rt} 8s linear infinite;
     `;
     const Scroll2 = css`
     position:absolute;
-    top: 70vh;
+    top: 60vh;
     right: 12.5%;
     height:6rem;
     `;
