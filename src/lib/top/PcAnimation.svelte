@@ -20,10 +20,7 @@
         <p class={MMDD}>05.03 <span class={Youbi}>Wed</span></p>
     </div>
     <img src="{base}/img/assets/scroll-down.svg" class={Scroll} alt="">
-    <img src="{base}/img/assets/sc-d2.svg" class={Scroll2} alt="" on:click={()=>{window.scroll({
-        top: 100,
-        behavior: 'smooth',
-      });}}>
+    <img src="{base}/img/assets/sc-d2.svg" class={Scroll2} alt="" >
 </div>
 
 <script lang = "ts">
