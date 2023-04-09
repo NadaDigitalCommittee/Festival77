@@ -7,7 +7,7 @@
 
 <script lang="ts">
   import { base } from '$app/paths';
-  import { propResponsive, type responsiveSize } from '$lib/styles/utils';
+  import { responsive, propResponsive, type responsiveSize } from '$lib/styles/utils';
   import { css } from '@emotion/css';
 
   export let style = 'standard';
@@ -34,18 +34,20 @@
     height: max-content;
     transition: transform 0.5s ease;
 
-    ${hover ? `
-      &:hover {
-        transform: translateY(2px);
+    ${responsive(`
+      ${hover ? `
+        &:hover {
+          transform: translateY(2px);
 
-        .${imgStyle} {
-          opacity: 0;
-        }
+          .${imgStyle} {
+            opacity: 0;
+          }
 
-        .${altStyle} {
-          opacity: 1;
+          .${altStyle} {
+            opacity: 1;
+          }
         }
-      }
     ` : ''}
+    `, '')}
   `;
 </script>
