@@ -34,7 +34,7 @@
     color: #FB5607;
     font-weight: 900;
     white-space: nowrap;
-    font-size: 2rem;
+    font-size:30px;
     `;
     const Title2 = css`
     position: relative;
@@ -42,8 +42,9 @@
     color: #FB5607;
     font-weight: 900;
     white-space: nowrap;
-    font-size: 1rem;`;
+    font-size: 15px;`;
     const Sevens = css`
+    font-size:34px;
     `;
     const Spaces = css`
     `;
