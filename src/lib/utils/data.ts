@@ -3,7 +3,7 @@ export const socials = [
   { name: 'instagram', url: 'https://www.instagram.com/nada_schoolfestival/' },
   { name: 'facebook', url: 'https://www.facebook.com/NadaSchoolFestival' },
   { name: 'youtube', url: 'https://www.youtube.com/@nada_schoolfestival' },
-  { name: 'line', url: 'https://page.line.me/?accountId=jjb2343q' },
+  { name: 'line', url: 'https://lin.ee/6agXgOH' },
 ];
 
 export const links = [
