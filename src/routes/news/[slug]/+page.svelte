@@ -1,10 +1,11 @@
+<MakeHead name={item.title} description={item.title}/>
 <div class={headStyle}>
   <p class={titleStyle}>{item.title}</p>
   <div class={dateStyle}>{format(item.date, 'yyyy.MM.dd')}</div>
 </div>
 <div class={descriptionStyle}>
   <div class={markdownStyle}>
-    <SvelteMarkdown source={item.description} />
+    <SvelteMarkdown source={item.description} renderers={{ image: ImageRenderer }} />
   </div>
 </div>
 
@@ -13,10 +14,12 @@
   import {
     colors, responsive,
   } from '$lib/styles/utils';
-  import { format } from 'date-fns';
+  import MakeHead from '$lib/utils/MakeHead.svelte';
+  import ImageRenderer from '$lib/news/ImageRenderer.svelte';
   import type { NewsItem } from '$lib/news/types';
   import type { PageServerData } from './$types';
   import SvelteMarkdown from 'svelte-markdown';
+  import { format } from 'date-fns';
 
   export let data: PageServerData;
   const item = data as NewsItem;
@@ -201,12 +204,6 @@
       &:visited {
         color: #551A8B;
       }
-    }
-
-    img {
-      display: block;
-      width: 240px;
-      margin: 20px calc(50% - 120px);
     }
   `;
 </script>
