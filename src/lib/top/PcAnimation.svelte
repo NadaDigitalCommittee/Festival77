@@ -20,13 +20,19 @@
         <p class={MMDD}>05.03 <span class={Youbi}>Wed</span></p>
     </div>
     <img src="{base}/img/assets/scroll-down.svg" class={Scroll} alt="">
-    <img src="{base}/img/assets/sc-d2.svg" class={Scroll2} alt="" >
+    <img src="{base}/img/assets/sc-d2.svg" class={Scroll2} alt="" on:click={scrollDown}>
 </div>
-
-<script lang = "ts">
+<svelte:window bind:innerHeight={height}/>
+<script lang="ts">
     import { base } from '$app/paths';
     import { css, keyframes } from '@emotion/css';
-    
+    let height: number;
+    const scrollDown = () => {
+        window.scroll({
+            top: height*1.2,
+            behavior: 'smooth',
+        });
+    };
     const containerStyle = css`
     width:100%;
     height:calc( 100vh - 6rem);
@@ -40,7 +46,7 @@
     position: relative;
     font-family: futura-pt-bold,'Source Han Sans JP';
     font-style: normal;
-    font-weight: 700;
+    font-weight: 900;
     color: #FB5607;
     font-size:45px;
     `;
@@ -48,7 +54,7 @@
     position: relative;
     font-family: futura-pt-bold,'Source Han Sans JP';
     font-style: normal;
-    font-weight: 700;
+    font-weight: 900;
     color: #FB5607;
     font-size:22.5px;`;
     const Sevens = css`
