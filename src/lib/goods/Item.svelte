@@ -18,9 +18,9 @@
 
   export type GoodsItem = {
     name: string;
+    type: '通常' | '生徒企画' | 'お土産';
     description?: string;
     price: number;
-    plannedByStudents: boolean;
     image?: ImageSource;
   };
 </script>

@@ -2,11 +2,15 @@
 <div class={containerStyle}>
   <Title size={['4rem', '3rem']}>GOODS</Title>
   <div class={listStyle}>
-    {#each items.filter((i) => !i.plannedByStudents) as item}
+    {#each items.filter((i) => i.type === '通常') as item}
       <Item item={item} />
     {/each}
     <p class={subtitleStyle}>生徒企画</p>
-    {#each items.filter((i) => i.plannedByStudents) as item}
+    {#each items.filter((i) => i.type === '生徒企画') as item}
+      <Item item={item} />
+    {/each}
+    <p class={subtitleStyle}>お土産</p>
+    {#each items.filter((i) => i.type === 'お土産') as item}
       <Item item={item} />
     {/each}
   </div>
