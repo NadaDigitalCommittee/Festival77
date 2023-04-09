@@ -36,7 +36,7 @@
 
   const mobileAnimationStyle = css(mobileOnly(`
     width: 100%;
-    height: 130vh;
+    height: 110vh;
   `));
 
   const containerStyle = css`
