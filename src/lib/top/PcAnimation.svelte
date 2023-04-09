@@ -38,17 +38,21 @@
     `;
     const Title1 = css`
     position: relative;
-    font-family: futura-pt, heavy;
+    font-family: 'Source Han Sans JP';
+    font-style: normal;
+    font-weight: 900;
     color: #FB5607;
-    font-weight: 700;
+    font-weight: 900;
     font-size:45px;
     `;
     const Title2 = css`
     position: relative;
-    font-family: futura-pt, heavy;
+    font-family: 'Source Han Sans JP';
+    font-style: normal;
+    font-weight: 900;
     color: #FB5607;
-    font-weight: 700;
-    font-size:24px;`;
+    font-weight: 900;
+    font-size:22.5px;`;
     const Sevens = css`
     font-size:50px;
     `;
