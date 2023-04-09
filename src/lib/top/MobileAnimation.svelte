@@ -50,22 +50,22 @@
     const Logo = css`
     position: relative;
     top:5vh;
-    left: calc(50% - 6rem);
-    width:12rem;
+    left: calc(50% - 20vh);
+    height:40vh;
     `;
     const Wave1 = css`
     position:absolute;
-    top: 50vh;
+    top: 60vh;
     left: 0%;
-    height: 60vh;
+    height: 70vh;
     width: 100%;
     `;
     const Days = css`
     font-family: futura-pt, heavy;
     position:absolute;
     color: #FFFFFF;
-    font-weight:900;
-    top:60vh;
+    font-weight:700;
+    top:70vh;
     left:10%;
     `;
     const YYYY = css`
@@ -99,14 +99,14 @@
     }`;
     const Scroll = css`
     position:absolute;
-    top: 60vh;
+    top: 70vh;
     right: 12.5%;
     height:6rem;
     animation: ${rt} 8s linear infinite;
     `;
     const Scroll2 = css`
     position:absolute;
-    top: 60vh;
+    top: 70vh;
     right: 12.5%;
     height:6rem;
     `;
