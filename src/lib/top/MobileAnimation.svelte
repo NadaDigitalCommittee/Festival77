@@ -49,7 +49,7 @@
     `;
     const Logo = css`
     position: relative;
-    top:7.5%;
+    top:10%;
     left: calc(50% - 6rem);
     width:12rem;
     `;
