@@ -55,9 +55,9 @@
     `;
     const Wave1 = css`
     position:absolute;
-    top: calc( var(--window-height) * 0.4);
+    top: 40vh;
     left: 0%;
-    height:calc( var(--window-height) * 0.7);
+    height: 70vh;
     width: 100%;
     `;
     const Days = css`
@@ -65,7 +65,7 @@
     position:absolute;
     color: #FFFFFF;
     font-weight:600;
-    top:calc( var(--window-height) * 0.7);
+    top:70vh;
     left:10%;
     `;
     const YYYY = css`
@@ -99,14 +99,14 @@
     }`;
     const Scroll = css`
     position:absolute;
-    top: calc( var(--window-height) * 0.7);
+    top: 70vh;
     right: 12.5%;
     height:8rem;
     animation: ${rt} 8s linear infinite;
     `;
     const Scroll2 = css`
     position:absolute;
-    top: calc( var(--window-height) * 0.7);
+    top: 70vh;
     right: 12.5%;
     height:8rem;
     `;

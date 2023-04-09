@@ -28,13 +28,13 @@
     import { css, keyframes } from '@emotion/css';
     
     const containerStyle = css`
-    width:100vw;
-    height:calc(100vh - 6rem);
+    width:100%;
+    height:calc( 100vh - 6rem);
     background-color: #FFFFFF;`;
     const Titles = css`
     position:absolute;
-    top:28vh;
-    left:15vw;
+    top: 28vh;
+    left:15%;
     `;
     const Title1 = css`
     position: relative;
@@ -55,47 +55,48 @@
     font-size:3rem;
     `;
     const Spaces = css`
-    letter-spacing:0.8vh;
+    letter-spacing: 0.3rem;
     `;
     const Logo = css`
     position: absolute;
-    top: calc( 28vh - 5vw );
-    right:15vw;
-    width:20vw;
+    top: 20vh;
+    right:15%;
+    width:20%;
 
     `;
     const Waves = css`
     position:absolute;
+    width:100%;
     `;
     const Wave1 = css`
     position:absolute;
     top:26vh;
     height:82vh;
-    width:100vw;
+    width:100%;
     `;
     const Wave2 = css`
     position:absolute;
     top:31vh;
     height:75vh;
-    width:100vw;
+    width:100%;
     `;
     const Wave3 = css`
     position:absolute;
     top:36vh;
     height: 68vh;
-    width:100vw;
+    width:100%;
     `;
     const Wave4 = css`
     position:absolute;
     top:41vh;
     height: 61vh;
-    width:100vw;
+    width:100%;
     `;
     const Wave5 = css`
     position:absolute;
     top:46vh;
     height:54vh;
-    width:100vw;
+    width:100%;
     `;
     const Days = css`
     font-family: futura-pt, heavy;
@@ -103,16 +104,16 @@
     color: #FFFFFF;
     font-weight:600;
     top:65vh;
-    left:20vw;
+    left:20%;
     `;
     const YYYY = css`
-    font-size:2rem;
+    font-size:2.5rem;
     `;
     const MMDD = css`
-    font-size:3rem;
+    font-size:3.75rem;
     `;
     const Youbi = css`
-    font-size:2rem;
+    font-size:2.5rem;
     `;
     const Yajirusi = css`
     `;
@@ -135,12 +136,12 @@
     const Scroll = css`
     position:absolute;
     top:70vh;
-    right:20vw;
+    right:20%;
     animation: ${rt} 8s linear infinite;
     `;
     const Scroll2 = css`
     position:absolute;
     top:70vh;
-    right:20vw;
+    right:20%;
     `;
 </script>
