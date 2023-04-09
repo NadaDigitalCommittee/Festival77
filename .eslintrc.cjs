@@ -19,7 +19,6 @@ module.exports = {
     'svelte3',
     '@typescript-eslint'
   ],
-  // ignorePatterns: ['*.cjs', '*.d.ts'],
   overrides: [
     { files: ['*.svelte'], processor: 'svelte3/svelte3' }
   ],
@@ -27,15 +26,24 @@ module.exports = {
     'svelte3/typescript': () => require('typescript'),
     'import/resolver': {
       'eslint-import-resolver-custom-alias': {
-        'alias': {
-          'src': './src',
+        alias: {
+          '$lib': 'src/lib',
+          '$app': 'node_modules/@sveltejs/kit/src/runtime/app',
+          '$env': 'node_modules/@sveltejs/kit/src/runtime/env',
         },
-        'extensions': ['.ts', '.js', '.svelte'],
+        extensions: ['.js', '.ts', '.svelte'],
       },
+      typescript: { extensions: ['.js', '.ts', '.svelte'] },
     },
   },
   rules: {
     'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    'no-multiple-empty-lines': ['error', { max: 1, maxBOF: 2, maxEOF: 0 }],
+    'import/prefer-default-export': 'off',
+    'import/no-mutable-exports': 'off',
+    'import/order': 'off',
+    'import/first': 'off',
+    'import/extensions': ['error', 'ignorePackages', { js: 'never', ts: 'never' }],
   },
 };
