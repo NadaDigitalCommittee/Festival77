@@ -20,7 +20,10 @@
         <p class={MMDD}>05.03 <span class={Youbi}>Wed</span></p>
     </div>
     <img src="{base}/img/assets/scroll-down.svg" class={Scroll} alt="">
-    <img src="{base}/img/assets/sc-d2.svg" class={Scroll2} alt="">
+    <img src="{base}/img/assets/sc-d2.svg" class={Scroll2} alt="" on:click={()=>{window.scroll({
+        top: 100,
+        behavior: 'smooth',
+      });}}>
 </div>
 
 <script lang = "ts">
@@ -38,19 +41,19 @@
     `;
     const Title1 = css`
     position: relative;
-    font-family: futura-pt, sans-serif;
+    font-family: 'Source Han Sans';
     color: #FB5607;
     font-weight: 700;
     font-size:45px;
     `;
     const Title2 = css`
     position: relative;
-    font-family: futura-pt-bold, bold;
+    font-family: 'Source Han Sans';
     color: #FB5607;
     font-weight: 700;
     font-size:24px;`;
     const Sevens = css`
-    font-size:55px;
+    font-size:50px;
     `;
     const Spaces = css`
     letter-spacing: 0.3rem;
@@ -116,6 +119,8 @@
     font-size:2.5rem;
     `;
     const Yajirusi = css`
+    padding-left: 25%;
+    height:1.5%;
     `;
     const rt = keyframes`
     0% {
@@ -143,5 +148,7 @@
     position:absolute;
     top:75vh;
     right:20%;
+    width:146px;
+    height:146px;
     `;
 </script>
