@@ -8,7 +8,7 @@ on:
     types: [contentful_update]
 
 env:
-  DEPLOY_ENV: RELEASE
+  DEPLOY_ENV: DEBUG
 
 jobs:
   release:
