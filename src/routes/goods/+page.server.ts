@@ -23,9 +23,9 @@ export const load = (async () => {
   const items = data.items.map((item) => {
     const fields = item.fields as {
       name: string;
+      type: string;
       description?: string;
       price: number;
-      plannedByStudents: boolean,
       image?: {
         sys: {
           id: string;
@@ -37,9 +37,9 @@ export const load = (async () => {
 
     return {
       name: fields.name,
+      type: fields.type,
       description: fields.description,
       price: fields.price,
-      plannedByStudents: fields.plannedByStudents,
       image,
     };
   });
