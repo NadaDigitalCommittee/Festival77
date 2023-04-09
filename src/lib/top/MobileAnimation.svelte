@@ -21,7 +21,7 @@
     
     const containerStyle = css`
     width:100%;
-    height:100% ;
+    height:90% ;
     background-color: #FFFFFF;`;
     const Titles = css`
     position:relative;
@@ -32,7 +32,7 @@
     position: relative;
     font-family: futura-pt-bold, sans-serif;
     color: #FB5607;
-    font-weight: 600;
+    font-weight: 900;
     white-space: nowrap;
     font-size: 2rem;
     `;
@@ -50,21 +50,21 @@
     const Logo = css`
     position: relative;
     top:5%;
-    left: calc(50% - 8rem);
-    width:16rem;
+    left: calc(50% - 6rem);
+    width:12rem;
     `;
     const Wave1 = css`
     position:absolute;
-    top: 40vh;
+    top: 60vh;
     left: 0%;
-    height: 70vh;
+    height: 50vh;
     width: 100%;
     `;
     const Days = css`
     font-family: futura-pt, heavy;
     position:absolute;
     color: #FFFFFF;
-    font-weight:600;
+    font-weight:900;
     top:70vh;
     left:10%;
     `;
@@ -101,13 +101,13 @@
     position:absolute;
     top: 70vh;
     right: 12.5%;
-    height:8rem;
+    height:6rem;
     animation: ${rt} 8s linear infinite;
     `;
     const Scroll2 = css`
     position:absolute;
     top: 70vh;
     right: 12.5%;
-    height:8rem;
+    height:6rem;
     `;
 </script>
