@@ -60,13 +60,13 @@ jobs:
         run: |
           git clone git@github.com:NadaDigitalCommittee/FestPublic.git
           cd FestPublic
-          if [ -e ./2023/ ]; then
-            rm -r ./2023/
-          fi
+          # if [ -e ./2023/ ]; then
+          #   rm -r ./2023/
+          # fi
           mkdir ../old
           mv ./2022 ./_redirects ../old
           ls ./ | grep -v -E '^.git' | xargs rm -r
-          mv ../src/build/ ./
+          mv ../src/build/* ./
           mv ../old/* ./
           git add -A
           if ! git diff --cached --quiet; then
