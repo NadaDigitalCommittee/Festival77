@@ -33,7 +33,6 @@
     font-size: 0.9375rem;
     font-weight: 900;
     line-height: 200%;
-    text-align: center;
     ${responsive(`
       margin: 50px 100px 0;
     `, `
