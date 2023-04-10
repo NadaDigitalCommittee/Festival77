@@ -1,7 +1,7 @@
 <div class={containerStyle}>
   <Title size={['4rem', '3rem']}>CONCEPT</Title>
   <p class={contentStyle}>
-    本年度文化祭テーマ「Splash!」には「水沫」と「まだら」の２つの意味があります。<br>
+    本年度文化祭テーマ「Splash!」には「水しぶき」と「まだら」の２つの意味があります。<br>
     灘校生と来場者の皆さん、それぞれの汗や思いが混じり合って、一気に弾け、世界に一つしかない「祭」を描いていく、そんな思いが込められています。
   </p>
 </div>
