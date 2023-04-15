@@ -69,8 +69,8 @@
   let day = 1;
   let place = '中庭';
   const days = [
-    new Date('2023-05-02T09:00:00'),
-    new Date('2023-05-03T09:00:00'),
+    new Date('2023-05-02T09:00:00+09:00'),
+    new Date('2023-05-03T09:00:00+09:00'),
   ];
   const places = [
     '中庭',
@@ -81,7 +81,7 @@
   ];
 
   const timestamps = new Array(13).fill(30).map((v, i) => {
-    const t = new Date('1970-01-01T09:00:00');
+    const t = new Date('1970-01-01T09:00:00+09:00');
     t.setMinutes(t.getMinutes() + v * i);
     return t;
   });
