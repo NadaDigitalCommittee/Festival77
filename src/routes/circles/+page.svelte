@@ -185,6 +185,7 @@
     transition: 0.6s;
     `;
     const bigarea = css`
+    margin-top: -3px;
     width: 11.5%;
     color:white;
     text-align:center;
@@ -261,7 +262,7 @@
     width:100%;
     padding-left:7.5%;
     font-family: futura-pt, 'Source Han Sans JP';
-    font-weight: 700;
+    font-weight: 800;
     font-size: 3rem;
     color: #000000;
     line-height: 77px;
