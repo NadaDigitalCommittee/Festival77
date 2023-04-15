@@ -5,7 +5,7 @@ export const load = (async () => {
   const data = await client.getEntries({
     content_type: 'circles',
     select: 'fields',
-    order: 'sys.createdAt',
+    order: 'fields.areaId',
   });
   const items = data.items.map((item) => {
     const fields = item.fields as {
@@ -13,6 +13,7 @@ export const load = (async () => {
       description?: string;
       area: string;
       areaId: number;
+      circleId: number;
     };
 
     return {
@@ -20,6 +21,10 @@ export const load = (async () => {
       description: fields.description,
       area: fields.area,
       areaId: fields.areaId,
+      circleId: fields.circleId,
+      selected: false,
+      selected2: false,
+      selected3: false,
     };
   });
   return {
