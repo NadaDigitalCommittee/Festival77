@@ -261,7 +261,7 @@
   const headStyle = css`
     width:100%;
     padding-left:7.5%;
-    font-family: futura-pt-bold, sans-serif;
+    font-family: futura-pt-bold, 'Source Han Sans JP';
     font-weight: 700;
     font-size: 3rem;
     color: #000000;
