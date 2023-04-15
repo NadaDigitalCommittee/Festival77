@@ -163,6 +163,15 @@
     &:has(input:not(:checked)) {
       background-color: #E8E8E8;
       color: #999999;
+
+      ${responsive(`
+        transition: background-color 0.3s ease, color 0.3s ease;
+
+        &:hover {
+          background-color: ${colors.black};
+          color: ${colors.white};
+        }
+      `, '')}
     }
   `;
 
