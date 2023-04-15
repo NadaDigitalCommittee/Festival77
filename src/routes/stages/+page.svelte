@@ -35,7 +35,13 @@
         }
           <div style={eventSize(e)} class={eventStyle}>
             <div class={nameStyle}>
+              {#if e.beforeSubtitle }
+                <p class={subtitleStyle}>{e.beforeSubtitle}</p>
+              {/if}
               <p>{e.name}</p>
+              {#if e.afterSubtitle }
+                <p class={subtitleStyle}>{e.afterSubtitle}</p>
+              {/if}
             </div>
             <div class={timeStyle}>
               <p>{format(e.start, 'H:mm')}-{format(e.end, 'H:mm')}</p>
@@ -58,6 +64,8 @@
 
   type EventItem = {
     name: string;
+    beforeSubtitle?: string;
+    afterSubtitle?: string;
     place: string;
     start: Date;
     end: Date;
@@ -350,6 +358,8 @@
 
   const nameStyle = css`
     display: flex;
+    flex-direction: column;
+    gap: 5px;
     width: 60%;
     height: 100%;
     align-items: center;
@@ -382,6 +392,14 @@
       font-size: 1.5rem;
     `, `
       font-size: 1rem;
+    `)}
+  `;
+
+  const subtitleStyle = css`
+    ${responsive(`
+      font-size: 0.8rem;
+    `, `
+      font-size: 0.64rem;
     `)}
   `;
 </script>

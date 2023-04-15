@@ -10,6 +10,8 @@ export const load = (async () => {
   const items = data.items.map((item) => {
     const fields = item.fields as {
       name: string;
+      beforeSubtitle?: string;
+      afterSubtitle?: string;
       place: string;
       start: string;
       end: string;
@@ -17,6 +19,8 @@ export const load = (async () => {
 
     return {
       name: fields.name,
+      beforeSubtitle: fields.beforeSubtitle,
+      afterSubtitle: fields.afterSubtitle,
       place: fields.place,
       start: new Date(fields.start),
       end: new Date(fields.end),
