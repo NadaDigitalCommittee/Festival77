@@ -197,7 +197,7 @@
     const nisi = css`background-color: #F5A21B;`;
     const ken = css`background-color: #C2D95C;`;
     const kousya = css`
-    margin-top:6px;
+    margin-top:4px;
     margin-bottom:4px;
     `;
 
@@ -261,8 +261,8 @@
   const headStyle = css`
     width:100%;
     padding-left:7.5%;
-    font-family: futura-pt, 'Source Han Sans JP';
-    font-weight: 800;
+    font-family: futura-pt-bold, sans-serif;
+    font-weight: 700;
     font-size: 3rem;
     color: #000000;
     line-height: 77px;
