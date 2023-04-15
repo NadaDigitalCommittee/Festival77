@@ -7,6 +7,7 @@
   <input bind:value={inputtext} placeholder="検索" class={textinputStyle}>
   </div>
     {#each areaDatas as areaData}
+    <div class={floor} >
     <h2 class={headStyle}>{areaData.a}</h2>
     <ul class={listStyle}>
       {#each items.filter((i)=>(i.areaId>=areaData.b && i.areaId< areaData.c)) as item }
@@ -53,8 +54,8 @@
               <p class={dateStyle}>{item.area}</p>
             </div>
             <div class={item.selected2 ? arrowStyle2 :arrowStyle}>
-              <span/>
-              <span/>
+              <span class={item.selected ? spanStyle : spanStyle2}/>
+              <span class={item.selected ? spanStyle : spanStyle2}/>
             </div>
           </div>
           {#if item.selected3}
@@ -64,6 +65,7 @@
         </li>
       {/each}
     </ul>
+    </div>
     {/each}
 </div>
 <script lang="ts">
@@ -102,7 +104,30 @@
       selected2: boolean;
       selected3: boolean;
   };
+    const spanStyle = css`
+    :nth-child(1){
+    background-color: #0d3a4f;
+    
+    transition: 0.6s;
+    }
+    :nth-child(2){
+    background-color: #0d3a4f;
+    
+    transition: 0.6s;
+    }`;
+    const spanStyle2 = css`
+    :nth-child(1){
+    transition: 0.6s;
+    }
+    :nth-child(2){
+    transition: 0.6s;
+    }`;
 
+
+    const floor = css`
+    width:100%;
+    margin-top:50px;
+    `;
     const searchBoxStyle = css`
     width:400px;
     height:66px;
@@ -118,13 +143,16 @@
     `;
     const textinputStyle= css`
       height:auto;
-      width:300px;
-      color:#0D3A4F;
+      width:285px;
+      margin-left:15px;
       font-size:1.25rem;
       font-family: 'Source Han Sans JP';
       font-style: normal;
       font-weight: 700;
       line-height: 29px;
+      :focus{
+        outline: none;
+      }
     `;
     const descStyle = css`
     margin:0 10%;
@@ -161,6 +189,7 @@
     color:white;
     text-align:center;
     border-radius: 20px;
+    font-family:'Source Han Sans JP'
     `;
     const tyu = css`background-color: #EA616F;`;
     const kou = css`background-color: #008CCF;`;
@@ -185,7 +214,7 @@
   `;
   
   const dateStyle = css`
-    font-family: "Noto Sans JP", sans-sefif;
+    font-family: 'Source Han Sans JP', sans-sefif;
     color: ${colors.gray};
     margin-left:15%;
     ${responsive(`
@@ -231,7 +260,7 @@
   const headStyle = css`
     width:100%;
     padding-left:7.5%;
-    font-family: futura-pt, heavy;
+    font-family: futura-pt, 'Source Han Sans JP';
     font-weight: 700;
     font-size: 3rem;
     color: #000000;
@@ -256,7 +285,8 @@
   const arrowStyle = css`
     position: relative;
     transform: rotate(-45deg);
-
+    
+    transition: 0.6s;
     ${responsive(`
       width: 17px;
       height: 17px;
@@ -286,7 +316,8 @@
   const arrowStyle2 = css`
     position: relative;
     transform: rotate(45deg);
-
+    
+    transition: 0.6s;
     ${responsive(`
       width: 17px;
       height: 17px;
@@ -321,7 +352,7 @@
   `;
 
   const contentStyle = css`
-    font-family: "Noto Sans JP", sans-serif;
+    font-family: 'Source Han Sans JP', sans-serif;
     color: ${colors.black};
     width:40%;
     ${responsive(`
