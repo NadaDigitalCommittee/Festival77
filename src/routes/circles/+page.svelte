@@ -150,7 +150,7 @@
       width:285px;
       margin-left:15px;
       font-size:1.25rem;
-      font-family: 'Source Han Sans JP';
+      font-family: "Noto Sans JP";
       font-style: normal;
       font-weight: 700;
       line-height: 29px;
@@ -160,7 +160,7 @@
     `;
   const descStyle = css`
     margin:0 10%;
-    font-family: 'Source Han Sans JP';
+    font-family: "Noto Sans JP";
     font-style: normal;
     font-weight: 700;
     font-size: 1rem;
@@ -194,7 +194,7 @@
     color:white;
     text-align:center;
     border-radius: 20px;
-    font-family:'Source Han Sans JP'
+    font-family:"Noto Sans JP";
     `;
   const tyu = css`background-color: #EA616F;`;
   const kou = css`background-color: #008CCF;`;
@@ -219,7 +219,7 @@
   `;
   
   const dateStyle = css`
-    font-family: 'Source Han Sans JP', sans-sefif;
+    font-family: "Noto Sans JP", sans-sefif;
     color: ${colors.gray};
     margin-left:15%;
     ${responsive(`
@@ -265,7 +265,7 @@
   const headStyle = css`
     width:100%;
     padding-left:7.5%;
-    font-family: futura-pt-bold, 'Source Han Sans JP';
+    font-family: futura-pt-bold, "Noto Sans JP";
     font-weight: 700;
     font-size: 3rem;
     color: #000000;
@@ -357,7 +357,7 @@
   `;
 
   const contentStyle = css`
-    font-family: 'Source Han Sans JP', sans-serif;
+    font-family: "Noto Sans JP", sans-serif;
     color: ${colors.black};
     width:40%;
     ${responsive(`
