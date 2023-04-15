@@ -1,9 +1,10 @@
 <MakeHead name="サークル" description="第77回灘校文化祭「Splash!」に出展するクラブ・サークルの一覧です。部誌や動画も公開しています。(準備中)" />
 <div class={containerStyle}>
   <div class={titleStyle}><Title size={['4rem', '3rem']}>CIRCLES</Title></div>
-    <h2 class={headStyle}>2F</h2>
+    {#each areaDatas as areaData}
+    <h2 class={headStyle}>{areaData.a}</h2>
     <ul class={listStyle}>
-      {#each items.filter((i)=>(i.areaId>=0 && i.areaId< 3)) as item }
+      {#each items.filter((i)=>(i.areaId>=areaData.b && i.areaId< areaData.c)) as item }
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <li class="{liStyle} {item.selected2? liStyle2 : '' }" on:mouseenter={()=>{item.selected=true;}} on:mouseleave={()=>{item.selected=false;}} on:click={()=>{
           if(item.selected2){
@@ -11,7 +12,7 @@
             item.selected3 = false;
           }else{
             item.selected2 = true;
-            setTimeout(()=>{item.selected3 = true;},800);
+            setTimeout(()=>{item.selected3 = item.selected2&&true;},800);
           }
           } }>
           <div class="{unselectedStyle} {item.selected? selectedStyle : '' }"/>
@@ -19,20 +20,26 @@
           <div class={itemStyle} >
             <div class={itemMainStyle}>
               <p class={contentStyle}>{item.name}</p>
-              {#if item.areaId%3==0}
-              <div class={tyu}>
+              {#if item.areaId >=9}
+              <div class="{bigarea} {ken}">
+                <p class={kousya}>
+                  研修館
+                </p>
+              </div>
+              {:else if item.areaId%3 ==0}
+              <div class="{bigarea} {tyu}">
                 <p class={kousya}>
                   中学棟
                 </p>
               </div>
               {:else if item.areaId%3 ==1}
-              <div class={kou} >
+              <div class="{bigarea} {kou}" >
                 <p class={kousya}>
                   高校棟
                 </p>
               </div>
               {:else}
-              <div class={nisi}>
+              <div class="{bigarea} {nisi}">
                 <p class={kousya}>
                   西ゾーン
                 </p>
@@ -52,57 +59,7 @@
         </li>
       {/each}
     </ul>
-    <h2 class={headStyle}>3F</h2>
-    <ul class={listStyle}>
-      {#each items.filter((i)=>(i.areaId>=3 && i.areaId< 6)) as item }
-        <li>
-          <div class={itemStyle}>
-            <div class={itemMainStyle}>
-              <p class={contentStyle}>{item.name}</p>
-              <p class={dateStyle}>{item.area}</p>
-            </div>
-            <div class={arrowStyle}>
-              <span/>
-              <span/>
-            </div>
-          </div>
-        </li>
-      {/each}
-    </ul>
-    <h2 class={headStyle}>4F</h2>
-    <ul class={listStyle}>
-      {#each items.filter((i)=>(i.areaId>=6 && i.areaId< 9)) as item }
-        <li>
-          <div class={itemStyle}>
-            <div class={itemMainStyle}>
-              <p class={contentStyle}>{item.name}</p>
-              <p class={dateStyle}>{item.area}</p>
-            </div>
-            <div class={arrowStyle}>
-              <span/>
-              <span/>
-            </div>
-          </div>
-        </li>
-      {/each}
-    </ul>
-    <h2 class={headStyle}>研修館</h2>
-    <ul class={listStyle}>
-      {#each items.filter((i)=>(i.areaId>=9 && i.areaId< 12)) as item }
-        <li>
-          <div class={itemStyle}>
-            <div class={itemMainStyle}>
-              <p class={contentStyle}>{item.name}</p>
-              <p class={dateStyle}>{item.area}</p>
-            </div>
-            <div class={arrowStyle}>
-              <span/>
-              <span/>
-            </div>
-          </div>
-        </li>
-      {/each}
-    </ul>
+    {/each}
 </div>
 <script lang="ts">
   import type { PageData } from './$types';
@@ -112,6 +69,7 @@
   import { colors,mobileOnly, pcOnly, responsive } from '$lib/styles/utils';
   export let data: PageData;
   const items = data.items as Circle[];
+  const areaDatas = [{a:"2F",b:0,c:3},{a:"3F",b:3,c:6},{a:"4F",b:6,c:9},{a:"研修館",b:9,c:12}];
   type Circle = {
       name: string;
       description?: string;
@@ -129,7 +87,6 @@
     font-weight: 700;
     font-size: 1rem;
     line-height: 23px;
-    object-fit:cover;
     `;
     const boxStyle = css`
     width:100%;
@@ -153,31 +110,22 @@
     height: 100%;
     transition: 0.6s;
     `;
-    const tyu = css`
+    const bigarea = css`
     width: 11.5%;
     color:white;
-    background-color: #EA616F;
     text-align:center;
     border-radius: 20px;
     `;
-    const kou = css`
-    width: 11.5%;
-    color:white;
-    background-color: #008CCF;
-    text-align:center;
-    border-radius: 20px;
-    `;
-    const nisi = css`
-    width: 11.5%;
-    color:white;
-    background-color: #F5A21B;
-    text-align:center;
-    border-radius: 20px;
-    `;
+    const tyu = css`background-color: #EA616F;`;
+    const kou = css`background-color: #008CCF;`;
+    const nisi = css`background-color: #F5A21B;`;
+    const ken = css`background-color: #C2D95C;`;
     const kousya = css`
     margin-top:6px;
     margin-bottom:4px;
     `;
+
+    //ここから下はニュースのページのほぼコピペ(一部弄ったかも)
   const containerStyle = css`
     display: flex;
     flex-direction: column;
