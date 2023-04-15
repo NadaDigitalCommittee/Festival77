@@ -1,12 +1,17 @@
 <MakeHead name="サークル" description="第77回灘校文化祭「Splash!」に出展するクラブ・サークルの一覧です。部誌や動画も公開しています。(準備中)" />
 <div class={containerStyle}>
   <div class={titleStyle}><Title size={['4rem', '3rem']}>CIRCLES</Title></div>
+  <div class={searchBoxStyle}>
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <img src="{base}/img/assets/search.svg" alt="" on:click={runSearch} class={searchBoxImageStyle}>
+  <input bind:value={inputtext} placeholder="検索" class={textinputStyle}>
+  </div>
     {#each areaDatas as areaData}
     <h2 class={headStyle}>{areaData.a}</h2>
     <ul class={listStyle}>
       {#each items.filter((i)=>(i.areaId>=areaData.b && i.areaId< areaData.c)) as item }
         <!-- svelte-ignore a11y-click-events-have-key-events -->
-        <li class="{liStyle} {item.selected2? liStyle2 : '' }" on:mouseenter={()=>{item.selected=true;}} on:mouseleave={()=>{item.selected=false;}} on:click={()=>{
+        <li class="{liStyle} {item.selected2? liStyle2 : '' }" on:mouseenter={()=>{item.selected=true;}} on:mouseleave={()=>{item.selected=false;}} id={item.circleId} on:click={()=>{
           if(item.selected2){
             item.selected2 = false;
             item.selected3 = false;
@@ -47,7 +52,7 @@
               {/if}
               <p class={dateStyle}>{item.area}</p>
             </div>
-            <div class={arrowStyle}>
+            <div class={item.selected2 ? arrowStyle2 :arrowStyle}>
               <span/>
               <span/>
             </div>
@@ -62,6 +67,7 @@
     {/each}
 </div>
 <script lang="ts">
+  import { base } from '$app/paths';
   import type { PageData } from './$types';
   import Title from '$lib/utils/Title.svelte';
   import MakeHead from '$lib/utils/MakeHead.svelte';
@@ -70,6 +76,22 @@
   export let data: PageData;
   const items = data.items as Circle[];
   const areaDatas = [{a:"2F",b:0,c:3},{a:"3F",b:3,c:6},{a:"4F",b:6,c:9},{a:"研修館",b:9,c:12}];
+  let inputtext:string = "";
+  function runSearch(){
+    //名前との完全一致検索 連続部分文字列のほうがいいなら言って
+    let flag = false;
+    for(let i=0; i < items.length ; i++ ){
+      if(inputtext === items.at(i)?.name){
+        location.href= "./circles#"+items.at(i)?.circleId;
+        scrollBy(0,-125);
+        flag=true;
+      }
+    }
+    if(!flag){
+      alert("検索失敗");
+    }
+  }
+
   type Circle = {
       name: string;
       description?: string;
@@ -79,7 +101,31 @@
       selected: boolean;
       selected2: boolean;
       selected3: boolean;
-    };
+  };
+
+    const searchBoxStyle = css`
+    width:400px;
+    height:66px;
+    border-radius:9999px;
+    background-color:white;
+    margin-left:-500px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    padding: 20px 33px;
+    `;
+    const searchBoxImageStyle = css`
+    width:25px;
+    height:25px;
+    `;
+    const textinputStyle= css`
+      height:auto;
+      width:300px;
+      color:#0D3A4F;
+      font-size:1.25rem;
+      font-family: 'Source Han Sans JP';
+      font-style: normal;
+      font-weight: 700;
+      line-height: 29px;
+    `;
     const descStyle = css`
     margin:0 10%;
     font-family: 'Source Han Sans JP';
@@ -125,7 +171,6 @@
     margin-bottom:4px;
     `;
 
-    //ここから下はニュースのページのほぼコピペ(一部弄ったかも)
   const containerStyle = css`
     display: flex;
     flex-direction: column;
@@ -182,14 +227,15 @@
   `, `
     margin: 45px;
   `));
+
   const headStyle = css`
-  width:100%;
-  padding-left:7.5%;
-  font-family: futura-pt, heavy;
-  font-weight: 700;
-  font-size: 3rem;
-  color: #000000;
-  line-height: 77px;
+    width:100%;
+    padding-left:7.5%;
+    font-family: futura-pt, heavy;
+    font-weight: 700;
+    font-size: 3rem;
+    color: #000000;
+    line-height: 77px;
   `;
   
   const listStyle = css`
@@ -237,7 +283,36 @@
       width: 3px;
     };
   `;
-  
+  const arrowStyle2 = css`
+    position: relative;
+    transform: rotate(45deg);
+
+    ${responsive(`
+      width: 17px;
+      height: 17px;
+    `, `
+      width: 15px;
+      height: 15px;
+    `)}
+
+    span {
+      position: absolute;
+      border-radius: 9999px;
+      background-color: ${colors.gray};
+      bottom: 0;
+      right: 0;
+    }
+
+    span:nth-child(1) {
+      height: 3px;
+      width: 100%;
+    };
+
+    span:nth-child(2) {
+      height: 100%;
+      width: 3px;
+    };
+  `;
   const itemMainStyle = css`
     ${responsive(`
       width: 100%;
