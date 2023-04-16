@@ -4,15 +4,16 @@
   <div class={searchBoxStyle}>
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <img src="{base}/img/assets/search.svg" alt="" on:click={runSearch} class={searchBoxImageStyle}>
-  <input bind:value={inputtext} placeholder="検索" class={textinputStyle}>
+  <input bind:value={inputtext} placeholder="検索" class={textinputStyle} on:input={runSearch}>
   </div>
     {#each areaDatas as areaData}
     <div class={floor} >
     <h2 class={headStyle}>{areaData.a}</h2>
     <ul class={listStyle}>
       {#each items.filter((i) => (i.areaId >= areaData.b && i.areaId < areaData.c)) as item }
+        {#if !item.searchFalse}
         <!-- svelte-ignore a11y-click-events-have-key-events -->
-        <li class="{liStyle} {item.selected2 ? liStyle2 : '' }" on:mouseenter={() => { item.selected = true; }} on:mouseleave={() => { item.selected = false; }} id={item.circleId} on:click={() => {
+        <li class=" {liStyle} {item.selected2 ? liStyle2 : '' } " on:mouseenter={() => { item.selected = true; }} on:mouseleave={() => { item.selected = false; }} id={item.circleId} on:click={() => {
           if (item.selected2) {
             item.selected2 = false;
             item.selected3 = false;
@@ -63,6 +64,7 @@
           {/if}
           </div>
         </li>
+        {/if}
       {/each}
     </ul>
     </div>
@@ -77,37 +79,38 @@
   import {
     colors, mobileOnly, pcOnly, responsive,
   } from '$lib/styles/utils';
-  
+  import { tick } from 'svelte';
+
   export let data: PageData;
 
   type Circle = {
       name: string;
-      description?: string;
+      description: string;
       area: string;
       areaId: number;
       circleId: number;
+      tags: string[];
       selected: boolean;
       selected2: boolean;
       selected3: boolean;
+      searchFalse: boolean;
   };
 
   const items = data.items as Circle[];
   const areaDatas = [{ a: '2F', b: 0, c: 3 }, { a: '3F', b: 3, c: 6 }, { a: '4F', b: 6, c: 9 }, { a: '研修館', b: 9, c: 12 }];
   let inputtext = '';
-  function runSearch() {
-    // 名前との完全一致検索 連続部分文字列のほうがいいなら言って
-    let flag = false;
+  async function runSearch(){
     for (let i = 0; i < items.length; i += 1) {
-      if (inputtext === items.at(i)?.name) {
-        location.href = `./circles#${items.at(i)?.circleId}`;
-        scrollBy(0, -125);
-        flag = true;
-      }
+      let flag = false;
+      flag = (items[i].name.indexOf(inputtext) != -1) || (items[i].description.indexOf(inputtext) !=-1) || (items[i].area.indexOf(inputtext) != -1);
+      items[i].searchFalse = !flag;
+      /*
+      console.log(i);
+      console.log(items.at(i)?.searchFalse);
+      */
     }
-    if (!flag) {
-      alert('検索失敗');
-    }
-  }
+    await tick();
+  };
 
   const spanStyle = css`
     :nth-child(1){

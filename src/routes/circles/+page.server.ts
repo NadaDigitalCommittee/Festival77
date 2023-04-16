@@ -14,6 +14,7 @@ export const load = (async () => {
       area: string;
       areaId: number;
       circleId: number;
+      tags: string[];
     };
 
     return {
@@ -22,9 +23,11 @@ export const load = (async () => {
       area: fields.area,
       areaId: fields.areaId,
       circleId: fields.circleId,
+      tags: fields.tags,
       selected: false,
       selected2: false,
       selected3: false,
+      searchFalse: false,
     };
   });
   return {
