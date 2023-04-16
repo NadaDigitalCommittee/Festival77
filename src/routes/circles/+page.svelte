@@ -27,6 +27,7 @@
           <div class={itemStyle} >
             <div class={itemMainStyle}>
               <p class={contentStyle}>{item.name}</p>
+              
               {#if item.areaId >= 9}
               <div class="{bigarea} {ken}">
                 <p class={kousya}>
@@ -77,7 +78,7 @@
   import MakeHead from '$lib/utils/MakeHead.svelte';
   import { css } from '@emotion/css';
   import {
-    colors, mobileOnly, pcOnly, responsive,
+    colors, responsive,
   } from '$lib/styles/utils';
   import { tick } from 'svelte';
 
@@ -99,18 +100,16 @@
   const items = data.items as Circle[];
   const areaDatas = [{ a: '2F', b: 0, c: 3 }, { a: '3F', b: 3, c: 6 }, { a: '4F', b: 6, c: 9 }, { a: '研修館', b: 9, c: 12 }];
   let inputtext = '';
-  async function runSearch(){
+  async function runSearch() {
     for (let i = 0; i < items.length; i += 1) {
       let flag = false;
-      flag = (items[i].name.indexOf(inputtext) != -1) || (items[i].description.indexOf(inputtext) !=-1) || (items[i].area.indexOf(inputtext) != -1);
+      flag = flag || (items[i].name.indexOf(inputtext) !== -1);
+      flag = flag || (items[i].description.indexOf(inputtext) !== -1);
+      flag = flag || (items[i].area.indexOf(inputtext) !== -1);
       items[i].searchFalse = !flag;
-      /*
-      console.log(i);
-      console.log(items.at(i)?.searchFalse);
-      */
     }
     await tick();
-  };
+  }
 
   const spanStyle = css`
     :nth-child(1){
@@ -136,13 +135,17 @@
     margin-top:50px;
     `;
   const searchBoxStyle = css`
-    width:400px;
     height:66px;
     border-radius:9999px;
     background-color:white;
-    margin-left:-500px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
     padding: 20px 33px;
+    ${responsive(`
+      margin-left:-500px;
+      width:400px;
+      `, `
+      width:80%;
+      `)}
     `;
   const searchBoxImageStyle = css`
     width:25px;
@@ -150,7 +153,11 @@
     `;
   const textinputStyle = css`
       height:auto;
-      width:285px;
+      ${responsive(`
+        width:285px;
+        `, `
+        width: calc( 100% - 50px );
+        `)}
       margin-left:15px;
       font-size:1.25rem;
       font-family: "Noto Sans JP";
@@ -177,9 +184,14 @@
     height:80px;
     transition: 0.6s;
     `;
+    // ここ、後でfit-contentなりmax-contentなりを使う実装に直す
   const liStyle2 = css`
     display:flex;
-    height: 250px;
+    ${responsive(`
+        height: 250px;
+      `, `
+        height: 350px;
+      `)}
     transition: 0.6s;
     `;
   const selectedStyle = css`
@@ -193,11 +205,16 @@
     `;
   const bigarea = css`
     margin-top: -3px;
-    width: 11.5%;
     color:white;
     text-align:center;
     border-radius: 20px;
     font-family:"Noto Sans JP";
+    ${responsive(`
+      
+      width: 11.5%;
+      `, `
+      width: 6rem;
+      `)}
     `;
   const tyu = css`background-color: #EA616F;`;
   const kou = css`background-color: #008CCF;`;
@@ -206,6 +223,19 @@
   const kousya = css`
     margin-top:4px;
     margin-bottom:4px;
+    position: relative;
+    ${responsive('', `
+      
+      &::after {
+        content: "";
+        position: absolute;
+        background-color: ${colors.gray};
+        top: 0;
+        left: -10px;
+        width: 3px;
+        height: 100%;
+      }
+      `)}
     `;
 
   const containerStyle = css`
@@ -224,25 +254,17 @@
   const dateStyle = css`
     font-family: "Noto Sans JP", sans-sefif;
     color: ${colors.gray};
-    margin-left:15%;
     ${responsive(`
       font-weight: 700;
       font-size: 1rem;
+      margin-left:15%;
     `, `
       position: relative;
       font-weight: 900;
       font-size: 0.7rem;
       padding: 3px 10px;
-
-      &::after {
-        content: "";
-        position: absolute;
-        background-color: ${colors.gray};
-        top: 0;
-        left: 0;
-        width: 2px;
-        height: 100%;
-      }
+      margin-left:8rem;
+      margin-top:-1.5rem;
     `)}
 
   `;
@@ -301,6 +323,7 @@
     `, `
       width: 15px;
       height: 15px;
+      margin-top:5px;
     `)}
 
     span {
@@ -332,6 +355,7 @@
     `, `
       width: 15px;
       height: 15px;
+      margin-top:5px;
     `)}
 
     span {
@@ -356,7 +380,8 @@
     ${responsive(`
       width: 100%;
       display: flex;
-    `, '')}
+    `, `
+    width: 100%;`)}
   `;
 
   const contentStyle = css`
