@@ -132,7 +132,11 @@
 
   const floor = css`
     width:100%;
-    margin-top:50px;
+    ${responsive(`
+      margin-top:50px;
+      `, `
+      margin-top:20px;
+      `)}
     `;
   const searchBoxStyle = css`
     height:66px;
@@ -213,7 +217,7 @@
       
       width: 11.5%;
       `, `
-      width: 6rem;
+      width: 4.75rem;
       `)}
     `;
   const tyu = css`background-color: #EA616F;`;
@@ -224,8 +228,14 @@
     margin-top:4px;
     margin-bottom:4px;
     position: relative;
-    ${responsive('', `
-      
+    font-family: "Noto Sans JP", sans-sefif;
+    ${responsive(`
+      font-size:1rem;
+      font-weight: 700;
+    `, `
+      font-size:0.7rem;
+      font-weight: 900;
+      padding:4px 0;
       &::after {
         content: "";
         position: absolute;
