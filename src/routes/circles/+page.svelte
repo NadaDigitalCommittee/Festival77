@@ -13,7 +13,7 @@
       {#each items.filter((i) => (i.areaId >= areaData.b && i.areaId < areaData.c)) as item }
         {#if !item.searchFalse}
         <!-- svelte-ignore a11y-click-events-have-key-events -->
-        <li class=" {liStyle} {item.selected2 ? liStyle2 : '' } " on:mouseenter={() => { item.selected = true; }} on:mouseleave={() => { item.selected = false; }} id={item.circleId} on:click={() => {
+        <li class=" {liStyle} {item.selected2 ? liStyle2 : '' } " on:mouseenter={() => { item.selected = true; }} on:mouseleave={() => { item.selected = false; }}  on:click={() => {
           if (item.selected2) {
             item.selected2 = false;
             item.selected3 = false;
@@ -89,7 +89,6 @@
       description: string;
       area: string;
       areaId: number;
-      circleId: number;
       tags: string[];
       selected: boolean;
       selected2: boolean;
@@ -98,6 +97,7 @@
   };
 
   const items = data.items as Circle[];
+  items.sort((a:Circle, b:Circle) => a.areaId - b.areaId);
   const areaDatas = [{ a: '2F', b: 0, c: 3 }, { a: '3F', b: 3, c: 6 }, { a: '4F', b: 6, c: 9 }, { a: '研修館', b: 9, c: 12 }];
   let inputtext = '';
   async function runSearch() {
@@ -106,6 +106,11 @@
       flag = flag || (items[i].name.indexOf(inputtext) !== -1);
       flag = flag || (items[i].description.indexOf(inputtext) !== -1);
       flag = flag || (items[i].area.indexOf(inputtext) !== -1);
+      if (typeof items[i].tags !== 'undefined') {
+        for (let j = 0; j < items[i].tags.length; j += 1) {
+          flag = flag || (items[i].tags[j].indexOf(inputtext) !== -1);
+        }
+      }
       items[i].searchFalse = !flag;
     }
     await tick();
@@ -273,7 +278,7 @@
       font-weight: 900;
       font-size: 0.7rem;
       padding: 3px 10px;
-      margin-left:8rem;
+      margin-left:5rem;
       margin-top:-1.5rem;
     `)}
 
