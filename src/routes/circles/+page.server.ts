@@ -9,10 +9,11 @@ export const load = (async () => {
   const items = data.items.map((item) => {
     const fields = item.fields as {
       name: string;
-      description?: string;
+      description: string;
       area: string;
       tags: string[];
       areaname: string;
+      haslongdesc: boolean
     };
 
     const tables:{[key:string]:number} = {
@@ -39,6 +40,7 @@ export const load = (async () => {
       selected2: false,
       selected3: false,
       searchFalse: false,
+      haslongdesc: fields.haslongdesc,
     };
   });
   return {

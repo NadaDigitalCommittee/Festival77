@@ -13,7 +13,12 @@
       {#each items.filter((i) => (i.areaId >= areaData.b && i.areaId < areaData.c)) as item }
         {#if !item.searchFalse}
         <!-- svelte-ignore a11y-click-events-have-key-events -->
-        <li class=" {liStyle} {item.selected2 ? liStyle2 : '' } " on:mouseenter={() => { item.selected = true; }} on:mouseleave={() => { item.selected = false; }}  on:click={() => {
+        <li class="
+          {liStyle} 
+          {item.selected2 && !item.haslongdesc ? liStyle2 : '' }
+          {item.selected2 && item.haslongdesc && (screensize < 500) ? liStyle21 : '' }
+          {item.selected2 && item.haslongdesc && (screensize >= 500) && (screensize < 600) ? liStyle22 : '' }
+          {item.selected2 && item.haslongdesc && (screensize >= 600) ? liStyle23 : '' }" on:mouseenter={() => { item.selected = true; }} on:mouseleave={() => { item.selected = false; }}  on:click={() => {
           if (item.selected2) {
             item.selected2 = false;
             item.selected3 = false;
@@ -71,6 +76,8 @@
     </div>
     {/each}
 </div>
+
+<svelte:window bind:innerWidth={screensize} />
 <script lang="ts">
   import { base } from '$app/paths';
   import type { PageData } from './$types';
@@ -94,9 +101,11 @@
       selected2: boolean;
       selected3: boolean;
       searchFalse: boolean;
+      haslongdesc: boolean;
   };
 
   const items = data.items as Circle[];
+  let screensize = 0;
   items.sort((a:Circle, b:Circle) => a.areaId - b.areaId);
   const areaDatas = [{ a: '2F', b: 0, c: 3 }, { a: '3F', b: 3, c: 6 }, { a: '4F', b: 6, c: 9 }, { a: '研修館', b: 9, c: 12 }];
   let inputtext = '';
@@ -193,7 +202,7 @@
     height:80px;
     transition: 0.6s;
     `;
-    // ここ、後でfit-contentなりmax-contentなりを使う実装に直す
+    // ここ、後でfit-contentなりmax-contentなりを使う実装に直す...はずだった
   const liStyle2 = css`
     display:flex;
     ${responsive(`
@@ -203,6 +212,35 @@
       `)}
     transition: 0.6s;
     `;
+  const liStyle21 = css`
+    display:flex;
+    ${responsive(`
+        height: 450px;
+      `, `
+        height: 1100px ;
+      `)}
+    transition: 0.6s;
+    `;
+  const liStyle22 = css`
+    display:flex;
+    ${responsive(`
+        height: 450px;
+      `, `
+        height: 900px ;
+      `)}
+    transition: 0.6s;
+    `;
+  
+  const liStyle23 = css`
+    display:flex;
+    ${responsive(`
+        height: 450px;
+      `, `
+        height: 700px ;
+      `)}
+    transition: 0.6s;
+    `;
+
   const selectedStyle = css`
     background-color:#0D3A4FFF;
     transition: 0.6s;
