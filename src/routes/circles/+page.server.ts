@@ -9,13 +9,15 @@ export const load = (async () => {
   const items = data.items.map((item) => {
     const fields = item.fields as {
       name: string;
-      description?: string;
+      description: string;
       area: string;
       tags: string[];
       areaname: string;
+      haslongdesc: boolean
     };
 
     const tables:{[key:string]:number} = {
+      高校棟1F: -2,
       中学棟2F: 0,
       高校棟2F: 1,
       西ゾーン2F: 2,
@@ -28,6 +30,9 @@ export const load = (async () => {
       研修館1F: 9,
       研修館2F: 10,
       研修館3F: 11,
+      第1グラウンド: 12,
+      テニスコート: 13,
+      その他: 14,
     };
     return {
       name: fields.name,
@@ -39,6 +44,7 @@ export const load = (async () => {
       selected2: false,
       selected3: false,
       searchFalse: false,
+      haslongdesc: fields.haslongdesc,
     };
   });
   return {

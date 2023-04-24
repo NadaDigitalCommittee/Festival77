@@ -13,7 +13,12 @@
       {#each items.filter((i) => (i.areaId >= areaData.b && i.areaId < areaData.c)) as item }
         {#if !item.searchFalse}
         <!-- svelte-ignore a11y-click-events-have-key-events -->
-        <li class=" {liStyle} {item.selected2 ? liStyle2 : '' } " on:mouseenter={() => { item.selected = true; }} on:mouseleave={() => { item.selected = false; }}  on:click={() => {
+        <li class="
+          {liStyle} 
+          {item.selected2 && !item.haslongdesc ? liStyle2 : '' }
+          {item.selected2 && item.haslongdesc && (screensize < 500) ? liStyle21 : '' }
+          {item.selected2 && item.haslongdesc && (screensize >= 500) && (screensize < 600) ? liStyle22 : '' }
+          {item.selected2 && item.haslongdesc && (screensize >= 600) ? liStyle23 : '' }" on:mouseenter={() => { item.selected = true; }} on:mouseleave={() => { item.selected = false; }}  on:click={() => {
           if (item.selected2) {
             item.selected2 = false;
             item.selected3 = false;
@@ -28,19 +33,37 @@
             <div class={itemMainStyle}>
               <p class={contentStyle}>{item.name}</p>
               
-              {#if item.areaId >= 9}
+              {#if (item.areaId <= 11) && (item.areaId >= 9)}
               <div class="{bigarea} {ken}">
                 <p class={kousya}>
                   研修館
                 </p>
               </div>
-              {:else if item.areaId % 3 === 0}
+              {:else if item.areaId === 12}
+              <div class="{bigarea} {ken}">
+                <p class={kousya}>
+                  第一<br>グラウンド
+                </p>
+              </div>
+              {:else if item.areaId === 13}
+              <div class="{bigarea} {ken}">
+                <p class={kousya}>
+                  テニス<br>コート
+                </p>
+              </div>
+              {:else if item.areaId === 14}
+              <div class="{bigarea} {ken}">
+                <p class={kousya}>
+                  その他
+                </p>
+              </div>
+              {:else if ((item.areaId % 3) + 3) % 3 === 0}
               <div class="{bigarea} {tyu}">
                 <p class={kousya}>
                   中学棟
                 </p>
               </div>
-              {:else if item.areaId % 3 === 1}
+              {:else if ((item.areaId % 3) + 3) % 3 === 1}
               <div class="{bigarea} {kou}" >
                 <p class={kousya}>
                   高校棟
@@ -71,6 +94,8 @@
     </div>
     {/each}
 </div>
+
+<svelte:window bind:innerWidth={screensize} />
 <script lang="ts">
   import { base } from '$app/paths';
   import type { PageData } from './$types';
@@ -94,11 +119,13 @@
       selected2: boolean;
       selected3: boolean;
       searchFalse: boolean;
+      haslongdesc: boolean;
   };
 
   const items = data.items as Circle[];
+  let screensize = 0;
   items.sort((a:Circle, b:Circle) => a.areaId - b.areaId);
-  const areaDatas = [{ a: '2F', b: 0, c: 3 }, { a: '3F', b: 3, c: 6 }, { a: '4F', b: 6, c: 9 }, { a: '研修館', b: 9, c: 12 }];
+  const areaDatas = [{ a: '1F', b: -3, c: 0 }, { a: '2F', b: 0, c: 3 }, { a: '3F', b: 3, c: 6 }, { a: '4F', b: 6, c: 9 }, { a: '研修館', b: 9, c: 12 }, { a: '第一グラウンド', b: 12, c: 13 }, { a: 'その他', b: 13, c: 15 }];
   let inputtext = '';
   async function runSearch() {
     for (let i = 0; i < items.length; i += 1) {
@@ -193,7 +220,7 @@
     height:80px;
     transition: 0.6s;
     `;
-    // ここ、後でfit-contentなりmax-contentなりを使う実装に直す
+    // ここ、後でfit-contentなりmax-contentなりを使う実装に直す...はずだった
   const liStyle2 = css`
     display:flex;
     ${responsive(`
@@ -203,6 +230,35 @@
       `)}
     transition: 0.6s;
     `;
+  const liStyle21 = css`
+    display:flex;
+    ${responsive(`
+        height: 450px;
+      `, `
+        height: 1100px ;
+      `)}
+    transition: 0.6s;
+    `;
+  const liStyle22 = css`
+    display:flex;
+    ${responsive(`
+        height: 450px;
+      `, `
+        height: 900px ;
+      `)}
+    transition: 0.6s;
+    `;
+  
+  const liStyle23 = css`
+    display:flex;
+    ${responsive(`
+        height: 450px;
+      `, `
+        height: 700px ;
+      `)}
+    transition: 0.6s;
+    `;
+
   const selectedStyle = css`
     background-color:#0D3A4FFF;
     transition: 0.6s;
