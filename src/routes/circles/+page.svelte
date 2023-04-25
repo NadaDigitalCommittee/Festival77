@@ -15,10 +15,7 @@
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <li class="
           {liStyle} 
-          {item.selected2 && !item.haslongdesc ? liStyle2 : '' }
-          {item.selected2 && item.haslongdesc && (screensize < 500) ? liStyle21 : '' }
-          {item.selected2 && item.haslongdesc && (screensize >= 500) && (screensize < 600) ? liStyle22 : '' }
-          {item.selected2 && item.haslongdesc && (screensize >= 600) ? liStyle23 : '' }" on:mouseenter={() => { item.selected = true; }} on:mouseleave={() => { item.selected = false; }}  on:click={() => {
+          {item.selected2 ? liStyle2 : '' }" on:mouseenter={() => { item.selected = true; }} on:mouseleave={() => { item.selected = false; }}  on:click={() => {
           if (item.selected2) {
             item.selected2 = false;
             item.selected3 = false;
@@ -40,15 +37,15 @@
                 </p>
               </div>
               {:else if item.areaId === 12}
-              <div class="{bigarea} {ken}">
+              <div class="{bigarea} {wide}">
                 <p class={kousya}>
-                  第一<br>グラウンド
+                  第一グラウンド
                 </p>
               </div>
               {:else if item.areaId === 13}
-              <div class="{bigarea} {ken}">
+              <div class="{bigarea} {wide}">
                 <p class={kousya}>
-                  テニス<br>コート
+                  テニスコート
                 </p>
               </div>
               {:else if item.areaId === 14}
@@ -83,8 +80,8 @@
               <span class={item.selected ? spanStyle : spanStyle2}/>
             </div>
           </div>
-          {#if item.selected3}
-          <p class={descStyle}>{item.description}</p>
+          {#if item.selected2}
+          <p class=" {descStyle} " >{item.description}</p>
           {/if}
           </div>
         </li>
@@ -119,7 +116,6 @@
       selected2: boolean;
       selected3: boolean;
       searchFalse: boolean;
-      haslongdesc: boolean;
   };
 
   const items = data.items as Circle[];
@@ -206,6 +202,8 @@
     `;
   const descStyle = css`
     margin:0 10%;
+    padding-top:20px;
+    padding-bottom:30px;
     font-family: "Noto Sans JP";
     font-style: normal;
     font-weight: 700;
@@ -218,54 +216,26 @@
   const liStyle = css`
     display:flex;
     height:80px;
-    transition: 0.6s;
+    transition:all 0.6s;
+    color:#000000FF;
     `;
     // ここ、後でfit-contentなりmax-contentなりを使う実装に直す...はずだった
   const liStyle2 = css`
     display:flex;
-    ${responsive(`
-        height: 250px;
-      `, `
-        height: 350px;
-      `)}
-    transition: 0.6s;
-    `;
-  const liStyle21 = css`
-    display:flex;
-    ${responsive(`
-        height: 450px;
-      `, `
-        height: 1100px ;
-      `)}
-    transition: 0.6s;
-    `;
-  const liStyle22 = css`
-    display:flex;
-    ${responsive(`
-        height: 450px;
-      `, `
-        height: 900px ;
-      `)}
-    transition: 0.6s;
-    `;
-  
-  const liStyle23 = css`
-    display:flex;
-    ${responsive(`
-        height: 450px;
-      `, `
-        height: 700px ;
-      `)}
+    overflow: hidden;
+    height:fit-content;
     transition: 0.6s;
     `;
 
   const selectedStyle = css`
-    background-color:#0D3A4FFF;
+    width:2%;
+    height: 80px;
+    background-color:#0D3A4F;
     transition: 0.6s;
     `;
   const unselectedStyle = css`
     width:2%;
-    height: 100%;
+    height: 80px;
     transition: 0.6s;
     `;
   const bigarea = css`
@@ -285,6 +255,16 @@
   const kou = css`background-color: #008CCF;`;
   const nisi = css`background-color: #F5A21B;`;
   const ken = css`background-color: #C2D95C;`;
+  const wide = css`
+  background-color: #C2D95C;
+  ${responsive(`
+      
+      width: 15%;
+      `, `
+      width: 7rem;
+      `)}
+    
+  `;
   const kousya = css`
     margin-top:4px;
     margin-bottom:4px;
@@ -334,7 +314,7 @@
       font-weight: 900;
       font-size: 0.7rem;
       padding: 3px 10px;
-      margin-left:5rem;
+      margin-left:8rem;
       margin-top:-1.5rem;
     `)}
 
@@ -458,14 +438,16 @@
   const contentStyle = css`
     font-family: "Noto Sans JP", sans-serif;
     color: ${colors.black};
-    width:40%;
+    
     ${responsive(`
       font-weight: 700;
       font-size: 1.25rem;
+      width:40%;
     `, `
       font-weight: 900;
       font-size: 1rem;
       margin-bottom: 10px;
+      width:60%;
     `)}
   `;
 </script>

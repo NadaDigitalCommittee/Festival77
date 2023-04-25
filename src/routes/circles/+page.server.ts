@@ -13,7 +13,6 @@ export const load = (async () => {
       area: string;
       tags: string[];
       areaname: string;
-      haslongdesc: boolean
     };
 
     const tables:{[key:string]:number} = {
@@ -44,7 +43,6 @@ export const load = (async () => {
       selected2: false,
       selected3: false,
       searchFalse: false,
-      haslongdesc: fields.haslongdesc,
     };
   });
   return {
