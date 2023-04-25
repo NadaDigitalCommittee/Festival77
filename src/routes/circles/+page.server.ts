@@ -6,13 +6,19 @@ export const load = (async () => {
     content_type: 'circles',
     select: 'fields',
   });
+  type book = {
+    sys:{
+      id:string;
+    };
+  };
   const items = data.items.map((item) => {
     const fields = item.fields as {
       name: string;
       description: string;
       area: string;
-      tags: string[];
+      tags?: string[];
       areaname: string;
+      allbooks?:book[];
     };
 
     const tables:{[key:string]:number} = {
@@ -43,9 +49,32 @@ export const load = (async () => {
       selected2: false,
       selected3: false,
       searchFalse: false,
+      booksid: fields.allbooks,
     };
   });
+  
+  const data2 = await client.getEntries({
+    content_type: 'books',
+    select: 'fields',
+  });
+  const books = data2.items.map((item) => {
+    const fields = item.fields as{
+      title:string;
+    };
+    const syss = item.sys as{
+      id: string; 
+    };
+    return {
+      id: syss.id,
+      title: fields.title,
+    }
+  });
+  type bookdatadict ={[key:string]:string};
+  let dict:bookdatadict={};
+  for(let i = 0;i< books.length;i += 1){
+    dict[books[i].id]=books[i].title;
+  }
   return {
-    items,
+    items,dict,
   };
 }) satisfies PageServerLoad;

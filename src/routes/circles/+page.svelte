@@ -83,6 +83,12 @@
           {#if item.selected2}
           <p class=" {descStyle} " >{item.description}</p>
           {/if}
+          {#if typeof item.booksid !== 'undefined'}
+          {#each item.booksid as eachbook}
+            <p>{eachbook.sys.id}</p>
+            <p>{books[eachbook.sys.id]}</p>
+          {/each}
+          {/if}
           </div>
         </li>
         {/if}
@@ -106,24 +112,34 @@
 
   export let data: PageData;
 
+  type book = {
+    sys:{
+      id:string;
+    };
+  };
   type Circle = {
       name: string;
       description: string;
       area: string;
       areaId: number;
-      tags: string[];
+      tags?: string[];
       selected: boolean;
       selected2: boolean;
       selected3: boolean;
       searchFalse: boolean;
+      booksid:book[];
   };
+  type bookdata ={[key:string]:string};
 
+  const books = data.dict as bookdata;
   const items = data.items as Circle[];
   let screensize = 0;
   items.sort((a:Circle, b:Circle) => a.areaId - b.areaId);
   const areaDatas = [{ a: '1F', b: -3, c: 0 }, { a: '2F', b: 0, c: 3 }, { a: '3F', b: 3, c: 6 }, { a: '4F', b: 6, c: 9 }, { a: '研修館', b: 9, c: 12 }, { a: '第一グラウンド', b: 12, c: 13 }, { a: 'その他', b: 13, c: 15 }];
   let inputtext = '';
   async function runSearch() {
+    console.log(items);
+    console.log(books);
     for (let i = 0; i < items.length; i += 1) {
       let flag = false;
       flag = flag || (items[i].name.indexOf(inputtext) !== -1);
