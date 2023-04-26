@@ -6,6 +6,7 @@
       <Item {item}></Item>
     {/each}
   </div>
+  <Request/>
 </div>
 
 <script lang="ts">
@@ -13,9 +14,20 @@
   import MakeHead from '$lib/utils/MakeHead.svelte';
   import Title from '$lib/utils/Title.svelte';
   import Item, { type DownloadItem } from '$lib/download/Item.svelte';
+  import Request from '$lib/download/Request.svelte';
   import { responsive } from '$lib/styles/utils';
 
   const items: DownloadItem[] = [
+    {
+      name: 'パンフレット',
+      file: 'pamphlet.pdf',
+      size: '?.?MB',
+    },
+    {
+      name: '校内マップ',
+      file: 'map.pdf',
+      size: '?.?MB',
+    },
     {
       name: 'パンフレット',
       file: 'pamphlet.pdf',
@@ -34,8 +46,8 @@
     align-items: center;
 
     ${responsive(`
-      width: 740px;
-      margin-left: calc(50% - 370px);
+      width: 1050px;
+      margin-left: calc(50% - 525px);
       margin-top: 100px;
       margin-bottom: 100px;
     `, `
@@ -52,6 +64,7 @@
 
     ${responsive(`
       margin-top: 90px;
+      flex-wrap: wrap;
       justify-content: space-between;
     `, `
       margin-top: 50px;
