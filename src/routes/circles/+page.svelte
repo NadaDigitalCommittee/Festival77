@@ -80,7 +80,8 @@
           {#if typeof item.booksid !== 'undefined'}
           {#each item.booksid as eachbook}
             <p>{eachbook.sys.id}</p>
-            <p>{books[eachbook.sys.id]}</p>
+            <a href="{books[eachbook.sys.id].link}" target="_blank">{books[eachbook.sys.id].link}</a>
+            <img src={books[eachbook.sys.id].image.file.url} >
           {/each}
           {/if}
           </div>
@@ -123,8 +124,9 @@
       searchFalse: boolean;
       booksid:book[];
   };
-  type bookdata ={[key:string]:string};
-
+  type bookdata ={[key:string]:{title:string; link:string;image:{title:string;file:{url:string;};};}};
+  type youtubedata = {[key:string]:{title:string;youtubeId:string;};};
+  const youtubes = data.youtubedict as youtubedata;
   const books = data.dict as bookdata;
   const items = data.items as Circle[];
   let screensize = 0;

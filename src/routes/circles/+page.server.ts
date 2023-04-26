@@ -52,29 +52,96 @@ export const load = (async () => {
       booksid: fields.allbooks,
     };
   });
-  
+
   const data2 = await client.getEntries({
     content_type: 'books',
     select: 'fields',
   });
+
+  const assets = data2.includes.Asset as {
+    sys: {
+      id: string;
+    };
+    fields: {
+      title: string;
+      file: {
+        url: string;
+      };
+    };
+  }[];
+
   const books = data2.items.map((item) => {
     const fields = item.fields as{
       title:string;
+      thumbnail: {
+        sys: {
+          id: string;
+        };
+      };
+      link:string;
     };
     const syss = item.sys as{
-      id: string; 
+      id: string;
+    };
+    const image = assets.find((asset) => asset.sys.id === fields.thumbnail?.sys.id)?.fields;
+    return {
+      id: syss.id,
+      title: fields.title,
+      link: fields.link,
+      image,
+    };
+  });
+  type bookdatadict ={[key:string]:{
+    title:string;
+    link:string;
+    image:{
+      title:string;
+      file:{
+        url:string;
+      };
+    };
+  }};
+  const dict:bookdatadict = {};
+  for (let i = 0; i < books.length; i += 1) {
+    dict[books[i].id] = {
+      title: books[i].title,
+      link: books[i].link,
+      image: {
+        title: books[i].image.title,
+        file: { url: books[i].image.file.url },
+      },
+    };
+  }
+  const data3 = await client.getEntries({
+    content_type: 'movies',
+    select: 'fields',
+  });
+  const movies = data3.items.map((item) => {
+    const fields = item.fields as {
+      title:string;
+      youtubeId:string;
+    };
+    const syss = item.sys as {
+      id:string;
     };
     return {
       id: syss.id,
       title: fields.title,
-    }
+      youtubeId: fields.youtubeId,
+    };
   });
-  type bookdatadict ={[key:string]:string};
-  let dict:bookdatadict={};
-  for(let i = 0;i< books.length;i += 1){
-    dict[books[i].id]=books[i].title;
+  type youtubedatadict = {[key:string]:{
+    title:string;
+    youtubeId:string;
+  }};
+  const youtubedict :youtubedatadict = {};
+  for (let i = 0; i < movies.length; i += 1) {
+    youtubedict[movies[i].id] = {
+      title: movies[i].title,
+      youtubeId: movies[i].youtubeId,
+    };
   }
   return {
-    items,dict,
+    items, dict, youtubedict,
   };
 }) satisfies PageServerLoad;
