@@ -78,16 +78,18 @@
           <p class=" {descStyle} " >{item.description}</p>
           {#if typeof item.booksid !== 'undefined'}
           {#each item.booksid as eachbook}
-            <p>idは{eachbook.sys.id}</p>
             <p>タイトルは{books[eachbook.sys.id].title}</p>
-            <a href="{books[eachbook.sys.id].link}" target="_blank"><img src={books[eachbook.sys.id].image.file.url} ></a>
+            <a href="{books[eachbook.sys.id].link}" target="_blank">
+              <img src={books[eachbook.sys.id].image.file.url} >
+            </a>
           {/each}
           {/if}
           {#if typeof item.moviesid !== 'undefined'}
           {#each item.moviesid as eachmovie}
-            <p>idは{eachmovie.sys.id}</p>
             <p>タイトルは{youtubes[eachmovie.sys.id].title}</p>
-            <a href="//youtu.be/{youtubes[eachmovie.sys.id].youtubeId}" target="_blank"><img src="//img.youtube.com/vi/{youtubes[eachmovie.sys.id].youtubeId}/default.jpg" alt=""></a>
+            <a href="//youtu.be/{youtubes[eachmovie.sys.id].youtubeId}" target="_blank">
+              <img src="//img.youtube.com/vi/{youtubes[eachmovie.sys.id].youtubeId}/default.jpg" alt="">
+            </a>
           {/each}
           {/if}
           {/if}
@@ -111,7 +113,6 @@
     colors, responsive,
   } from '$lib/styles/utils';
   import { tick } from 'svelte';
-    import { id } from 'date-fns/locale';
 
   export let data: PageData;
 
