@@ -4,12 +4,13 @@
         <p class = {Title1}><span class={Spaces}>第<span class = {Sevens}>77</span></span>回灘校文化祭</p>
         <p class= {Title2}>77th NADA School Festival</p>
     </div>
-    <img src="{base}/img/logos/logo-standard.svg" alt="ロゴ" class={Logo}>     
+    <img src="{base}/img/logos/logo-standard.svg" alt="ロゴ" class={Logo}>
     <div class={Days}>
         <p class={YYYY}>2023</p>
         <p class={MMDD}>05.02 <span class={Youbi}>Tue</span></p>
         <img src="{base}/img/assets/yajirusi.svg" class={Yajirusi} alt="">
         <p class={MMDD}>05.03 <span class={Youbi}>Wed</span></p>
+        <p class={Time}>9:00-15:00</p>
     </div>
     <img src="{base}/img/assets/scroll-down.svg" class={Scroll} alt="">
     <img src="{base}/img/assets/sc-d2.svg" class={Scroll2} alt="" on:click={scrollDown}>
@@ -19,7 +20,7 @@
 <script lang="ts">
     import { base } from '$app/paths';
     import { css, keyframes } from '@emotion/css';
-    
+
     let height: number;
     const scrollDown = () => {
       window.scroll({
@@ -89,6 +90,12 @@
     const Yajirusi = css`
     padding-left: 25%;
     height:1.5%;
+    `;
+    const Time = css`
+    font-size: 1.5rem;
+    padding-left: 0.8rem;
+    border-left: #FFFFFF 5px solid;
+    margin-top: 5px;
     `;
     const rt = keyframes`
     0% {
