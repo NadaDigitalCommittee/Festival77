@@ -52,6 +52,8 @@ export const load = (async () => {
       searchFalse: false,
       booksid: fields.allbooks,
       moviesid: fields.movies,
+      bookselected: false,
+      movieselected: false,
     };
   });
 

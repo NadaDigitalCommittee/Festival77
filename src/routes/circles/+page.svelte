@@ -15,21 +15,20 @@
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <li class="
           {liStyle} 
-          {item.selected2 ? liStyle2 : '' }" on:mouseenter={() => { item.selected = true; }} on:mouseleave={() => { item.selected = false; }}  on:click={() => {
-          if (item.selected2) {
-            item.selected2 = false;
-            item.selected3 = false;
-          } else {
-            item.selected2 = true;
-            setTimeout(() => { item.selected3 = item.selected2 && true; }, 800);
-          }
-          } }>
+          {item.selected2 ? liStyle2 : '' }" on:mouseenter={() => { item.selected = true; }} on:mouseleave={() => { item.selected = false; }}  >
           <div class="{unselectedStyle} {item.selected ? selectedStyle : '' }"/>
           <div class={boxStyle}>
-          <div class={itemStyle} >
+          <div class={itemStyle} on:click={() => {
+            if (item.selected2) {
+              item.selected2 = false;
+              item.selected3 = false;
+            } else {
+              item.selected2 = true;
+              setTimeout(() => { item.selected3 = item.selected2 && true; }, 800);
+            }
+            } }>
             <div class={itemMainStyle}>
               <p class={contentStyle}>{item.name}</p>
-              
               {#if (item.areaId <= 11) && (item.areaId >= 9)}
               <div class="{bigarea} {ken}">
                 <p class={kousya}>
@@ -76,12 +75,13 @@
           </div>
           {#if item.selected2}
           <p class=" {descStyle} " >{item.description}</p>
+          <!-- ここ、コンポーネント化して分離する -->
           {#if typeof item.booksid !== 'undefined'}
           {#each item.booksid as eachbook}
-            <p>タイトルは{books[eachbook.sys.id].title}</p>
             <a href="{books[eachbook.sys.id].link}" target="_blank">
               <img src={books[eachbook.sys.id].image.file.url} >
             </a>
+            <p>タイトルは{books[eachbook.sys.id].title}</p>
           {/each}
           {/if}
           {#if typeof item.moviesid !== 'undefined'}
@@ -473,4 +473,18 @@
       width:60%;
     `)}
   `;
+
+  // 5/1にでも公開しようかと思う
+  // eslint-disable-next-line max-len
+  // console.log("デザイン開始が11月、デザイン納品期限が1/31のはずなのに期限から約3か月遅らせて公開予定日の1週間前にデザインを完成させた上で、実装にケチを多々つけてくるデザイン課の無能共は万死に値する");
+  // console.log("デザイン用ソフトウェアにドラッグ&ドロップしたら勝手に実装されるとでも思っているのか?");
+  // console.log("これまでの体育祭等のイベント(最悪の時は公開当日早朝にデザイン変更があった)からちっとも変わってないな")
+  // console.log("こっちも学業に部用のプロジェクトにとやることがあるんじゃ デザイン課のオナニーになんか付き合ってられねーよカスがよぉ");
+  // console.log("聞くところによると他の部のポスターでも部の責任者への聞き取りなしで解釈違いの地雷ポスターを量産して、挙句の果てには著作権侵害までしたらしいじゃないか");
+  // console.log("umdとtksmは後輩育成ちゃんとしてるのか?");
+  // console.log("ディベート部ではいかにオナニーを他人に押し付ける方法でも教えてるのか?");
+  // console.log("最近超有名になったあの人は違うと信じたいが、同じ血が流れてるなら無理だろうな");
+  // eslint-disable-next-line max-len
+  // console.log("ところで、生徒会下部組織デジタル委員会情報システム部では私たちのような土方をいつでも募集しています。報酬もやりがいもありませんが、鬱と役職名を与えることは可能です。また、常時狂気駆動で開発できる人間がいないとこのようなサイトを維持することは不可能です");
+  // console.log("さあ、あなたも https://digital.nada-sc.jp/ からデジタル委員になろう! というかなれ");
 </script>
