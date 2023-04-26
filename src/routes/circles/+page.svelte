@@ -76,13 +76,20 @@
           </div>
           {#if item.selected2}
           <p class=" {descStyle} " >{item.description}</p>
-          {/if}
           {#if typeof item.booksid !== 'undefined'}
           {#each item.booksid as eachbook}
-            <p>{eachbook.sys.id}</p>
-            <a href="{books[eachbook.sys.id].link}" target="_blank">{books[eachbook.sys.id].link}</a>
-            <img src={books[eachbook.sys.id].image.file.url} >
+            <p>idは{eachbook.sys.id}</p>
+            <p>タイトルは{books[eachbook.sys.id].title}</p>
+            <a href="{books[eachbook.sys.id].link}" target="_blank"><img src={books[eachbook.sys.id].image.file.url} ></a>
           {/each}
+          {/if}
+          {#if typeof item.moviesid !== 'undefined'}
+          {#each item.moviesid as eachmovie}
+            <p>idは{eachmovie.sys.id}</p>
+            <p>タイトルは{youtubes[eachmovie.sys.id].title}</p>
+            <a href="//youtu.be/{youtubes[eachmovie.sys.id].youtubeId}" target="_blank"><img src="//img.youtube.com/vi/{youtubes[eachmovie.sys.id].youtubeId}/default.jpg" alt=""></a>
+          {/each}
+          {/if}
           {/if}
           </div>
         </li>
@@ -104,10 +111,11 @@
     colors, responsive,
   } from '$lib/styles/utils';
   import { tick } from 'svelte';
+    import { id } from 'date-fns/locale';
 
   export let data: PageData;
 
-  type book = {
+  type relation = {
     sys:{
       id:string;
     };
@@ -122,7 +130,8 @@
       selected2: boolean;
       selected3: boolean;
       searchFalse: boolean;
-      booksid:book[];
+      booksid:relation[];
+      moviesid:relation[];
   };
   type bookdata ={[key:string]:{title:string; link:string;image:{title:string;file:{url:string;};};}};
   type youtubedata = {[key:string]:{title:string;youtubeId:string;};};
@@ -131,7 +140,7 @@
   const items = data.items as Circle[];
   let screensize = 0;
   items.sort((a:Circle, b:Circle) => a.areaId - b.areaId);
-  const areaDatas = [{ a: '1F', b: -3, c: 0 }, { a: '2F', b: 0, c: 3 }, { a: '3F', b: 3, c: 6 }, { a: '4F', b: 6, c: 9 }, { a: '研修館', b: 9, c: 12 }, { a: '第1グラウンド', b: 12, c: 13 }, { a: 'その他', b: 13, c: 15 }];
+  const areaDatas = [{ a: '2F', b: 0, c: 3 }, { a: '3F', b: 3, c: 6 }, { a: '4F', b: 6, c: 9 }, { a: '研修館', b: 9, c: 12 }, { a: '第1グラウンド', b: 12, c: 13 }, { a: 'その他', b: 13, c: 15 }];
   let inputtext = '';
   async function runSearch() {
     console.log(items);

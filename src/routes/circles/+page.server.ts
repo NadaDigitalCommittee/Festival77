@@ -6,7 +6,7 @@ export const load = (async () => {
     content_type: 'circles',
     select: 'fields',
   });
-  type book = {
+  type relation = {
     sys:{
       id:string;
     };
@@ -18,7 +18,8 @@ export const load = (async () => {
       area: string;
       tags?: string[];
       areaname: string;
-      allbooks?:book[];
+      allbooks?:relation[];
+      movies?:relation[];
     };
 
     const tables:{[key:string]:number} = {
@@ -50,6 +51,7 @@ export const load = (async () => {
       selected3: false,
       searchFalse: false,
       booksid: fields.allbooks,
+      moviesid: fields.movies,
     };
   });
 
@@ -113,7 +115,7 @@ export const load = (async () => {
     };
   }
   const data3 = await client.getEntries({
-    content_type: 'movies',
+    content_type: 'youtube',
     select: 'fields',
   });
   const movies = data3.items.map((item) => {
