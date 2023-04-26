@@ -37,19 +37,13 @@
                 </p>
               </div>
               {:else if item.areaId === 12}
-              <div class="{bigarea} {wide}">
+              <div class="{bigarea} {wide1g}">
                 <p class={kousya}>
-                  第一グラウンド
-                </p>
-              </div>
-              {:else if item.areaId === 13}
-              <div class="{bigarea} {wide}">
-                <p class={kousya}>
-                  テニスコート
+                  第1グラウンド
                 </p>
               </div>
               {:else if item.areaId === 14}
-              <div class="{bigarea} {ken}">
+              <div class="{bigarea} {other}">
                 <p class={kousya}>
                   その他
                 </p>
@@ -135,7 +129,7 @@
   const items = data.items as Circle[];
   let screensize = 0;
   items.sort((a:Circle, b:Circle) => a.areaId - b.areaId);
-  const areaDatas = [{ a: '1F', b: -3, c: 0 }, { a: '2F', b: 0, c: 3 }, { a: '3F', b: 3, c: 6 }, { a: '4F', b: 6, c: 9 }, { a: '研修館', b: 9, c: 12 }, { a: '第一グラウンド', b: 12, c: 13 }, { a: 'その他', b: 13, c: 15 }];
+  const areaDatas = [{ a: '1F', b: -3, c: 0 }, { a: '2F', b: 0, c: 3 }, { a: '3F', b: 3, c: 6 }, { a: '4F', b: 6, c: 9 }, { a: '研修館', b: 9, c: 12 }, { a: '第1グラウンド', b: 12, c: 13 }, { a: 'その他', b: 13, c: 15 }];
   let inputtext = '';
   async function runSearch() {
     console.log(items);
@@ -271,8 +265,9 @@
   const kou = css`background-color: #008CCF;`;
   const nisi = css`background-color: #F5A21B;`;
   const ken = css`background-color: #C2D95C;`;
-  const wide = css`
-  background-color: #C2D95C;
+  const other = css`background-color: #555555;`;
+  const wide1g = css`
+  background-color: #69B557;
   ${responsive(`
       
       width: 15%;
