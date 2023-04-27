@@ -8,7 +8,7 @@
   </div>
     {#each areaDatas as areaData}
     <div class={floor} >
-    <h2 class="{headStyle} {areaData.d ? smaller : ''}">{areaData.a}</h2>
+    <h2 class="{areaData.d ? smaller : headStyle }">{areaData.a}</h2>
     <ul class={listStyle}>
       {#each items.filter((i) => (i.areaId >= areaData.b && i.areaId < areaData.c)) as item }
         {#if !item.searchFalse}
@@ -158,7 +158,13 @@
   }
 
   const smaller = css`
-    font-size:2.5rem;
+    width:100%;
+    padding-left:7.5%;
+    font-family: futura-pt-bold, "Noto Sans JP";
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: #000000;
+    line-height: 77px;
   `;
   const insidebox = css`
     margin:0% 10% 5%;
