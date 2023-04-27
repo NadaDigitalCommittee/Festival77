@@ -77,20 +77,14 @@
           <p class=" {descStyle} " >{item.description}</p>
           <!-- ここ、コンポーネント化して分離する -->
           {#if typeof item.booksid !== 'undefined'}
-          {#each item.booksid as eachbook}
-            <a href="{books[eachbook.sys.id].link}" target="_blank">
-              <img src={books[eachbook.sys.id].image.file.url} >
-            </a>
-            <p>タイトルは{books[eachbook.sys.id].title}</p>
-          {/each}
+          <div class={insidebox}>
+            <Busi id={item.booksid} books={books}/>
+          </div>
           {/if}
           {#if typeof item.moviesid !== 'undefined'}
-          {#each item.moviesid as eachmovie}
-            <p>タイトルは{youtubes[eachmovie.sys.id].title}</p>
-            <a href="//youtu.be/{youtubes[eachmovie.sys.id].youtubeId}" target="_blank">
-              <img src="//img.youtube.com/vi/{youtubes[eachmovie.sys.id].youtubeId}/default.jpg" alt="">
-            </a>
-          {/each}
+          <div class={insidebox}>
+            <Movie id={item.moviesid} youtubes={youtubes} />
+          </div>
           {/if}
           {/if}
           </div>
@@ -113,7 +107,8 @@
     colors, responsive,
   } from '$lib/styles/utils';
   import { tick } from 'svelte';
-
+  import Busi from '$lib/circles/busi.svelte';
+  import Movie from '$lib/circles/movie.svelte';
   export let data: PageData;
 
   type relation = {
@@ -160,6 +155,11 @@
     }
     await tick();
   }
+
+  const insidebox = css`
+    margin:2% 10%;
+    width:80%;
+  `;
 
   const spanStyle = css`
     :nth-child(1){
@@ -478,13 +478,12 @@
   // eslint-disable-next-line max-len
   // console.log("デザイン開始が11月、デザイン納品期限が1/31のはずなのに期限から約3か月遅らせて公開予定日の1週間前にデザインを完成させた上で、実装にケチを多々つけてくるデザイン課の無能共は万死に値する");
   // console.log("デザイン用ソフトウェアにドラッグ&ドロップしたら勝手に実装されるとでも思っているのか?");
-  // console.log("これまでの体育祭等のイベント(最悪の時は公開当日早朝にデザイン変更があった)からちっとも変わってないな")
-  // console.log("こっちも学業に部用のプロジェクトにとやることがあるんじゃ デザイン課のオナニーになんか付き合ってられねーよカスがよぉ");
+  // console.log("これまでの体育祭等のイベント(最悪の時は公開当日早朝にデザイン変更があった)のときからちっとも変わってないな")
+  // console.log("こっちも学業に部用のプロジェクトに競プロに資格にとやることがあるんじゃ(最後の二つは諦めざるを得なかった　さよなら、俺のネスぺ試験受験料7500円+参考書約3000円……) デザイン課のオナニーになんか付き合ってられねーよカスがよぉ");
   // console.log("聞くところによると他の部のポスターでも部の責任者への聞き取りなしで解釈違いの地雷ポスターを量産して、挙句の果てには著作権侵害までしたらしいじゃないか");
   // console.log("umdとtksmは後輩育成ちゃんとしてるのか?");
   // console.log("ディベート部ではいかにオナニーを他人に押し付ける方法でも教えてるのか?");
-  // console.log("最近超有名になったあの人は違うと信じたいが、同じ血が流れてるなら無理だろうな");
   // eslint-disable-next-line max-len
-  // console.log("ところで、生徒会下部組織デジタル委員会情報システム部では私たちのような土方をいつでも募集しています。報酬もやりがいもありませんが、鬱と役職名を与えることは可能です。また、常時狂気駆動で開発できる人間がいないとこのようなサイトを維持することは不可能です");
-  // console.log("さあ、あなたも https://digital.nada-sc.jp/ からデジタル委員になろう! というかなれ");
+  // console.log("ところで、生徒会下部組織デジタル委員会情報システム部では私たちのようなIT奴隷をいつでも募集しています。報酬もやりがいもありませんが、精神病と役職名と慢性的な睡眠不足を与えることは可能です。また、狂気駆動で開発できる人間がいないとこのようなサイトを維持することは不可能です");
+  // console.log("さあ、あなたも https://digital.nada-sc.jp/ からデジタル委員になろう! というかなれよ");
 </script>
