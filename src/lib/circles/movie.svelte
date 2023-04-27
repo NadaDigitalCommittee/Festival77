@@ -71,7 +71,7 @@
       margin-left:6%;
     }
     p{
-      width:75%;
+      ${responsive('width:80%;', 'width:70%;')}
     }
   `;
   const each = css`
@@ -95,13 +95,13 @@
   `;
 
   const selectedStyle = css`
-    width:2.5%;
+    width:2.6%;
     height: 100%;
     background-color:#0D3A4F;
     transition: 0.6s;
     `;
   const unselectedStyle = css`
-    width:2.5%;
+    width:2.6%;
     height: 100%;
     transition: 0.6s;
     `;

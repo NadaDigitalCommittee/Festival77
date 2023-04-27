@@ -82,7 +82,7 @@
           </div>
           {/if}
           {#if typeof item.moviesid !== 'undefined'}
-          <div class={insidebox}>
+          <div class="{insidebox} {moviebox}">
             <Movie id={item.moviesid} youtubes={youtubes} />
           </div>
           {/if}
@@ -137,11 +137,21 @@
   const items = data.items as Circle[];
   let screensize = 0;
   items.sort((a:Circle, b:Circle) => a.areaId - b.areaId);
-  const areaDatas = [{ a: '2F', b: 0, c: 3, d: false }, { a: '3F', b: 3, c: 6, d: false }, { a: '4F', b: 6, c: 9, d: false}, { a: '研修館', b: 9, c: 12, d: true}, { a: '第1グラウンド', b: 12, c: 13, d: true}, { a: 'その他', b: 13, c: 15, d: true}];
+  const areaDatas = [{
+    a: '2F', b: 0, c: 3, d: false,
+  }, {
+    a: '3F', b: 3, c: 6, d: false,
+  }, {
+    a: '4F', b: 6, c: 9, d: false,
+  }, {
+    a: '研修館', b: 9, c: 12, d: true,
+  }, {
+    a: '第1グラウンド', b: 12, c: 13, d: true,
+  }, {
+    a: 'その他', b: 13, c: 15, d: true,
+  }];
   let inputtext = '';
   async function runSearch() {
-    console.log(items);
-    console.log(books);
     for (let i = 0; i < items.length; i += 1) {
       let flag = false;
       flag = flag || (items[i].name.indexOf(inputtext) !== -1);
@@ -167,10 +177,12 @@
     line-height: 77px;
   `;
   const insidebox = css`
-    margin:0% 10% 5%;
+    margin:0% 10% 3%;
     width:80%;
   `;
-
+  const moviebox = css`
+  margin-bottom: 10%;
+  `;
   const spanStyle = css`
     :nth-child(1){
     background-color: #0d3a4f;
@@ -483,12 +495,14 @@
       font-weight: 900;
       font-size: 1rem;
       margin-bottom: 10px;
-      width:60%;
+      width:80%;
     `)}
   `;
 
-  //console.log("おっ、コンソール欄を開くとは珍しいですね");
-  //console.log("生徒会補助組織デジタル委員会情報システム部では私たちのようなIT奴隷をいつでも募集しています。報酬はありませんが、やりがいのある仕事です。テレワークで24時間働き放題!");
-  //console.log("さあ、あなたも https://digital.nada-sc.jp/ からデジタル委員になろう!");
-  //setTimeout(() => {console.log("助けて");}, 300000);
+  // console.log("おっ、コンソール欄を開くとは珍しいですね");
+  // console.log("生徒会補助機関デジタル委員会情報システム部ではIT奴隷をいつでも募集しています");
+  // console.log("報酬はありませんが、やりがいのある仕事です")
+  // console.log("テレワークで24時間働き放題の文字通りアットホームな委員会活動ができます")
+  // console.log("さあ、あなたも https://digital.nada-sc.jp/ からデジタル委員になろう!");
+  // setTimeout(() => {console.log("助けて");}, 300000);
 </script>
