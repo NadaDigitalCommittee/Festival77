@@ -8,7 +8,7 @@
   </div>
     {#each areaDatas as areaData}
     <div class={floor} >
-    <h2 class={headStyle}>{areaData.a}</h2>
+    <h2 class="{headStyle} {areaData.d ? smaller : ''}">{areaData.a}</h2>
     <ul class={listStyle}>
       {#each items.filter((i) => (i.areaId >= areaData.b && i.areaId < areaData.c)) as item }
         {#if !item.searchFalse}
@@ -137,7 +137,7 @@
   const items = data.items as Circle[];
   let screensize = 0;
   items.sort((a:Circle, b:Circle) => a.areaId - b.areaId);
-  const areaDatas = [{ a: '2F', b: 0, c: 3 }, { a: '3F', b: 3, c: 6 }, { a: '4F', b: 6, c: 9 }, { a: '研修館', b: 9, c: 12 }, { a: '第1グラウンド', b: 12, c: 13 }, { a: 'その他', b: 13, c: 15 }];
+  const areaDatas = [{ a: '2F', b: 0, c: 3, d: false }, { a: '3F', b: 3, c: 6, d: false }, { a: '4F', b: 6, c: 9, d: false}, { a: '研修館', b: 9, c: 12, d: true}, { a: '第1グラウンド', b: 12, c: 13, d: true}, { a: 'その他', b: 13, c: 15, d: true}];
   let inputtext = '';
   async function runSearch() {
     console.log(items);
@@ -157,8 +157,11 @@
     await tick();
   }
 
+  const smaller = css`
+    font-size:2.5rem;
+  `;
   const insidebox = css`
-    margin:2% 10%;
+    margin:0% 10% 5%;
     width:80%;
   `;
 
@@ -280,11 +283,14 @@
   const ken = css`background-color: #C2D95C;`;
   const other = css`background-color: #555555;`;
   const wide1g = css`
+  position:relative;
   background-color: #69B557;
   ${responsive(`
-      
+      margin-right:-3.5%;
+      left: -1.75%;
       width: 15%;
       `, `
+      margin-right:-2.25rem;
       width: 7rem;
       `)}
     
@@ -475,17 +481,8 @@
     `)}
   `;
 
-  // 5/1にでも公開しようかと思う
-  // eslint-disable-next-line max-len
-  // console.log("デザイン開始が11月、デザイン納品期限が1/31のはずなのに期限から約3か月遅らせて公開予定日の1週間前にデザインを完成させた上で、実装にケチを多々つけてくるデザイン課の無能共は万死に値する");
-  // console.log("デザイン用ソフトウェアにドラッグ&ドロップしたら勝手に実装されるとでも思っているのか?");
-  // console.log("これまでの体育祭等のイベント(最悪の時は公開当日早朝にデザイン変更があった)のときからちっとも変わってないな")
-  // eslint-disable-next-line max-len
-  // console.log("こっちも学業に部用のプロジェクトに競プロに資格にとやることがあるんじゃ(最後の二つは諦めざるを得なかった さよなら、俺のネスぺ試験受験料7500円+参考書約3000円……) デザイン課のオナニーになんか付き合ってられねーよカスがよぉ");
-  // console.log("聞くところによると他の部のポスターでも部の責任者への聞き取りなしで解釈違いの地雷ポスターを量産して、挙句の果てには著作権侵害までしたらしいじゃないか");
-  // console.log("umdとtksmは後輩育成ちゃんとしてるのか?");
-  // console.log("ディベート部ではいかにオナニーを他人に押し付ける方法でも教えてるのか?");
-  // eslint-disable-next-line max-len
-  // console.log("ところで、生徒会下部組織デジタル委員会情報システム部では私たちのようなIT奴隷をいつでも募集しています。報酬もやりがいもありませんが、精神病と役職名と慢性的な睡眠不足を与えることは可能です。また、狂気駆動で開発できる人間がいないとこのようなサイトを維持することは不可能です");
-  // console.log("さあ、あなたも https://digital.nada-sc.jp/ からデジタル委員になろう! というかなれよ");
+  //console.log("おっ、コンソール欄を開くとは珍しいですね");
+  //console.log("生徒会補助組織デジタル委員会情報システム部では私たちのようなIT奴隷をいつでも募集しています。報酬はありませんが、やりがいのある仕事です。テレワークで24時間働き放題!");
+  //console.log("さあ、あなたも https://digital.nada-sc.jp/ からデジタル委員になろう!");
+  //setTimeout(() => {console.log("助けて");}, 300000);
 </script>
