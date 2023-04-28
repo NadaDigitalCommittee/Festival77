@@ -356,13 +356,13 @@
     ${responsive(`
       font-weight: 700;
       font-size: 1rem;
-      margin-left:15%;
+      margin-left:7.5%;
     `, `
       position: relative;
       font-weight: 900;
       font-size: 0.7rem;
       padding: 3px 10px;
-      margin-left:8rem;
+      margin-left:6.75rem;
       margin-top:-1.5rem;
     `)}
 
