@@ -134,6 +134,7 @@
     padding-left: 1rem;
     border-left: #FFFFFF 5px solid;
     margin-top: 10px;
+    margin-left: 3px;
     `;
     const rt = keyframes`
     0% {

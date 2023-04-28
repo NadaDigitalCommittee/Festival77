@@ -94,6 +94,7 @@
     const Time = css`
     font-size: 1.5rem;
     padding-left: 0.8rem;
+    margin-left: 3px;
     border-left: #FFFFFF 5px solid;
     margin-top: 5px;
     `;
