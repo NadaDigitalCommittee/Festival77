@@ -62,18 +62,6 @@ export const load = (async () => {
     select: 'fields',
   });
 
-  const assets = data2.includes.Asset as {
-    sys: {
-      id: string;
-    };
-    fields: {
-      title: string;
-      file: {
-        url: string;
-      };
-    };
-  }[];
-
   const books = data2.items.map((item) => {
     const fields = item.fields as{
       title:string;
@@ -87,23 +75,15 @@ export const load = (async () => {
     const syss = item.sys as{
       id: string;
     };
-    const image = assets.find((asset) => asset.sys.id === fields.thumbnail?.sys.id)?.fields;
     return {
       id: syss.id,
       title: fields.title,
       link: fields.link,
-      image,
     };
   });
   type bookdatadict ={[key:string]:{
     title:string;
     link:string;
-    image?:{
-      title:string;
-      file:{
-        url:string;
-      };
-    };
   }};
   const dict:bookdatadict = {};
   for (let i = 0; i < books.length; i += 1) {
@@ -111,9 +91,6 @@ export const load = (async () => {
       title: books[i].title,
       link: books[i].link,
     };
-    if (typeof books[i].image !== 'undefined') {
-      dict[books[i].id].image = books[i].image;
-    }
   }
   const data3 = await client.getEntries({
     content_type: 'youtube',

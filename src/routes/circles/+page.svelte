@@ -130,7 +130,7 @@
       booksid:relation[];
       moviesid:relation[];
   };
-  type bookdata ={[key:string]:{title:string; link:string;image:{title:string;file:{url:string;};};}};
+  type bookdata ={[key:string]:{title:string; link:string;}};
   type youtubedata = {[key:string]:{title:string;youtubeId:string;};};
   const youtubes = data.youtubedict as youtubedata;
   const books = data.dict as bookdata;
