@@ -45,5 +45,6 @@ module.exports = {
     'import/order': 'off',
     'import/first': 'off',
     'import/extensions': ['error', 'ignorePackages', { js: 'never', ts: 'never' }],
+    'linebreak-style': 'off',
   },
 };
