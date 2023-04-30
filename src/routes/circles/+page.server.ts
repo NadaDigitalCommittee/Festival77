@@ -111,8 +111,8 @@ export const load = (async () => {
       title: books[i].title,
       link: books[i].link,
     };
-    if(typeof books[i].image !== 'undefined'){
-      dict[books[i].id].image=books[i].image;
+    if (typeof books[i].image !== 'undefined') {
+      dict[books[i].id].image = books[i].image;
     }
   }
   const data3 = await client.getEntries({
