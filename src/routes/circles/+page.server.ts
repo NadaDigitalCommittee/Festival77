@@ -98,7 +98,7 @@ export const load = (async () => {
   type bookdatadict ={[key:string]:{
     title:string;
     link:string;
-    image:{
+    image?:{
       title:string;
       file:{
         url:string;
@@ -110,11 +110,10 @@ export const load = (async () => {
     dict[books[i].id] = {
       title: books[i].title,
       link: books[i].link,
-      image: {
-        title: books[i].image.title,
-        file: { url: books[i].image.file.url },
-      },
     };
+    if (typeof books[i].image !== 'undefined') {
+      dict[books[i].id].image = books[i].image;
+    }
   }
   const data3 = await client.getEntries({
     content_type: 'youtube',
