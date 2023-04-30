@@ -22,6 +22,12 @@
       name: 'パンフレット',
       file: 'pamphlet.pdf',
       size: '?.?MB',
+      image: {
+        title: 'パンフレット',
+        file: {
+          url: '//images.ctfassets.net/hubd8luulwsv/5LI5Tz13ObP9RgwXlmGbEm/e975633e398cdca82d06be43180b589e/rickroll.jfif',
+        },
+      },
     },
     {
       name: '校内マップ',

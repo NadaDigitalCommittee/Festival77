@@ -20,6 +20,6 @@ export const links = [
     name: 'stages', ja: 'ステージ', url: '/stages', active: false,
   },
   {
-    name: 'download', ja: 'ダウンロード', url: '/download', active: false,
+    name: 'download', ja: 'ダウンロード', url: '/download', active: true,
   },
 ];
