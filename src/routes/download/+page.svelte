@@ -26,12 +26,12 @@
     {
       name: '校内マップ',
       file: 'map.pdf',
-      size: '?.?MB',
+      size: '127KB',
     },
     {
-      name: 'パンフレット',
-      file: 'pamphlet.pdf',
-      size: '?.?MB',
+      name: 'バリアフリーマップ',
+      file: 'accessibility_map.pdf',
+      size: '160KB',
     },
     {
       name: '校内マップ',
