@@ -8,39 +8,52 @@
   </div>
     {#each areaDatas as areaData}
     <div class={floor} >
-    <h2 class={headStyle}>{areaData.a}</h2>
+    <h2 class="{areaData.d ? smaller : headStyle }">{areaData.a}</h2>
     <ul class={listStyle}>
       {#each items.filter((i) => (i.areaId >= areaData.b && i.areaId < areaData.c)) as item }
         {#if !item.searchFalse}
         <!-- svelte-ignore a11y-click-events-have-key-events -->
-        <li class=" {liStyle} {item.selected2 ? liStyle2 : '' } " on:mouseenter={() => { item.selected = true; }} on:mouseleave={() => { item.selected = false; }}  on:click={() => {
-          if (item.selected2) {
-            item.selected2 = false;
-            item.selected3 = false;
-          } else {
-            item.selected2 = true;
-            setTimeout(() => { item.selected3 = item.selected2 && true; }, 800);
-          }
-          } }>
+        <li class="
+          {liStyle} 
+          {item.selected2 ? liStyle2 : '' }" on:mouseenter={() => { item.selected = true; }} on:mouseleave={() => { item.selected = false; }}  >
           <div class="{unselectedStyle} {item.selected ? selectedStyle : '' }"/>
           <div class={boxStyle}>
-          <div class={itemStyle} >
+          <div class={itemStyle} on:click={() => {
+            if (item.selected2) {
+              item.selected2 = false;
+              item.selected3 = false;
+            } else {
+              item.selected2 = true;
+              setTimeout(() => { item.selected3 = item.selected2 && true; }, 800);
+            }
+            } }>
             <div class={itemMainStyle}>
               <p class={contentStyle}>{item.name}</p>
-              
-              {#if item.areaId >= 9}
+              {#if (item.areaId <= 11) && (item.areaId >= 9)}
               <div class="{bigarea} {ken}">
                 <p class={kousya}>
                   研修館
                 </p>
               </div>
-              {:else if item.areaId % 3 === 0}
+              {:else if item.areaId === 12}
+              <div class="{bigarea} {wide1g}">
+                <p class={kousya}>
+                  第1グラウンド
+                </p>
+              </div>
+              {:else if item.areaId === 14}
+              <div class="{bigarea} {other}">
+                <p class={kousya}>
+                  その他
+                </p>
+              </div>
+              {:else if ((item.areaId % 3) + 3) % 3 === 0}
               <div class="{bigarea} {tyu}">
                 <p class={kousya}>
                   中学棟
                 </p>
               </div>
-              {:else if item.areaId % 3 === 1}
+              {:else if ((item.areaId % 3) + 3) % 3 === 1}
               <div class="{bigarea} {kou}" >
                 <p class={kousya}>
                   高校棟
@@ -60,8 +73,19 @@
               <span class={item.selected ? spanStyle : spanStyle2}/>
             </div>
           </div>
-          {#if item.selected3}
-          <p class={descStyle}>{item.description}</p>
+          {#if item.selected2}
+          <p class=" {descStyle} " >{item.description}</p>
+          <!-- ここ、コンポーネント化して分離する -->
+          {#if typeof item.booksid !== 'undefined'}
+          <div class={insidebox}>
+            <Busi id={item.booksid} books={books}/>
+          </div>
+          {/if}
+          {#if typeof item.moviesid !== 'undefined'}
+          <div class="{insidebox} {moviebox}">
+            <Movie id={item.moviesid} youtubes={youtubes} />
+          </div>
+          {/if}
           {/if}
           </div>
         </li>
@@ -71,6 +95,8 @@
     </div>
     {/each}
 </div>
+
+<svelte:window bind:innerWidth={screensize} />
 <script lang="ts">
   import { base } from '$app/paths';
   import type { PageData } from './$types';
@@ -81,24 +107,49 @@
     colors, responsive,
   } from '$lib/styles/utils';
   import { tick } from 'svelte';
-
+  import Busi from '$lib/circles/busi.svelte';
+  import Movie from '$lib/circles/movie.svelte';
+  
   export let data: PageData;
 
+  type relation = {
+    sys:{
+      id:string;
+    };
+  };
   type Circle = {
       name: string;
       description: string;
       area: string;
       areaId: number;
-      tags: string[];
+      tags?: string[];
       selected: boolean;
       selected2: boolean;
       selected3: boolean;
       searchFalse: boolean;
+      booksid:relation[];
+      moviesid:relation[];
   };
-
+  type bookdata ={[key:string]:{title:string; link:string;image:{title:string;file:{url:string;};};}};
+  type youtubedata = {[key:string]:{title:string;youtubeId:string;};};
+  const youtubes = data.youtubedict as youtubedata;
+  const books = data.dict as bookdata;
   const items = data.items as Circle[];
+  let screensize = 0;
   items.sort((a:Circle, b:Circle) => a.areaId - b.areaId);
-  const areaDatas = [{ a: '2F', b: 0, c: 3 }, { a: '3F', b: 3, c: 6 }, { a: '4F', b: 6, c: 9 }, { a: '研修館', b: 9, c: 12 }];
+  const areaDatas = [{
+    a: '2F', b: 0, c: 3, d: false,
+  }, {
+    a: '3F', b: 3, c: 6, d: false,
+  }, {
+    a: '4F', b: 6, c: 9, d: false,
+  }, {
+    a: '研修館', b: 9, c: 12, d: true,
+  }, {
+    a: '第1グラウンド', b: 12, c: 13, d: true,
+  }, {
+    a: 'その他', b: 13, c: 15, d: true,
+  }];
   let inputtext = '';
   async function runSearch() {
     for (let i = 0; i < items.length; i += 1) {
@@ -116,6 +167,22 @@
     await tick();
   }
 
+  const smaller = css`
+    width:100%;
+    padding-left:7.5%;
+    font-family: futura-pt-bold, "Noto Sans JP";
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: #000000;
+    line-height: 77px;
+  `;
+  const insidebox = css`
+    margin:0% 10% 3%;
+    width:80%;
+  `;
+  const moviebox = css`
+  margin-bottom: 10%;
+  `;
   const spanStyle = css`
     :nth-child(1){
     background-color: #0d3a4f;
@@ -179,6 +246,8 @@
     `;
   const descStyle = css`
     margin:0 10%;
+    padding-top:20px;
+    padding-bottom:30px;
     font-family: "Noto Sans JP";
     font-style: normal;
     font-weight: 700;
@@ -191,25 +260,26 @@
   const liStyle = css`
     display:flex;
     height:80px;
-    transition: 0.6s;
+    transition:all 0.6s;
+    color:#000000FF;
     `;
-    // ここ、後でfit-contentなりmax-contentなりを使う実装に直す
+    // ここ、後でfit-contentなりmax-contentなりを使う実装に直す...はずだった
   const liStyle2 = css`
     display:flex;
-    ${responsive(`
-        height: 250px;
-      `, `
-        height: 350px;
-      `)}
+    overflow: hidden;
+    height:fit-content;
     transition: 0.6s;
     `;
+
   const selectedStyle = css`
-    background-color:#0D3A4FFF;
+    width:2%;
+    height: 80px;
+    background-color:#0D3A4F;
     transition: 0.6s;
     `;
   const unselectedStyle = css`
     width:2%;
-    height: 100%;
+    height: 80px;
     transition: 0.6s;
     `;
   const bigarea = css`
@@ -229,6 +299,20 @@
   const kou = css`background-color: #008CCF;`;
   const nisi = css`background-color: #F5A21B;`;
   const ken = css`background-color: #C2D95C;`;
+  const other = css`background-color: #555555;`;
+  const wide1g = css`
+  position:relative;
+  background-color: #69B557;
+  ${responsive(`
+      margin-right:-3.5%;
+      left: -1.75%;
+      width: 15%;
+      `, `
+      margin-right:-2.25rem;
+      width: 7rem;
+      `)}
+    
+  `;
   const kousya = css`
     margin-top:4px;
     margin-bottom:4px;
@@ -272,13 +356,13 @@
     ${responsive(`
       font-weight: 700;
       font-size: 1rem;
-      margin-left:15%;
+      margin-left:7.5%;
     `, `
       position: relative;
       font-weight: 900;
       font-size: 0.7rem;
       padding: 3px 10px;
-      margin-left:5rem;
+      margin-left:6.75rem;
       margin-top:-1.5rem;
     `)}
 
@@ -402,14 +486,23 @@
   const contentStyle = css`
     font-family: "Noto Sans JP", sans-serif;
     color: ${colors.black};
-    width:40%;
+    
     ${responsive(`
       font-weight: 700;
       font-size: 1.25rem;
+      width:40%;
     `, `
       font-weight: 900;
       font-size: 1rem;
       margin-bottom: 10px;
+      width:80%;
     `)}
   `;
+
+  // console.log("おっ、コンソール欄を開くとは珍しいですね");
+  // console.log("生徒会補助機関デジタル委員会情報システム部ではIT奴隷をいつでも募集しています");
+  // console.log("報酬はありませんが、やりがいのある仕事です")
+  // console.log("テレワークで24時間働き放題の文字通りアットホームな委員会活動ができます")
+  // console.log("さあ、あなたも https://digital.nada-sc.jp/ からデジタル委員になろう!");
+  // setTimeout(() => {console.log("助けて");}, 300000);
 </script>
