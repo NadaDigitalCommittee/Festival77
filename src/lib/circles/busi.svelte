@@ -15,11 +15,7 @@
     {#if selected}
     {#each id as eachbook,i}
       <a class="{each} {i % 2 === 1 ? backdark : backblack}" href="{books[eachbook.sys.id].link}" target="_blank">
-        {#if typeof books[eachbook.sys.id].image !== 'undefined'}
-        <img src={books[eachbook.sys.id].image.file.url} alt="部誌のサムネイル画像">
-        {:else}
         <img src="{base}/img/assets/nullthumbnail.png" alt="部誌のサムネイル画像">
-        {/if}
         <p>{books[eachbook.sys.id].title}</p>
       </a>
     {/each}
@@ -43,13 +39,6 @@
         {
             title:string;
             link:string;
-            image?:
-            {
-                title:string;
-                file:{
-                    url:string;
-                };
-            };
         }
     };
   
