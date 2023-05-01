@@ -20,6 +20,6 @@ export const links = [
     name: 'goods', ja: 'グッズ', url: '/goods', active: true,
   },
   {
-    name: 'download', ja: 'ダウンロード', url: '/download', active: false,
+    name: 'download', ja: 'ダウンロード', url: '/download', active: true,
   },
 ];
