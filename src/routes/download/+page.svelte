@@ -21,28 +21,46 @@
     {
       name: 'パンフレット',
       file: 'pamphlet.pdf',
-      size: '?.?MB',
+      size: '20MB',
       image: {
         title: 'パンフレット',
         file: {
-          url: '//images.ctfassets.net/hubd8luulwsv/5LI5Tz13ObP9RgwXlmGbEm/e975633e398cdca82d06be43180b589e/rickroll.jfif',
+          url: '//images.ctfassets.net/hubd8luulwsv/7rZCPWtwkvpb5Uqjj3igq/a0eede423c4891036b479d55492bc65b/pamphlet.png',
         },
       },
     },
     {
       name: '校内マップ',
       file: 'map.pdf',
-      size: '127KB',
+      size: '122KB',
+      image: {
+        title: '校内マップ',
+        file: {
+          url: '//images.ctfassets.net/hubd8luulwsv/6NkJCalQWU9Puef9n0Kbk/63e433c78ae3238f6940328286cf000e/map.png',
+        },
+      },
     },
     {
       name: 'バリアフリーマップ',
       file: 'accessibility_map.pdf',
       size: '160KB',
+      image: {
+        title: 'バリアフリーマップ',
+        file: {
+          url: '//images.ctfassets.net/hubd8luulwsv/552408CFJaZEEX6c6PBSGY/1b8d3165f0dc57db50d4a219ef217ebe/accmap.png',
+        },
+      },
     },
     {
-      name: '校内マップ',
-      file: 'map.pdf',
-      size: '?.?MB',
+      name: 'ガイドライン',
+      file: 'guidelines.pdf',
+      size: '417KB',
+      image: {
+        title: 'ガイドライン',
+        file: {
+          url: '//images.ctfassets.net/hubd8luulwsv/1sf9XhYwyBxADKPHVQurqP/032f4adf907e1e14eb15c3dee9ed74f8/guidelines.png',
+        },
+      },
     },
   ];
 

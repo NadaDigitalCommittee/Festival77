@@ -1,11 +1,10 @@
 <div class={containerStyle}>
   <p class={titleStyle}>おねがい</p>
-  <p class={contentStyle}>
-    ・ほげほげほげほげほげほげほげほほげほげ<br>
-    ・ほげほげほげほげほげほげほげほほげほげ<br>
-    ・ほげほげほげほげほげほげほげほほげほげ<br>
-    ・ほげほげほげほげほげほげほげほほげほげ<br>
-  </p>
+  <ul class={contentStyle}>
+    <li>このホームページでは、出展するサークルが作った部誌・模試問題や、配布されるパンフレットなどのデータを公開しています。</li>
+    <li>このデータの一部またはすべてをＳＮＳなどで不特定多数に公開することはご遠慮ください。</li>
+    <li>このデータはおよそ１ヵ月半ほど公開されたのち、非公開となります。ご注意ください。</li>
+  </ul>
 </div>
 
 <script lang="ts">
@@ -58,6 +57,8 @@
   const contentStyle = css`
     font-family: "Noto Sans JP", sans-serif;
     font-size: 0.9375rem;
+    list-style: disc;
+    padding-left: 1.5rem;
     font-weight: 900;
     line-height: 200%;
     ${responsive(`
