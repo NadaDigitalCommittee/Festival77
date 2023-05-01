@@ -53,6 +53,7 @@
   width:100%;
   `;
   const midasi = css`
+    cursor:pointer;
     display:flex;
     font-family: "Noto Sans JP";
     font-style: normal;
