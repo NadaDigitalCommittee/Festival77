@@ -42,13 +42,16 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 100px;
     ${responsive(`
       width: 60rem;
       gap: 80px;
+      margin-top: 100px;
     `, `
       gap: 60px;
     `)}
-    margin: 0 auto 100px;
   `;
 
   const youtubeStyle = css`
