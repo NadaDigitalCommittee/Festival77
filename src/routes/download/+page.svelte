@@ -20,7 +20,7 @@
   const items: DownloadItem[] = [
     {
       name: 'パンフレット',
-      file: 'pamphlet.pdf',
+      file: 'brochure.pdf',
       size: '20MB',
       image: {
         title: 'パンフレット',
@@ -54,7 +54,7 @@
     {
       name: 'ガイドライン',
       file: 'guidelines.pdf',
-      size: '417KB',
+      size: '401KB',
       image: {
         title: 'ガイドライン',
         file: {
