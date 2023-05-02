@@ -54,7 +54,7 @@
     {
       name: 'ガイドライン',
       file: 'guidelines.pdf',
-      size: '417KB',
+      size: '401KB',
       image: {
         title: 'ガイドライン',
         file: {
